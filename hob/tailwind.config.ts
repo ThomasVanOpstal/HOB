@@ -20,7 +20,9 @@ module.exports = {
     extend: {
       colors: {
         pink: '#F9D4C6',
+        brokenWhite: '#FFF4EC',
         dark_pink: '#F5A283',
+        darkBrown: '#E4B4A3',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
@@ -109,7 +111,7 @@ module.exports = {
         scaleOut: 'scaleOut 200ms ease',
         fadeIn: 'fadeIn 200ms ease',
         fadeOut: 'fadeOut 200ms ease',
-        enterFromLeft: 'enterFromLeft 250ms ease',
+        enterFromLeft: 'enterFromLeft 500ms ease',
         enterFromRight: 'enterFromRight 250ms ease',
         exitToLeft: 'exitToLeft 250ms ease',
         exitToRight: 'exitToRight 250ms ease',
