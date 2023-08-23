@@ -17,6 +17,12 @@ module.exports = {
         '2xl': '1400px',
       },
     },
+    screens: {
+      desktop: '950px',
+      sm: '640px',
+      md: '850px',
+      xsm: '330px',
+    },
     extend: {
       colors: {
         pink: '#F9D4C6',
