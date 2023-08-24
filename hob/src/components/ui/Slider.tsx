@@ -1,10 +1,10 @@
 import { cn } from '@/lib/utils'
-import { ChevronLeft, ChevronRight, List } from 'lucide-react'
+import clsx from 'clsx'
+import { ChevronLeft, ChevronRight, Dot } from 'lucide-react'
 import Image from 'next/image'
-import { useState } from 'react'
+import Link from 'next/link'
+import React, { useState } from 'react'
 import { Button } from './button'
-import { StringDecoder } from 'string_decoder'
-
 type Image = {
   name: string
   url: string
@@ -13,6 +13,7 @@ type Image = {
   w: number
   h: number
 }
+
 const Slider = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0)
 
@@ -42,52 +43,108 @@ const Slider = () => {
       h: 100,
     },
   ]
-  const prevSlide = () => {
-    let isFirstSlide = currentIndex === 0
-    let index = isFirstSlide ? images.length - 1 : currentIndex - 1
-    setCurrentIndex(index)
+  const refs = images.reduce((acc, _val, i) => {
+    acc[i] = React.createRef()
+    return acc
+  }, [] as React.RefObject<HTMLDivElement>[])
+
+  const scrollToImage = (i: number) => {
+    setCurrentIndex(i)
+
+    refs[i]?.current?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest',
+      inline: 'start',
+    })
   }
-  const nextSlide = () => {
-    let isLastSlide = currentIndex === images.length - 1
-    let index = isLastSlide ? 0 : currentIndex + 1
-    setCurrentIndex(index)
+  const totalImages = images.length
+
+  const nextImage = () => {
+    if (currentIndex >= totalImages - 1) {
+      scrollToImage(0)
+    } else {
+      scrollToImage(currentIndex + 1)
+    }
   }
-  const color = images.at(currentIndex)?.bg
+  const previousImage = () => {
+    if (currentIndex === 0) {
+      scrollToImage(totalImages - 1)
+    } else {
+      scrollToImage(currentIndex - 1)
+    }
+  }
   return (
-    <div className={cn('flex flex-col items-center', color)}>
-      <h1 className="font-medium text-xl mt-4 mb-2">Ons aanbod</h1>
-      <div className="flex flex-row items-center justify-between w-full ">
-        <ChevronLeft
-          size={30}
-          onClick={() => {
-            prevSlide()
-          }}
-        />{' '}
-        <Image
-          src={images.at(currentIndex)?.url ?? '/'}
-          alt={images.at(currentIndex)?.alt ?? 'geen informatie'}
-          width={images.at(currentIndex)?.w ?? 250}
-          height={images.at(currentIndex)?.h ?? 250}
-        />
-        <ChevronRight
-          size={30}
-          onClick={() => {
-            nextSlide()
-          }}
-        />
+    <div className="relative">
+      <p className="font-medium text-xl absolute top-2 left-1/2 transform -translate-x-1/2">
+        Ons aanbod
+      </p>
+      <div className="flex flex-row snap-x overflow-x-hidden">
+        {images.map((image, i) => {
+          return (
+            <>
+              <div
+                key={i}
+                className={cn(
+                  'w-full flex flex-col justify-center items-center flex-shrink-0 snap-center pt-12',
+                  image.bg
+                )}
+                ref={refs[i]}
+              >
+                <Image
+                  src={image.url}
+                  alt={image.alt}
+                  width={image.w}
+                  height={image.h}
+                />
+                <Button
+                  key={i}
+                  variant={
+                    image.bg === 'bg-brokenWhite'
+                      ? 'default'
+                      : image.bg === 'bg-darkBrown'
+                      ? 'outline_darkBrown'
+                      : 'secondary'
+                  }
+                  className={cn('font-medium text-xl mt-3 mb-10')}
+                >
+                  <Link href={'/'}>{image.name}</Link>
+                </Button>
+              </div>
+            </>
+          )
+        })}
       </div>
-      <Button
-        variant={
-          color === 'bg-brokenWhite'
-            ? 'default'
-            : color === 'bg-pink'
-            ? 'secondary'
-            : 'outline_darkBrown'
-        }
-        className="font-medium text-xl my-2"
-      >
-        {images.at(currentIndex)?.name ?? 'Go'}
-      </Button>
+      <ChevronLeft
+        size={30}
+        onClick={() => {
+          previousImage()
+        }}
+        className="absolute left-0 top-[50%]"
+      />{' '}
+      <ChevronRight
+        size={30}
+        onClick={() => {
+          nextImage()
+        }}
+        className="absolute right-0 top-[50%]"
+      />{' '}
+      <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex justify-center items-center ">
+        {images.map((slide, i) => (
+          <div
+            key={i}
+            className={cn(
+              'cursor-pointer w-6 h-6 flex items-center justify-center'
+            )}
+          >
+            <span
+              className={cn(
+                'w-2 h-2 rounded-full inline-block',
+                currentIndex === i ? 'bg-darkBlue' : 'bg-lightBlue'
+              )}
+            ></span>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }

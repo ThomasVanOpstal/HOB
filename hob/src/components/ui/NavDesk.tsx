@@ -23,14 +23,14 @@ const NavDesk = () => {
                   <NavigationMenu.Link asChild>
                     <a
                       className="focus:shadow-violet7 from-purple9 to-indigo9 flex
-                    h-full w-full select-none flex-col justify-end rounded-[6px] bg-gradient-to-b p-[25px] no-underline outline-none focus:shadow-[0_0_0_2px]"
+                    h-full w-full select-none flex-col justify-center rounded-[6px] bg-gradient-to-b p-[25px] no-underline outline-none focus:shadow-[0_0_0_2px]"
                       href="/"
                     >
                       <Image
                         alt="Drawing of body"
                         src={'/hand.png'}
                         width={300}
-                        height={300}
+                        height={400}
                       />
                     </a>
                   </NavigationMenu.Link>
