@@ -1,9 +1,12 @@
 'use client'
 import Nav from '@/components/Nav'
+import Footer from '@/components/Footer'
 import Slider from '@/components/ui/Slider'
 import { ChevronDown } from 'lucide-react'
 import Image from 'next/image'
 import { MutableRefObject, useRef } from 'react'
+import { Button } from '@/components/ui/button'
+import Gallery from '@/components/Gallery'
 const page = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const services = useRef(null)
@@ -17,12 +20,30 @@ const page = () => {
     <>
       <div className="bg-pink">
         <Nav />
-        <div className="flex flex-col items-center justify-center bg-pink">
-          <div className="max-w-[175px]">
-            <h1 className="font-medium text-4xl">Nails & body care</h1>
-            <h3 className="font-medium"> By lauren</h3>
+        <div className="relative flex flex-col items-center justify-center lsm:justify-normal lsm:items-end lsm:flex-row lsm:w-full bg-pink">
+          <div className="max-w-[200px] lsm:basis-1/2 lsm:max-w-none lsm:flex lsm:flex-col lsm:self-start">
+            <div className="sml:max-w-[200px] ml-auto smd:mx-auto pl-8 grow">
+              <h1 className="font-medium text-4xl msm:text-5xl sm:text-6xl md:text-7xl desktop:text-8xl">
+                Nails & <br /> body care
+              </h1>
+              <h3 className="font-medium pl-4 lsm:pb-1"> By lauren</h3>
+              <div className="mb-8 hidden smd:block ">
+                <Button
+                  variant="secondary"
+                  className="font-medium text-xl ml-4 mt-2"
+                >
+                  Aanbod
+                </Button>
+                <Button
+                  variant="outline_darkBrown"
+                  className="font-medium text-xl ml-4 mt-2 "
+                >
+                  Contact
+                </Button>
+              </div>
+            </div>
           </div>
-          <div className="relative flex flex-col items-center justify-center">
+          <div className="relative flex flex-col items-center justify-end basis-1/2">
             <Image
               src={'/humanHandL.png'}
               width="400"
@@ -31,18 +52,26 @@ const page = () => {
             />
             <ChevronDown
               size={30}
-              className="absolute bottom-0 mr-1 animate-bounce"
+              className="absolute bottom-0 mr-1 animate-bounce lsm:hidden"
               onClick={() => {
                 scrollToSection(services)
               }}
             />
           </div>
+          <ChevronDown
+            size={30}
+            className="animate-bounce absolute bottom-0 left-[47%] hidden lsm:block smd:hidden "
+            id="chevronDown"
+            onClick={() => {
+              scrollToSection(services)
+            }}
+          />
         </div>
         <div ref={services}>
-          <div className="flex flex-col">
-            <Slider />
-          </div>
+          <Slider className="smd:hidden" />
+          <Gallery className="hidden smd:inline-flex" />
         </div>
+        <Footer />
       </div>
     </>
   )

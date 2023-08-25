@@ -3,7 +3,7 @@ import '@/styles/globals.css'
 import type { Metadata } from 'next'
 import { Lora } from 'next/font/google'
 
-const lora = Lora({ subsets: ['latin'] })
+const lora = Lora({ subsets: ['latin'], style: 'italic' })
 
 export const metadata: Metadata = {
   title: 'House of beauty',

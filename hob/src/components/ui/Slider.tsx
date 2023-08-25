@@ -14,7 +14,11 @@ type Image = {
   h: number
 }
 
-const Slider = () => {
+type sliderProps = {
+  className?: string
+}
+
+const Slider = ({ className }: sliderProps) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0)
 
   const images: Image[] = [
@@ -74,7 +78,7 @@ const Slider = () => {
     }
   }
   return (
-    <div className="relative">
+    <div className={cn('relative', className)}>
       <p className="font-medium text-xl absolute top-2 left-1/2 transform -translate-x-1/2">
         Ons aanbod
       </p>
@@ -85,7 +89,7 @@ const Slider = () => {
               <div
                 key={i}
                 className={cn(
-                  'w-full flex flex-col justify-center items-center flex-shrink-0 snap-center pt-12',
+                  'w-full h-[320px] flex flex-col justify-center items-center flex-shrink-0 snap-center pt-12',
                   image.bg
                 )}
                 ref={refs[i]}

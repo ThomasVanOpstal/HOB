@@ -18,10 +18,15 @@ module.exports = {
       },
     },
     screens: {
+      lg: '1024px',
       desktop: '950px',
-      sm: '640px',
       md: '850px',
+      smd: '700px',
+      sm: '640px',
+      msm: '510px',
+      lsm: '450px',
       xsm: '330px',
+      xs: '280px',
     },
     extend: {
       colors: {
