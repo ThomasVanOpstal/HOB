@@ -1,6 +1,5 @@
 import { cn } from '@/lib/utils'
-import clsx from 'clsx'
-import { ChevronLeft, ChevronRight, Dot } from 'lucide-react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
@@ -77,6 +76,30 @@ const Slider = ({ className }: sliderProps) => {
       scrollToImage(currentIndex - 1)
     }
   }
+  let touchStartX = 0
+  let touchEndX = 0
+
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    touchStartX = e.touches[0].clientX
+  }
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    touchEndX = e.touches[0].clientX
+  }
+
+  const handleTouchEnd = () => {
+    const swipeDistance = touchEndX - touchStartX
+    const threshold = 50
+    if (swipeDistance > threshold) {
+      previousImage()
+    } else if (swipeDistance < -threshold) {
+      nextImage()
+    }
+
+    touchStartX = 0
+    touchEndX = 0
+  }
+
   return (
     <div className={cn('relative', className)}>
       <p className="font-medium text-xl absolute top-2 left-1/2 transform -translate-x-1/2">
@@ -93,6 +116,9 @@ const Slider = ({ className }: sliderProps) => {
                   image.bg
                 )}
                 ref={refs[i]}
+                onTouchStart={(e) => handleTouchStart(e)}
+                onTouchMove={(e) => handleTouchMove(e)}
+                onTouchEnd={() => handleTouchEnd()}
               >
                 <Image
                   src={image.url}
