@@ -1,4 +1,5 @@
 'use client'
+import AboutMe from '@/components/AboutMe'
 import Gallery from '@/components/Gallery'
 import Slider from '@/components/ui/Slider'
 import { Button } from '@/components/ui/button'
@@ -70,6 +71,8 @@ const page = () => {
           <Slider className="smd:hidden" />
           <Gallery className="hidden smd:inline-flex" />
         </div>
+        <AboutMe />
+
         {/* <Footer /> */}
       </div>
     </>
