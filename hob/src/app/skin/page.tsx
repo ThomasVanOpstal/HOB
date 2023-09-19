@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { MutableRefObject, useRef } from 'react'
 import { cn } from '@/lib/utils'
+import Nav from '@/components/Nav'
 const page = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const servicesSkin = useRef(null)
@@ -30,12 +31,12 @@ const page = () => {
       <div className="flex flex-col">
         <div className="flex flex-col items-center bg-brokenWhite">
           <div className="w-[250px] msm:w-[450px] md:w-[850px] flex flex-col msm:flex-row items-center justify-center md:justify-normal flex-shrink-0 mb-12 mt-4">
-            <div className="md:basis-1/2 md:flex md:justify-center">
-              <p className="font-medium text-3xl msm:text-4xl smd:text-5xl md:text-6xl mx-auto md:pl-2">
+            <div className="md:basis-2/3 md:flex md:justify-center">
+              <p className="font-medium text-3xl msm:text-4xl smd:text-5xl md:text-7xl mx-auto md:pl-2">
                 Leef met een <br /> stralende huid!
               </p>
             </div>
-            <div className="md:basis-1/2 mt-4">
+            <div className="md:basis-1/3 mt-4">
               <Image
                 src={'/face.png'}
                 width="200"
@@ -58,7 +59,7 @@ const page = () => {
             <h5 className="font-medium mt-2 text-black">
               {pathnames[pathnames.length - 1]} care
             </h5>
-            <div className="absolute top-[4%] xs:top-[5%] left-[5%] flex flex-row">
+            <div className="absolute top-[4%] xs:top-[5%] left-[5%] hidden xsm:flex xsm:flex-row ">
               {pathnames.map((pathname, index) => (
                 <Link
                   href={{ pathname: options[index] }}
@@ -87,7 +88,7 @@ const page = () => {
                 </Link>
               ))}
             </div>
-            <h1 className="font-medium text-2xl mb-12 text-black">Overzicht</h1>
+            <h1 className="font-medium text-2xl mb-8 text-black">Overzicht</h1>
             <div className="flex flex-col smd:flex-row smd:w-[750px] ">
               <div className="basis-1/2 flex flex-col justify-end items-center flex-shrink-0 hover:-translate-y-2 transition-transform mb-8 smd:mb-0">
                 <Image

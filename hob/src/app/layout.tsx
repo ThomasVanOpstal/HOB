@@ -22,7 +22,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn('bg-pink', lora.className)}>
       <body className={lora.className}>
-        <Nav />
         <Provider>{children} </Provider>
         <Footer />
       </body>

@@ -4,48 +4,25 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { Button } from './button'
-type Image = {
-  name: string
-  url: string
-  alt: string
-  bg: string
-  w: number
-  h: number
-}
+import { image } from '@/types/type'
 
 type sliderProps = {
   className?: string
+  images: image[]
+  buttonAvailable: boolean
+  titel?: string
+  progressBarAvailable?: boolean
 }
 
-const Slider = ({ className }: sliderProps) => {
+const Slider = ({
+  className,
+  images,
+  buttonAvailable,
+  titel,
+  progressBarAvailable,
+}: sliderProps) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0)
 
-  const images: Image[] = [
-    {
-      name: 'Skin',
-      url: '/face.png',
-      alt: 'gezicht',
-      bg: 'bg-brokenWhite',
-      w: 150,
-      h: 150,
-    },
-    {
-      name: 'Beauty',
-      url: '/hand.png',
-      alt: 'hand',
-      bg: 'bg-darkBrown',
-      w: 180,
-      h: 180,
-    },
-    {
-      name: 'Body',
-      url: '/body.png',
-      alt: 'lichaam',
-      bg: 'bg-pink',
-      w: 100,
-      h: 100,
-    },
-  ]
   const refs = images.reduce((acc, _val, i) => {
     acc[i] = React.createRef()
     return acc
@@ -102,8 +79,8 @@ const Slider = ({ className }: sliderProps) => {
 
   return (
     <div className={cn('relative', className)}>
-      <p className="font-medium text-xl absolute top-2 left-1/2 transform -translate-x-1/2">
-        Ons aanbod
+      <p className="font-medium text-3xl absolute top-2 left-1/2 transform -translate-x-1/2">
+        {titel || 'Ons aanbod'}
       </p>
       <div className="flex flex-row snap-x overflow-x-hidden">
         {images.map((image, i) => {
@@ -112,7 +89,7 @@ const Slider = ({ className }: sliderProps) => {
               <div
                 key={i}
                 className={cn(
-                  'w-full h-[320px] flex flex-col justify-center items-center flex-shrink-0 snap-center pt-12',
+                  'w-full h-[320px] flex flex-col justify-center items-center flex-shrink-0 snap-center pt-14',
                   image.bg
                 )}
                 ref={refs[i]}
@@ -126,19 +103,23 @@ const Slider = ({ className }: sliderProps) => {
                   width={image.w}
                   height={image.h}
                 />
-                <Button
-                  key={i}
-                  variant={
-                    image.bg === 'bg-brokenWhite'
-                      ? 'default'
-                      : image.bg === 'bg-darkBrown'
-                      ? 'outline_darkBrown'
-                      : 'secondary'
-                  }
-                  className={cn('font-medium text-xl mt-3 mb-10')}
-                >
-                  <Link href={'/'}>{image.name}</Link>
-                </Button>
+                {buttonAvailable && (
+                  <Button
+                    key={i}
+                    variant={
+                      image.bg === 'bg-brokenWhite'
+                        ? 'default'
+                        : image.bg === 'bg-darkBrown'
+                        ? 'outline_darkBrown'
+                        : image.bg === 'bg-pink'
+                        ? 'secondary'
+                        : 'outline'
+                    }
+                    className={cn('font-medium text-xl mt-3 mb-10')}
+                  >
+                    <Link href={'/'}>{image.name}</Link>
+                  </Button>
+                )}
               </div>
             </>
           )
@@ -158,23 +139,25 @@ const Slider = ({ className }: sliderProps) => {
         }}
         className="absolute right-0 top-[50%]"
       />{' '}
-      <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex justify-center items-center ">
-        {images.map((slide, i) => (
-          <div
-            key={i}
-            className={cn(
-              'cursor-pointer w-6 h-6 flex items-center justify-center'
-            )}
-          >
-            <span
+      {progressBarAvailable && (
+        <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex justify-center items-center ">
+          {images.map((slide, i) => (
+            <div
+              key={i}
               className={cn(
-                'w-2 h-2 rounded-full inline-block',
-                currentIndex === i ? 'bg-darkBlue' : 'bg-lightBlue'
+                'cursor-pointer w-6 h-6 flex items-center justify-center'
               )}
-            ></span>
-          </div>
-        ))}
-      </div>
+            >
+              <span
+                className={cn(
+                  'w-2 h-2 rounded-full inline-block',
+                  currentIndex === i ? 'bg-darkBlue' : 'bg-lightBlue'
+                )}
+              ></span>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   )
 }

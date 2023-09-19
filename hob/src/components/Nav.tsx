@@ -1,13 +1,18 @@
 'use client'
 
+import { Home } from 'lucide-react'
 import Link from 'next/link'
+import { useLayoutEffect, useState } from 'react'
 import NavDesk from './ui/NavDesk'
-import { Button } from './ui/button'
 import NavMobile from './ui/NavMobile'
-import { useState, useEffect, useLayoutEffect } from 'react'
-import { Heart, Home, Wine } from 'lucide-react'
+import { Button } from './ui/button'
+import { cn } from '@/lib/utils'
 
-const Nav = () => {
+interface navProps extends React.HTMLAttributes<HTMLHeadingElement> {
+  variant?: React.ComponentProps<typeof Button>['variant']
+}
+
+const Nav = ({ className, variant }: navProps) => {
   const [windowWidth, setWindowWidth] = useState<number>(0)
   const [isLoading, setIsLoading] = useState<boolean>(true)
 
@@ -30,21 +35,16 @@ const Nav = () => {
       window.removeEventListener('resize', handleResize)
     }
   }, [])
-  if (isLoading) {
-    return (
-      <div className="flex flex-col items-center justify-center h-screen bg-pink">
-        <Heart size={150} color="red" fill="red" className="animate-bounce" />
-        <div className="flex flex-row">
-          <h1 className="font-medium text-xl">Neem er een glaasje bij ...</h1>
-          <Wine size={30} fill="yellow" strokeWidth={1} className="pt-0" />
-        </div>
-      </div>
-    )
-  }
+
   return (
     <>
       {windowWidth > 1000 ? (
-        <div className="grid grid-cols-3 content-center pt-8 pl-2 pr-2 md:p-8 bg-pink">
+        <div
+          className={cn(
+            'grid grid-cols-3 content-center pt-8 pl-2 pr-2 md:p-8 opacity-100',
+            className
+          )}
+        >
           <div className="flex items-center justify-center justify-self-start">
             <Link href="/" className="text-2xl font-medium ">
               House of beauty
@@ -55,7 +55,7 @@ const Nav = () => {
             <NavDesk />
           </div>
           <div className="flex items-center justify-self-end">
-            <Button variant="secondary" size="sm">
+            <Button variant={variant || 'default'} size="sm">
               <Link href="/" className="text-xl font-medium">
                 Contact
               </Link>
@@ -63,7 +63,7 @@ const Nav = () => {
           </div>
         </div>
       ) : (
-        <div className="grid grid-cols-2 gap-2 p-8 bg-pink">
+        <div className={cn('grid grid-cols-2 gap-2 p-8', className)}>
           <div className="flex flex-row gap-4 items-center justify-start flex-shrink-0">
             <NavMobile />
             <Link href="/" className="text-2xl font-medium flex-shrink-0">

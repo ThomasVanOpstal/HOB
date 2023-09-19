@@ -32,7 +32,9 @@ module.exports = {
       colors: {
         darkBlue: '#B8D8EB',
         lightBlue: '#d9f0ff',
+        green: '#97AE8E',
         pink: '#F9D4C6',
+        brokenPink: '#f2c5b5',
         brokenWhite: '#FFF4EC',
         darkPink: '#F5A283',
         darkBrown: '#E4B4A3',
