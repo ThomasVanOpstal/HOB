@@ -14,7 +14,7 @@ const AboutMe = () => {
           />
         </div>
         <div className="basis-1/2 flex flex-col items-center justify-center">
-          <div className="mx-4">
+          <div className="mx-4 mb-4">
             <p className="font-medium text-xl desktop:text-2xl sm:w-[300px] md:w-[400px] lg:w-full mb-2 mx-4 sm:mx-0 mt-4">
               &quot;Hey!, Ik ben Lauren en ik ben de uitbaatster van House of
               Beauty. Ik ben een gediplomeerde schoonheidsspecialiste en heb een

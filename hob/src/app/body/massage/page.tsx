@@ -9,6 +9,8 @@ import { image } from '@/types/type'
 import Pricing from '@/components/Pricing'
 import SliderPricing from '@/components/ui/SliderPricing'
 import AltPricing from '@/components/AltPricing'
+import ImageGallery from '@/components/ui/ImageGallery'
+import Socials from '@/components/ui/Socials'
 
 const page = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -82,7 +84,7 @@ const page = () => {
 
   return (
     <>
-      <div className="flex flex-col desktop:flex-row bg-brokenWhite">
+      <div className="flex flex-col desktop:flex-row bg-brokenWhite desktop:py-6">
         <div className="desktop:basis-1/2 flex desktop:justify-center desktop:items-center">
           <Image
             src={'/massage.jpg'}
@@ -147,7 +149,19 @@ const page = () => {
         </div>
       </div>
       <div>
-        <Slider images={images} buttonAvailable={false} titel="Onze beauties" />
+        <Slider
+          images={images}
+          buttonAvailable={false}
+          titel="Onze beauties"
+          className="sm:hidden"
+        />
+        <div className="sm:flex flex-col justify-center items-center py-8 hidden bg-green">
+          <h1 className="font-medium mb-2 text-3xl ">Onze Beauties</h1>
+          <div className="mb-4">
+            <Socials />
+          </div>
+          <ImageGallery />
+        </div>
       </div>
       <div className="mb-12">
         <h1 className="font-medium text-3xl text-center my-4 ">Prijs</h1>

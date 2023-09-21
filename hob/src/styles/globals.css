@@ -69,6 +69,18 @@
     --radius: 0.5rem;
   }
 }
+@keyframes fade {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.1;
+  }
+}
+div#gallery {
+  transition: opacity 0.5s ease-in-out;
+}
+
 @layer base {
   * {
     @apply border-border;

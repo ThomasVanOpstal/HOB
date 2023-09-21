@@ -5,7 +5,6 @@ import { Lora } from 'next/font/google'
 
 import Provider from '@/app/_trpc/Provider'
 import Footer from '@/components/Footer'
-import Nav from '@/components/Nav'
 
 const lora = Lora({ subsets: ['latin'], style: 'italic' })
 

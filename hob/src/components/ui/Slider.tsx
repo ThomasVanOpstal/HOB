@@ -79,17 +79,17 @@ const Slider = ({
 
   return (
     <div className={cn('relative', className)}>
-      <p className="font-medium text-3xl absolute top-2 left-1/2 transform -translate-x-1/2">
+      <p className="font-medium text-3xl absolute top-2 text-center w-full">
         {titel || 'Ons aanbod'}
       </p>
-      <div className="flex flex-row snap-x overflow-x-hidden">
+      <div className="flex flex-row snap-x overflow-x-hidden h-[320px]">
         {images.map((image, i) => {
           return (
             <>
               <div
                 key={i}
                 className={cn(
-                  'w-full h-[320px] flex flex-col justify-center items-center flex-shrink-0 snap-center pt-14',
+                  'w-full h-full flex flex-col justify-center items-center flex-shrink-0 snap-center',
                   image.bg
                 )}
                 ref={refs[i]}
@@ -102,6 +102,7 @@ const Slider = ({
                   alt={image.alt}
                   width={image.w}
                   height={image.h}
+                  className="mt-12"
                 />
                 {buttonAvailable && (
                   <Button
@@ -115,7 +116,7 @@ const Slider = ({
                         ? 'secondary'
                         : 'outline'
                     }
-                    className={cn('font-medium text-xl mt-3 mb-10')}
+                    className={cn('font-medium text-xl mt-4 mb-8')}
                   >
                     <Link href={'/'}>{image.name}</Link>
                   </Button>
