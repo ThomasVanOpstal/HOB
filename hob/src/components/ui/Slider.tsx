@@ -1,3 +1,4 @@
+'use client'
 import { cn } from '@/lib/utils'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import Image from 'next/image'
@@ -98,6 +99,7 @@ const Slider = ({
                 onTouchEnd={() => handleTouchEnd()}
               >
                 <Image
+                  key={i}
                   src={image.url}
                   alt={image.alt}
                   width={image.w}
@@ -118,7 +120,9 @@ const Slider = ({
                     }
                     className={cn('font-medium text-xl mt-4 mb-8')}
                   >
-                    <Link href={'/'}>{image.name}</Link>
+                    <Link key={i} href={'/'}>
+                      {image.name}
+                    </Link>
                   </Button>
                 )}
               </div>

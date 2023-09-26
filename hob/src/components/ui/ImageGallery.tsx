@@ -1,15 +1,19 @@
+'use client'
 import { cn } from '@/lib/utils'
-import { image } from '@/types/type'
-import { ChevronDown } from 'lucide-react'
-import Image from 'next/image'
-import { FC, MutableRefObject, useRef, useState } from 'react'
+import { SearchResult } from '@/server'
 import { motion as m } from 'framer-motion'
+import { ChevronDown } from 'lucide-react'
+import { MutableRefObject, useRef, useState } from 'react'
+import CloudImage from '../CloudImage'
 interface ImageGalleryProps {
   className?: string
+  images: SearchResult[]
 }
 
-const ImageGallery: FC<ImageGalleryProps> = ({ className }) => {
+const ImageGallery = ({ className, images }: ImageGalleryProps) => {
   const gallery = useRef(null)
+  const [showAllImages, setShowAllImages] = useState<boolean>(false)
+
   const scrollToSection = (ref: MutableRefObject<null | any>) => {
     window.scrollTo({
       top: ref.current.offsetTop,
@@ -20,32 +24,13 @@ const ImageGallery: FC<ImageGalleryProps> = ({ className }) => {
     duration: 1.5,
     repeat: 'infinity',
   }
-  const [showAllImages, setShowAllImages] = useState<boolean>(false)
-  const mobileImage: image = {
-    name: 'Vrouw krijgt een ontspanning massage',
-    url: '/massageFlower.jpg',
-    alt: 'massage',
-    bg: 'bg-brokenWhite',
-    w: 450,
-    h: 450,
+
+  const MAX_COLUMNS = 4
+  function getColumns(colIndex: number) {
+    return images.filter((resource, idx) => {
+      return idx % MAX_COLUMNS === colIndex
+    })
   }
-  const desktopImage: image = {
-    name: 'Vrouw krijgt een ontspanning massage',
-    url: '/massagePricing.jpg',
-    alt: 'massage',
-    bg: 'bg-brokenWhite',
-    w: 300,
-    h: 300,
-  }
-  const images = [
-    mobileImage,
-    desktopImage,
-    desktopImage,
-    mobileImage,
-    mobileImage,
-    desktopImage,
-    mobileImage,
-  ]
   return (
     <>
       <div>
@@ -53,44 +38,25 @@ const ImageGallery: FC<ImageGalleryProps> = ({ className }) => {
           id="gallery"
           ref={gallery}
           className={cn(
-            'flex flex-row flex-wrap gap-2 justify-center w-[800px] h-[400px] overflow-y-hidden',
+            'justify-center min-h-[400px] w-auto mx-4 md:w-[800px] overflow-y-hidden',
             showAllImages ? 'h-auto' : 'h-[400px]'
           )}
         >
-          <div className="flex flex-col gap-2">
-            {images.map(
-              (image, i) =>
-                i <= 2 && (
-                  <div
-                    key={i}
-                    className="max-w-[300px] flex justify-center items-center animate-fadeOut"
-                  >
-                    <Image
-                      src={image.url}
-                      alt={image.alt}
-                      width={image.w}
-                      height={image.h}
+          <div className="grid grid-cols-4 gap-4">
+            {[getColumns(0), getColumns(1), getColumns(2), getColumns(3)].map(
+              (colum, i) => (
+                <div key={i} className="flex flex-col gap-4">
+                  {colum.map((image, i) => (
+                    <CloudImage
+                      src={image.public_id}
+                      alt="Something"
+                      width={400}
+                      height={400}
+                      key={i}
                     />
-                  </div>
-                )
-            )}
-          </div>
-          <div className="flex flex-col gap-2 ">
-            {images.map(
-              (image, i) =>
-                i > 2 && (
-                  <div
-                    key={i}
-                    className="max-w-[300px] flex justify-center items-center"
-                  >
-                    <Image
-                      src={image.url}
-                      alt={image.alt}
-                      width={image.w}
-                      height={image.h}
-                    />
-                  </div>
-                )
+                  ))}
+                </div>
+              )
             )}
           </div>
         </div>

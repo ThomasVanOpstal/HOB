@@ -13,7 +13,7 @@ const NavDesk = () => {
             <NavigationMenu.Trigger className="group flex select-none items-center justify-between gap-[2px] rounded-[4px] px-3 py-2 text-xl font-medium  leading-none outline-none focus:shadow-[0_0_0_2px]">
               Beauty{' '}
               <ChevronDown
-                className="relative h-3 w-3 top-[1px] transition-transform duration-[250] ease-in group-data-[state=open]:-rotate-180"
+                className="relative h-3 w-3 top-[1px] transition-transform ease-in group-data-[state=open]:-rotate-180"
                 aria-hidden
               />
             </NavigationMenu.Trigger>

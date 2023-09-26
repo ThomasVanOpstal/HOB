@@ -1,10 +1,8 @@
+'use client'
 import { cn } from '@/lib/utils'
 import { PricingProps } from '@/types/type'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
-import Link from 'next/link'
+import { ChevronRight } from 'lucide-react'
 import React, { useState } from 'react'
-import Pricing from '../Pricing'
-import { Button } from './button'
 import AltPricing from '../AltPricing'
 
 type sliderPricingProps = {

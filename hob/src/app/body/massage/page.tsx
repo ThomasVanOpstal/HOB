@@ -11,9 +11,13 @@ import SliderPricing from '@/components/ui/SliderPricing'
 import AltPricing from '@/components/AltPricing'
 import ImageGallery from '@/components/ui/ImageGallery'
 import Socials from '@/components/ui/Socials'
+import { trpc } from '@/app/_trpc/client'
+import { SearchResult } from '@/server'
 
 const page = () => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const galleryImages = trpc.getImages.useQuery()
+  let Gimages: SearchResult[] = galleryImages?.data?.resources || []
+  //eslint-disable-next-line react-hooks/rules-of-hooks
   const pathname = usePathname()
   const pathnames = pathname.split('/')
   const options: string[] = []
@@ -160,7 +164,11 @@ const page = () => {
           <div className="mb-4">
             <Socials />
           </div>
-          <ImageGallery />
+          {galleryImages.isLoading ? (
+            <div>Loading...</div>
+          ) : (
+            <ImageGallery images={Gimages} />
+          )}
         </div>
       </div>
       <div className="mb-12">

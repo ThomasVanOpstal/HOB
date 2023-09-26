@@ -4,7 +4,7 @@ import { FC } from 'react'
 
 interface pageProps {}
 
-const page: FC<pageProps> = ({}) => {
+const page: FC<pageProps> = async ({}) => {
   return (
     <div className="flex flex-col mdd:flex-row w-full jusitfy-center items-center md:h-[600px] px-2 bg-pink overflow-x-hidden">
       <div className="pt-4 md:mr-4 basis-1/2 order-2 flex flex-col sm:justify-center sm:items-center justify-end ">

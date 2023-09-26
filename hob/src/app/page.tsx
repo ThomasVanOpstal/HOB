@@ -8,7 +8,7 @@ import { image } from '@/types/type'
 import { ChevronDown } from 'lucide-react'
 import Image from 'next/image'
 import { MutableRefObject, useRef } from 'react'
-const page = () => {
+const page = async () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const services = useRef(null)
   const scrollToSection = (ref: MutableRefObject<null | any>) => {

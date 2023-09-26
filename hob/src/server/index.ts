@@ -1,15 +1,23 @@
 import { db } from '@/lib/db'
 import { z } from 'zod'
+import cloudinary from 'cloudinary'
 import { publicProcedure, router } from './trpc'
-
+export type SearchResult = {
+  public_id: string
+  tags: string[]
+}
 export const appRouter = router({
-  getTodos: publicProcedure.query(async () => {
-    return await db.user.findMany()
-    // Retrieve users from a datasource, this is an imaginary database
-  }),
-  addTodos: publicProcedure.input(z.string()).mutation(async (input) => {
-    await db.user.create({})
-    return true
+  getImages: publicProcedure.query(async () => {
+    // Perform the Cloudinary API call to fetch images
+    const search = (await cloudinary.v2.search
+      .expression('resource_type:image ')
+      .sort_by('created_at', 'desc')
+      .with_field('tags')
+      .max_results(10)
+      .execute()) as { resources: SearchResult[] }
+
+    // Return the Cloudinary search result directly
+    return search
   }),
 })
 // Export type router type signature,
