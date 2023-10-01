@@ -1,22 +1,22 @@
 'use client'
+import { trpc } from '@/app/_trpc/client'
+import AltPricing from '@/components/AltPricing'
+import Pricing from '@/components/Pricing'
+import ImageGallery from '@/components/ui/ImageGallery'
 import Slider from '@/components/ui/Slider'
+import SliderPricing from '@/components/ui/SliderPricing'
+import Socials from '@/components/ui/Socials'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import { SearchResult, image } from '@/types/type'
+import { Heart } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { image } from '@/types/type'
-import Pricing from '@/components/Pricing'
-import SliderPricing from '@/components/ui/SliderPricing'
-import AltPricing from '@/components/AltPricing'
-import ImageGallery from '@/components/ui/ImageGallery'
-import Socials from '@/components/ui/Socials'
-import { trpc } from '@/app/_trpc/client'
-import { SearchResult } from '@/server'
 
 const page = () => {
-  const galleryImages = trpc.getImages.useQuery()
-  let Gimages: SearchResult[] = galleryImages?.data?.resources || []
+  const galleryImages = trpc.getImages.useQuery({ folder: 'Body' })
+  const images = galleryImages.data as image[]
   //eslint-disable-next-line react-hooks/rules-of-hooks
   const pathname = usePathname()
   const pathnames = pathname.split('/')
@@ -26,7 +26,7 @@ const page = () => {
     index == 0 ? (option = '/') : (option += path + '/')
     options.push(option)
   })
-  const images: image[] = [
+  const Gimages: image[] = [
     {
       name: 'Skin',
       url: '/face.png',
@@ -154,7 +154,7 @@ const page = () => {
       </div>
       <div>
         <Slider
-          images={images}
+          images={Gimages}
           buttonAvailable={false}
           titel="Onze beauties"
           className="sm:hidden"
@@ -165,9 +165,14 @@ const page = () => {
             <Socials />
           </div>
           {galleryImages.isLoading ? (
-            <div>Loading...</div>
+            <div className="min-h-[300px] flex flex-col gap-2 items-center justify-center">
+              <div className="animate-bounce">
+                <Heart fill="red" color="red" size={75} />
+              </div>
+              <p>Loading...</p>
+            </div>
           ) : (
-            <ImageGallery images={Gimages} />
+            <ImageGallery images={images} />
           )}
         </div>
       </div>

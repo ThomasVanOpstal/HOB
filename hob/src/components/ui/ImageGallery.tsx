@@ -1,13 +1,15 @@
 'use client'
 import { cn } from '@/lib/utils'
-import { SearchResult } from '@/server'
 import { motion as m } from 'framer-motion'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, Columns } from 'lucide-react'
 import { MutableRefObject, useRef, useState } from 'react'
+import Image from 'next/image'
 import CloudImage from '../CloudImage'
+import { SearchResult, image } from '@/types/type'
+import { CldImage } from 'next-cloudinary'
 interface ImageGalleryProps {
   className?: string
-  images: SearchResult[]
+  images: image[]
 }
 
 const ImageGallery = ({ className, images }: ImageGalleryProps) => {
@@ -38,26 +40,30 @@ const ImageGallery = ({ className, images }: ImageGalleryProps) => {
           id="gallery"
           ref={gallery}
           className={cn(
-            'justify-center min-h-[400px] w-auto mx-4 md:w-[800px] overflow-y-hidden',
-            showAllImages ? 'h-auto' : 'h-[400px]'
+            'justify-center min-h-[300px] w-auto msm:mx-4 md:w-[800px] overflow-y-hidden',
+            showAllImages ? 'h-auto' : 'h-[300px]'
           )}
         >
-          <div className="grid grid-cols-4 gap-4">
-            {[getColumns(0), getColumns(1), getColumns(2), getColumns(3)].map(
-              (colum, i) => (
-                <div key={i} className="flex flex-col gap-4">
-                  {colum.map((image, i) => (
-                    <CloudImage
-                      src={image.public_id}
-                      alt="Something"
-                      width={400}
-                      height={400}
-                      key={i}
-                    />
-                  ))}
-                </div>
-              )
-            )}
+          <div className="grid grid-cols-1 msm:grid-cols-3 gap-4 w-[95%] xsm:w-[300px] mx-auto msm:mx-0 msm:w-auto">
+            {[getColumns(0), getColumns(1), getColumns(2)].map((colum, i) => (
+              <div key={i} className="flex flex-col gap-4">
+                {colum.map((image, i) => (
+                  <CldImage
+                    src={image.url}
+                    alt={image.alt}
+                    width={400}
+                    height={400}
+                    key={i}
+                    placeholder="blur"
+                    blurDataURL={image.blurDataUrl}
+                    priority
+                    className="rounded-md "
+                    sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, (max-width: 1536px) 33vw, 25vw"
+                    style={{ transform: 'translate3d(0, 0, 0)' }}
+                  />
+                ))}
+              </div>
+            ))}
           </div>
         </div>
         <m.div

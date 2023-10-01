@@ -154,6 +154,7 @@ const Slider = ({
               )}
             >
               <span
+                key={i}
                 className={cn(
                   'w-2 h-2 rounded-full inline-block',
                   currentIndex === i ? 'bg-darkBlue' : 'bg-lightBlue'

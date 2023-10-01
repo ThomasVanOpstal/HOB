@@ -1,11 +1,24 @@
 'use client'
+import ImageGallery from '@/components/ui/ImageGallery'
+import Socials from '@/components/ui/Socials'
 import { cn } from '@/lib/utils'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, Heart } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { MutableRefObject, useRef } from 'react'
+import { trpc } from '../_trpc/client'
+import { image } from '@/types/type'
 const page = () => {
+  const galleryImages = trpc.getImages.useQuery(
+    { folder: 'Body' },
+    {
+      refetchOnWindowFocus: false,
+      refetchOnMount: false,
+      refetchOnReconnect: false,
+    }
+  )
+  const images = galleryImages.data as image[]
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const servicesSkin = useRef(null)
   const scrollToSection = (ref: MutableRefObject<null | any>) => {
@@ -102,6 +115,22 @@ const page = () => {
               </div>
             </div>
           </div>
+        </div>
+        <div className="sm:flex flex-col justify-center items-center py-8 hidden bg-green">
+          <h1 className="font-medium mb-2 text-3xl ">Onze Beauties</h1>
+          <div className="mb-4">
+            <Socials />
+          </div>
+          {galleryImages.isLoading ? (
+            <div className="min-h-[300px] flex flex-col gap-2 items-center justify-center">
+              <div className="animate-pulse">
+                <Heart fill="red" color="red" size={75} />
+              </div>
+              <p>Loading...</p>
+            </div>
+          ) : (
+            <ImageGallery images={images} />
+          )}
         </div>
       </div>
     </>

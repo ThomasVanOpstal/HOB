@@ -78,21 +78,23 @@ const page: FC<pageProps> = ({}) => {
   const descriptionRusthuis: string = ''
   return (
     <>
-      <div className="mt-6 mb-8">
-        <div className="flex flex-col w-[300px] msm:flex-row gap-2 msm:w-full items-center justify-center mx-auto msm:max-w-[1000px] ">
-          <div className="basis-1/2 flex items-center justify-center">
-            <Image
-              src={'/women.png'}
-              width={400}
-              height={400}
-              alt="Women with handgloves"
-            />
-          </div>
-          <div className="basis-1/2 flex items-center">
-            <p className="font-medium text-3xl mdd:text-5xl">
-              Wie zit er achter
-              <br /> House of beauty?
-            </p>
+      <div className="mb-8">
+        <div className="full-w bg-pink">
+          <div className="flex flex-col w-[300px] msm:flex-row gap-2 msm:w-full items-center justify-center mx-auto msm:max-w-[1000px] min-h-[400px] ">
+            <div className="basis-1/2 flex items-center justify-center">
+              <Image
+                src={'/women.png'}
+                width={400}
+                height={400}
+                alt="Women with handgloves"
+              />
+            </div>
+            <div className="basis-1/2 flex items-center">
+              <p className="font-medium text-3xl mdd:text-5xl">
+                Wie zit er achter
+                <br /> House of beauty?
+              </p>
+            </div>
           </div>
         </div>
         <div className="relative flex ">

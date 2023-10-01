@@ -9,7 +9,7 @@ interface PricingOptionProps {
 
 const AltPricing: FC<PricingOptionProps> = ({ pricingOptions }) => {
   return (
-    <div className="flex flex-col gap-1 mx-auto my-4  w-[250px] shadow-lg">
+    <div className="flex flex-col gap-1 mx-auto my-4  w-[250px] shadow-lg transition ease-in-out delay-100 hover:-translate-y-2 ">
       <div className="block basis-1/2">
         <Image
           src={

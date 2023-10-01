@@ -9,7 +9,6 @@ export default function BodyLayout({
 }) {
   return (
     <>
-      <Script src="@/styles/styles.css" />
       <Nav className="bg-pink" variant={'default'} />
       <div>{children}</div>
     </>

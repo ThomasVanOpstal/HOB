@@ -83,7 +83,7 @@ const SliderPricing = ({ className, pricingOptions }: sliderPricingProps) => {
                 onTouchMove={(e) => handleTouchMove(e)}
                 onTouchEnd={() => handleTouchEnd()}
               >
-                <AltPricing pricingOptions={pricing} />
+                <AltPricing pricingOptions={pricing} key={i} />
               </div>
             </>
           )
