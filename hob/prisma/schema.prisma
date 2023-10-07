@@ -68,6 +68,7 @@ model Service {
   Time Int
   Options ServiceOption[]
   Treatments ServiceTreatment[]
+  isAvailable Boolean @default(true)
 
 }
 model Option {
@@ -82,6 +83,7 @@ model Option {
   Time Int
   Service ServiceOption[]
   Treatment OptionTreatment[]
+  isAvailable Boolean @default(true)
 }
 model ServiceOption{
   service    Service     @relation(fields: [serviceId], references: [id])
@@ -96,18 +98,14 @@ model ServiceOption{
 enum Category {
   Beauty
   Skin
-  Body
+  Body 
 }
-enum Length{
-  Short
-  Medium
-  Long
-  X_long
-}
+
 model Treatment {
   id String @id @default(cuid())
   price Float
-  name Length
+  name String
+  Time Int
   description String
   Service ServiceTreatment[]
   Option OptionTreatment[]

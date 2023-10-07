@@ -1,6 +1,9 @@
 {
   "name": "hob",
   "version": "0.1.0",
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+  },
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -19,7 +22,6 @@
     "@trpc/client": "^10.38.1",
     "@trpc/react-query": "^10.38.1",
     "@trpc/server": "^10.38.1",
-    "@types/node": "20.5.1",
     "@types/react": "18.2.20",
     "@types/react-dom": "18.2.7",
     "autoprefixer": "10.4.15",
@@ -42,13 +44,15 @@
     "tailwind-merge": "^1.14.0",
     "tailwindcss": "3.3.3",
     "tailwindcss-animate": "^1.0.6",
-    "typescript": "5.1.6",
     "zod": "^3.22.2"
   },
   "devDependencies": {
     "@types/imagemin": "^8.0.1",
     "@types/imagemin-jpegtran": "^5.0.2",
+    "@types/node": "^20.8.3",
     "prisma": "^5.1.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2",
     "webpack-cli": "^5.1.4"
   }
 }
