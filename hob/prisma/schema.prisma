@@ -55,3 +55,80 @@ model VerificationToken {
 
   @@unique([identifier, token])
 }
+
+model Service {
+  id String @id @default(cuid())
+  Category Category @default(Beauty)
+  Subcategory String 
+  Type String
+  name String
+  Description String
+  Price Float
+  Image String
+  Time Int
+  Options ServiceOption[]
+  Treatments ServiceTreatment[]
+
+}
+model Option {
+  id String @id @default(cuid())
+  Category Category @default(Beauty)
+  Subcategory String[]
+  type String
+  Description String
+  Price Float
+  Image String
+  Name String
+  Time Int
+  Service ServiceOption[]
+  Treatment OptionTreatment[]
+}
+model ServiceOption{
+  service    Service     @relation(fields: [serviceId], references: [id])
+  serviceId  String 
+  Option   Option @relation(fields: [optionId], references: [id])
+  optionId String
+  assignedAt DateTime @default(now())
+  assignedBy String
+
+  @@id([serviceId, optionId])
+}
+enum Category {
+  Beauty
+  Skin
+  Body
+}
+enum Length{
+  Short
+  Medium
+  Long
+  X_long
+}
+model Treatment {
+  id String @id @default(cuid())
+  price Float
+  name Length
+  description String
+  Service ServiceTreatment[]
+  Option OptionTreatment[]
+}
+model ServiceTreatment{
+  service    Service     @relation(fields: [serviceId], references: [id])
+  serviceId  String 
+  Treatment   Treatment @relation(fields: [treatmentId], references: [id])
+  treatmentId String
+  assignedAt DateTime @default(now())
+  assignedBy String
+
+  @@id([serviceId, treatmentId])
+}
+model OptionTreatment{
+  option    Option     @relation(fields: [optionId], references: [id])
+  optionId  String 
+  Treatment   Treatment @relation(fields: [treatmentId], references: [id])
+  treatmentId String
+  assignedAt DateTime @default(now())
+  assignedBy String
+
+  @@id([optionId, treatmentId])
+}
