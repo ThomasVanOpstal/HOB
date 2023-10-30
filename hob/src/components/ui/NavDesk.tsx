@@ -19,7 +19,7 @@ const NavDesk = () => {
             </NavigationMenu.Trigger>
             <NavigationMenu.Content className="absolute left-1/2 transform -translate-x-1/2 w-full sm:w-auto">
               <ul className="one m-0 grid list-none gap-x-[5px] p-[22] sm:w-[500px] sm:grid-cols-[0.75fr_1fr]  bg-brokenWhite mt-3 rounded-md">
-                <li className="row-span-3 grid">
+                <li className="row-span-4 grid">
                   <NavigationMenu.Link asChild>
                     <a
                       className="focus:shadow-violet7 from-purple9 to-indigo9 flex
@@ -29,8 +29,8 @@ const NavDesk = () => {
                       <Image
                         alt="Drawing of body"
                         src={'/hand.png'}
-                        width={300}
-                        height={400}
+                        width={700}
+                        height={700}
                       />
                     </a>
                   </NavigationMenu.Link>
@@ -65,6 +65,26 @@ const NavDesk = () => {
                         Gellak tenen{' '}
                         <ChevronRight
                           className="h-3 w-3 ml-1 flex-shrink-0"
+                          aria-hidden
+                        />
+                      </div>
+                      <p className="text-mauve4 text-[14px] leading-[1.3]">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing
+                        elit.
+                      </p>
+                    </NavigationMenu.Link>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/beauty/gelnagels" passHref legacyBehavior>
+                    <NavigationMenu.Link
+                      className="text-xl font-medium flex flex-col 
+                    h-full w-full select-none rounded-[6px] bg-gradient-to-b bg-brokenWhite p-[15px] no-underline outline-none focus:shadow-[0_0_0_2px]"
+                    >
+                      <div className="flex flex-row items-center ml-0 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-105 ">
+                        Gelnagels{' '}
+                        <ChevronRight
+                          className="h-3 w-3 ml-1 flex-shrink-0 transition-transform duration-[250] ease-in group-data-[state=open]:-rotate-180"
                           aria-hidden
                         />
                       </div>
@@ -218,7 +238,6 @@ const NavDesk = () => {
               </ul>
             </NavigationMenu.Content>
           </NavigationMenu.Item>
-
           {/* About me */}
           <NavigationMenu.Item>
             <Link href="/docs" passHref legacyBehavior>

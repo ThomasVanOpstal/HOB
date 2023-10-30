@@ -77,12 +77,12 @@ model Option {
   Subcategory String[]
   type String
   Description String
-  Price Float
+  Price Float[] //[short, medium, long]
   Image String
   Name String
-  Time Int
+  Time Int[] //[short, medium, long]
   Service ServiceOption[]
-  Treatment OptionTreatment[]
+  // Treatment OptionTreatment[]
   isAvailable Boolean @default(true)
 }
 model ServiceOption{
@@ -101,32 +101,33 @@ enum Category {
   Body 
 }
 
-model Treatment {
-  id String @id @default(cuid())
-  price Float
-  name String
-  Time Int
-  description String
-  Service ServiceTreatment[]
-  Option OptionTreatment[]
-}
+// model Treatment {
+//   id String @id @default(cuid())
+//   price Float
+//   name String
+//   Time Int
+//   description String
+//   Service ServiceTreatment[]
+//   Option OptionTreatment[]
+
+// }
 model ServiceTreatment{
   service    Service     @relation(fields: [serviceId], references: [id])
   serviceId  String 
-  Treatment   Treatment @relation(fields: [treatmentId], references: [id])
+  //Treatment   Treatment @relation(fields: [treatmentId], references: [id])
   treatmentId String
   assignedAt DateTime @default(now())
   assignedBy String
 
   @@id([serviceId, treatmentId])
 }
-model OptionTreatment{
-  option    Option     @relation(fields: [optionId], references: [id])
-  optionId  String 
-  Treatment   Treatment @relation(fields: [treatmentId], references: [id])
-  treatmentId String
-  assignedAt DateTime @default(now())
-  assignedBy String
+// model OptionTreatment{
+//   option    Option     @relation(fields: [optionId], references: [id])
+//   optionId  String 
+//   Treatment   Treatment @relation(fields: [treatmentId], references: [id])
+//   treatmentId String
+//   assignedAt DateTime @default(now())
+//   assignedBy String
 
-  @@id([optionId, treatmentId])
-}
+//   @@id([optionId, treatmentId])
+// }

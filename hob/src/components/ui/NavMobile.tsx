@@ -54,6 +54,10 @@ const NavMobile = ({}) => {
                     <ChevronRight size={15} strokeWidth={1} />
                     <Link href="/">Gellak tenen</Link>
                   </DropdownMenu.Item>
+                  <DropdownMenu.Item className="group text-[13px] hover:translate-x-1 ease-in-out leading-none rounded-[3px] flex items-center h-[25px] px-[5px] relative selection:select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1">
+                    <ChevronRight size={15} strokeWidth={1} />
+                    <Link href="/">Gelnagels</Link>
+                  </DropdownMenu.Item>
                   <DropdownMenu.Item className="group text-[13px] hover:translate-x-1 ease-in-out leading-none rounded-[3px] flex items-center h-[25px] px-[5px] relative  select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1">
                     <ChevronRight size={15} strokeWidth={1} />
                     <Link href="/">Wimpers & wenkbrauwen lakken</Link>
