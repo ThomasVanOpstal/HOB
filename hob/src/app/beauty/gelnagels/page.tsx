@@ -89,13 +89,13 @@ const page = () => {
 
   return (
     <>
-      <div className="flex flex-col desktop:flex-row bg-brokenWhite desktop:py-6">
-        <div className="desktop:basis-1/2 flex desktop:justify-center desktop:items-center">
+      <div className="flex flex-col desktop:flex-row bg-darkBrown desktop:pt-2">
+        <div className="desktop:basis-1/2 flex desktop:justify-start desktop:items-center">
           <Image
-            src={'/gelak.jpg'}
+            src={'/handPainting.png'}
             alt={'Gelakte nagels'}
-            width={400}
-            height={400}
+            width={800}
+            height={800}
           />
         </div>
         <div className="mx-4 my-3 desktop:my-6 desktop:basis-1/2 flex flex-col justify-center items-center">
@@ -132,7 +132,7 @@ const page = () => {
             <h1 className="font-semibold text-3xl my-1 ">
               Wat zijn gelnagels?
             </h1>
-            <p className="mb-2 font-medium">
+            <p className="mb-2  font-normal lg:font-medium">
               Gelnagels zijn de ultieme manier om je nagels (handen en voeten)
               te transformeren tot ware kunstwerken! Met hun duurzaamheid,
               veelzijdigheid en schitterende uitstraling, zijn gelnagels de

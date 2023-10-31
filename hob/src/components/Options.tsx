@@ -47,41 +47,39 @@ const Options: FC<OptionsProps> = ({}) => {
 
   return (
     <div className="flex flex-col sm:flex-row gap-4 mx-auto lsm:my-4 lsm:mx-auto  lsm:w-[90%] mdd:w-[800px] sm:shadow-lg">
-      <div className="hidden basis-1/2 lsm:block">
+      <div className=" hidden basis-1/2 lsm:flex items-end justify-center">
         <Image
-          src={pricingOptions.desktopImage.url}
+          src={'/massagePricing.jpg'}
           alt={'massage'}
           width={300}
           height={300}
         />
       </div>
-      <div className="block basis-1/2 lsm:hidden">
+      <div className="basis-1/2 lsm:hidden flex justify-center">
         <Image
-          src={
-            pricingOptions.mobileImage?.url || pricingOptions.desktopImage.url
-          }
+          src={'/red_blushes.png'}
           alt={'massage'}
-          width={450}
-          height={450}
+          width={150}
+          height={150}
         />
       </div>
       <div className=" justify-center basis-1/2 flex flex-col ml-6 sm:ml-0 mb-2 mr-2">
         <div className="flex flex-row">
           <div className="basis-1/2">
-            <h1 className="font-medium text-3xl  mb-2 ">Gelnagels</h1>
+            <h1 className="basis-1/2 font-medium text-3xl  mb-2 ">Gelnagels</h1>
             <h1 className="font-medium text-xl mb-2 ">French manicure</h1>
           </div>
-          <h1 className="font-medium text-2xl  mb-2  basis-1/2 flex self-end justify-end p-6 ">
+          <h1 className="font-medium text-2xl  mb-2  basis-1/2 flex self-end justify-end pr-6">
             {' '}
             $30
           </h1>
         </div>
-        <h1 className="font-medium text-xl mb-2 ">Optie</h1>
-        <div className="flex flex-row gap-2 w-[100px] mb-2">
+        <h1 className="font-medium text-xl mb-2 ">Stijl</h1>
+        <div className="flex flex-row gap-2 w-[150px] mb-2">
           <div className="pb-2 border-b-2 border-b-brokenPink">
             <Image
-              alt="Babyboom"
-              src="/french_manicure.png"
+              alt="French manicure"
+              src="/frenhv2.png"
               width={25}
               height={25}
             />
@@ -90,9 +88,20 @@ const Options: FC<OptionsProps> = ({}) => {
             <Image alt="Babyboom" src="/babyboom.png" width={25} height={25} />
           </div>
           <div>
+            <Image alt="Blush" src="/nail_glitter.png" width={25} height={25} />
+          </div>
+          <div>
             <Image
-              alt="Babyboom"
+              alt="Stones on nails"
               src="/Nails_stones.png"
+              width={25}
+              height={25}
+            />
+          </div>
+          <div>
+            <Image
+              alt="Colorful nails"
+              src="/color_nail.png"
               width={25}
               height={25}
             />

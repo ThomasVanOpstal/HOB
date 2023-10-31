@@ -1,13 +1,11 @@
 import { PrismaClient, Category } from '@prisma/client'
-const db = new PrismaClient()
+import { CatIcon } from 'lucide-react'
+import { options } from './gelOptions'
+export const db = new PrismaClient()
 
 async function main() {
-  const massage = await db.service.upsert({
-    where: {
-      id: 'massage',
-    },
-    update: {},
-    create: {
+  const massage = await db.service.create({
+    data: {
       Category: Category.Body,
       Subcategory: 'Massage',
       name: 'Ontspannende massage',
@@ -15,22 +13,47 @@ async function main() {
         'Een massage is als een verwenmoment voor je lichaam en geest. Het is een therapie waarbij een ervaren therapeut je spieren, weefsels en gewrichten behandelt om stress te verminderen, pijn te verlichten en algeheel welzijn te bevorderen. Massage verbetert de bloedcirculatie, verhoogt de flexibiliteit en versnelt het herstel na blessures. Wij bieden een ontspanningsmassage aan om uw lichaam helemaal tot rust te laten komen. Klaar om te ontspannen? Wacht niet langer en boek nu je massage-ervaring!',
       Price: 50,
       Time: 60,
-      Image: `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v1695918416/Body/beauty-spa_b804f9.jpg`,
+      Image: {
+        create: [
+          {
+            assignedBy: 'Thomas Van Opstal',
+            assignedAt: new Date(),
+            imageId: 5,
+          },
+        ],
+      },
       Type: 'Ontspannend',
     },
   })
-  const short = await db.treatment.upsert({
-    where: {
-      id: 'short',
-    },
-    update: {},
-    create: {
-      price: 40,
-      name: 'Short massage',
-      description: '30 minuten van intens genieten',
-      Time: 30,
+  const gelnagels = await db.service.create({
+    data: {
+      Category: Category.Beauty,
+      Subcategory: 'Nagels',
+      name: 'Gelnagels',
+      Description:
+        'Gelnagels zijn de ultieme manier om je nagels (handen en voeten) te transformeren tot ware kunstwerken! Met hun duurzaamheid, veelzijdigheid en schitterende uitstraling, zijn gelnagels de keuze voor iedereen die er altijd op zijn best uit wil zien.Of je nu op zoek bent naar een verfijnde en klassieke look of juist iets gewaagders wilt proberen, gelnagels bieden eindeloze mogelijkheden voor nagelkunst en blijven er perfect uitzien, waar je ook gaat. Transformeer je nagels en verwen jezelf met de prachtige wereld van gelnagels!',
+      Image: `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v1698695787/Beauty/ybbtgbknstz9szd8opw3.png`,
+      Type: 'Ontspannend',
+      Options: {
+        create: [
+          {
+            assignedBy: 'Thomas Van Opstal',
+            assignedAt: new Date(),
+            optionId: 1,
+          },
+          {
+            assignedBy: 'Thomas Van Opstal',
+            assignedAt: new Date(),
+            optionId: 2,
+          },
+        ],
+      },
     },
   })
+
+  const optionsGelnagels = await options()
+
+  //gel nails check list options
 }
 main()
   .then(async () => {

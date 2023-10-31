@@ -1,0 +1,6 @@
+-- AlterTable
+ALTER TABLE "Option" ALTER COLUMN "type" DROP NOT NULL;
+
+-- AlterTable
+ALTER TABLE "Service" ALTER COLUMN "Price" DROP NOT NULL,
+ALTER COLUMN "Time" DROP NOT NULL;
