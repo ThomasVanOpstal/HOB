@@ -1,9 +1,12 @@
-import { PrismaClient, Category } from '@prisma/client'
-import { CatIcon } from 'lucide-react'
+import { Category, PrismaClient } from '@prisma/client'
 import { options } from './gelOptions'
+import { images } from './images'
 export const db = new PrismaClient()
 
 async function main() {
+  const optionimages = await images()
+  const optionsGelnagels = await options()
+
   const massage = await db.service.create({
     data: {
       Category: Category.Body,
@@ -32,7 +35,15 @@ async function main() {
       name: 'Gelnagels',
       Description:
         'Gelnagels zijn de ultieme manier om je nagels (handen en voeten) te transformeren tot ware kunstwerken! Met hun duurzaamheid, veelzijdigheid en schitterende uitstraling, zijn gelnagels de keuze voor iedereen die er altijd op zijn best uit wil zien.Of je nu op zoek bent naar een verfijnde en klassieke look of juist iets gewaagders wilt proberen, gelnagels bieden eindeloze mogelijkheden voor nagelkunst en blijven er perfect uitzien, waar je ook gaat. Transformeer je nagels en verwen jezelf met de prachtige wereld van gelnagels!',
-      Image: `https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/v1698695787/Beauty/ybbtgbknstz9szd8opw3.png`,
+      Image: {
+        create: [
+          {
+            assignedBy: 'Thomas Van Opstal',
+            assignedAt: new Date(),
+            imageId: 6,
+          },
+        ],
+      },
       Type: 'Ontspannend',
       Options: {
         create: [
@@ -46,14 +57,40 @@ async function main() {
             assignedAt: new Date(),
             optionId: 2,
           },
+          {
+            assignedBy: 'Thomas Van Opstal',
+            assignedAt: new Date(),
+            optionId: 3,
+          },
+          {
+            assignedBy: 'Thomas Van Opstal',
+            assignedAt: new Date(),
+            optionId: 4,
+          },
+          {
+            assignedBy: 'Thomas Van Opstal',
+            assignedAt: new Date(),
+            optionId: 5,
+          },
+          {
+            assignedBy: 'Thomas Van Opstal',
+            assignedAt: new Date(),
+            optionId: 6,
+          },
+          {
+            assignedBy: 'Thomas Van Opstal',
+            assignedAt: new Date(),
+            optionId: 7,
+          },
+          {
+            assignedBy: 'Thomas Van Opstal',
+            assignedAt: new Date(),
+            optionId: 8,
+          },
         ],
       },
     },
   })
-
-  const optionsGelnagels = await options()
-
-  //gel nails check list options
 }
 main()
   .then(async () => {

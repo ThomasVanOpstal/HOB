@@ -3,10 +3,12 @@ import { publicProcedure, router } from './trpc'
 import { SearchResult, image } from '@/types/type'
 import getBase64ImageUrl from '@/lib/generateBlurPlaceholder'
 import { z } from 'zod'
+import { getServices } from './getServices'
 import next from 'next'
 let cachedResults: image[] = []
 
 export const appRouter = router({
+  getServices,
   getImages: publicProcedure
     .input(
       z.object({

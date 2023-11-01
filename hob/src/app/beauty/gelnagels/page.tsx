@@ -17,6 +17,14 @@ import { usePathname } from 'next/navigation'
 
 const page = () => {
   const galleryImages = trpc.getImages.useQuery({ folder: 'Body' })
+  const services = trpc.getServices.useQuery({ Service: 'Gelnagels' })
+  if (services.status === 'success' && services.data) {
+    const servicesData = services.data // Access the actual data
+    // Pass `servicesData` to your component
+  } else if (services.status === 'error') {
+    // Handle the error if needed
+  }
+  //const serviceOptions = services.data?.Options.map((option) => option.Option)
   const images = galleryImages.data as image[]
   //eslint-disable-next-line react-hooks/rules-of-hooks
   const pathname = usePathname()
@@ -179,7 +187,11 @@ const page = () => {
         </div>
       </div>
       <div className="mb-12">
-        <Options />
+        {services.status === 'success' && services.data ? (
+          <Options service={services?.data} />
+        ) : (
+          <div>no reday</div>
+        )}
       </div>
       <div className="bg-brokenWhite flex flex-col sm:items-center sm:justify-center ">
         <h1 className="font-medium text-3xl my-4 text-center">

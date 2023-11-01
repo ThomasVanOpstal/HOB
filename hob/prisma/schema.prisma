@@ -103,7 +103,6 @@ model ServiceOption{
   serviceId  Int 
   Option   Option @relation(fields: [optionId], references: [id])
   optionId Int
-  assignedAt DateTime @default(now())
   assignedBy String
 
   @@id([serviceId, optionId])
@@ -129,7 +128,7 @@ model ServiceTreatment{
   serviceId  Int 
   Treatment   Treatment @relation(fields: [treatmentId], references: [id])
   treatmentId Int
-  assignedAt DateTime @default(now())
+  // assignedAt DateTime @default(now())
   assignedBy String
 
   @@id([serviceId, treatmentId])
@@ -139,7 +138,7 @@ model OptionTreatment{
   optionId  Int 
   Treatment   Treatment @relation(fields: [treatmentId], references: [id])
   treatmentId Int
-  assignedAt DateTime @default(now())
+  // assignedAt DateTime @default(now())
   assignedBy String
 
   @@id([optionId, treatmentId])
@@ -149,7 +148,7 @@ model ServiceImage {
   serviceId  Int 
   Image   Image @relation(fields: [imageId], references: [id])
   imageId Int
-  assignedAt DateTime @default(now())
+  // assignedAt DateTime @default(now())
   assignedBy String
 
   @@id([serviceId, imageId])
@@ -159,7 +158,7 @@ model OptionImage{
   optionId  Int 
   Image   Image @relation(fields: [imageId], references: [id])
   imageId Int
-  assignedAt DateTime @default(now())
+  //assignedAt DateTime @default(now())
   assignedBy String
 
   @@id([optionId, imageId])
