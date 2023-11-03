@@ -17,11 +17,12 @@ import { usePathname } from 'next/navigation'
 
 const page = () => {
   const galleryImages = trpc.getImages.useQuery({ folder: 'Body' })
-  const services = trpc.getServices.useQuery({ Service: 'Gelnagels' })
-  if (services.status === 'success' && services.data) {
-    const servicesData = services.data // Access the actual data
+  const services = trpc.getAllServices.useQuery()
+  const service = trpc.getServices.useQuery({ Service: 'Gelnagels' })
+  if (service.status === 'success' && service.data) {
+    const servicesData = service.data // Access the actual data
     // Pass `servicesData` to your component
-  } else if (services.status === 'error') {
+  } else if (service.status === 'error') {
     // Handle the error if needed
   }
   //const serviceOptions = services.data?.Options.map((option) => option.Option)
@@ -163,13 +164,7 @@ const page = () => {
         </div>
       </div>
       <div>
-        <Slider
-          images={Gimages}
-          buttonAvailable={false}
-          titel="Onze beauties"
-          className="sm:hidden"
-        />
-        <div className="sm:flex flex-col justify-center items-center py-8 hidden bg-green">
+        <div className="flex flex-col justify-center items-center py-8  bg-green">
           <h1 className="font-medium mb-2 text-3xl ">Onze Beauties</h1>
           <div className="mb-4">
             <Socials />
@@ -182,15 +177,24 @@ const page = () => {
               <p>Loading...</p>
             </div>
           ) : (
-            <ImageGallery images={images} />
+            <div>
+              <ImageGallery images={images} className="hidden sm:block" />
+
+              <Slider
+                images={images}
+                buttonAvailable={false}
+                className="block sm:hidden"
+                cloudinary={true}
+              />
+            </div>
           )}
         </div>
       </div>
       <div className="mb-12">
-        {services.status === 'success' && services.data ? (
-          <Options service={services?.data} />
+        {service.status === 'success' && service.data ? (
+          <Options service={service?.data} />
         ) : (
-          <div>no reday</div>
+          <div className="h-[500px]">loading</div>
         )}
       </div>
       <div className="bg-brokenWhite flex flex-col sm:items-center sm:justify-center ">
@@ -199,12 +203,26 @@ const page = () => {
         </h1>
 
         <div className="mb-6 sm:hidden">
-          <SliderPricing pricingOptions={pricingList} />
+          {services.status === 'success' ? (
+            <SliderPricing pricingOptions={services.data} />
+          ) : (
+            <div className="h-[500px]">loading</div>
+          )}
         </div>
         <div className="hidden mb-12 sm:flex sm:flex-row sm:flex-wrap sm:w-[80%] sm:justify-center sm:gap-2">
-          {pricingList.map((pricingOption, index) => (
-            <AltPricing key={index} pricingOptions={pricingOption} />
-          ))}
+          {services.status === 'success' &&
+            services.data.map((pricingOption, index) => {
+              const lowerCaseName = pricingOption.name.toLowerCase().trim()
+              console.log(pricingOption.name.toLowerCase())
+              if (
+                lowerCaseName !== pathnames.at(-1)?.toLowerCase().trim() &&
+                index < 4
+              ) {
+                return <AltPricing key={index} pricingOptions={pricingOption} />
+              } else {
+                return null
+              }
+            })}
         </div>
       </div>
     </>

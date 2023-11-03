@@ -101,6 +101,7 @@ const page = async () => {
             images={images}
             buttonAvailable={true}
             progressBarAvailable={true}
+            cloudinary={false}
           />
           <Gallery className="hidden smd:inline-flex" />
         </div>

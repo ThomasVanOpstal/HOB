@@ -4,10 +4,11 @@ import { PricingProps } from '@/types/type'
 import { ChevronRight } from 'lucide-react'
 import React, { useState } from 'react'
 import AltPricing from '../AltPricing'
+import { Services } from '@/server/getServices'
 
 type sliderPricingProps = {
   className?: string
-  pricingOptions: PricingProps[]
+  pricingOptions: Services[]
 }
 
 const SliderPricing = ({ className, pricingOptions }: sliderPricingProps) => {

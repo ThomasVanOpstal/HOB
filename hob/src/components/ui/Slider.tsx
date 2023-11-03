@@ -6,13 +6,16 @@ import Link from 'next/link'
 import React, { useState } from 'react'
 import { Button } from './button'
 import { image } from '@/types/type'
+import { CldImage } from 'next-cloudinary'
 
 type sliderProps = {
   className?: string
   images: image[]
   buttonAvailable: boolean
   titel?: string
+  showTitel?: boolean
   progressBarAvailable?: boolean
+  cloudinary?: boolean
 }
 
 const Slider = ({
@@ -20,7 +23,9 @@ const Slider = ({
   images,
   buttonAvailable,
   titel,
+  showTitel,
   progressBarAvailable,
+  cloudinary,
 }: sliderProps) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0)
 
@@ -80,9 +85,11 @@ const Slider = ({
 
   return (
     <div className={cn('relative', className)}>
-      <p className="font-medium text-3xl absolute top-2 text-center w-full">
-        {titel || 'Ons aanbod'}
-      </p>
+      {showTitel ? (
+        <p className="font-medium text-3xl absolute top-2 text-center w-full">
+          {titel || 'Ons aanbod'}
+        </p>
+      ) : null}
       <div className="flex flex-row snap-x overflow-x-hidden h-[320px]">
         {images.map((image, i) => {
           return (
@@ -98,14 +105,26 @@ const Slider = ({
                 onTouchMove={(e) => handleTouchMove(e)}
                 onTouchEnd={() => handleTouchEnd()}
               >
-                <Image
-                  key={i}
-                  src={image.url}
-                  alt={image.alt}
-                  width={image.w}
-                  height={image.h}
-                  className="mt-12"
-                />
+                {cloudinary ? (
+                  <CldImage
+                    key={i}
+                    src={image.url}
+                    alt={image.alt}
+                    width={image.w}
+                    height={image.h}
+                    className="mt-12"
+                  />
+                ) : (
+                  <Image
+                    key={i}
+                    src={image.url}
+                    alt={image.alt}
+                    width={image.w}
+                    height={image.h}
+                    className="mt-12"
+                  />
+                )}
+
                 {buttonAvailable && (
                   <Button
                     key={i}

@@ -17,7 +17,7 @@ export async function options() {
         create: [
           {
             assignedBy: 'Thomas Van Opstal',
-            assignedAt: new Date(),
+
             imageId: 1,
           },
         ],
@@ -42,7 +42,7 @@ export async function options() {
         create: [
           {
             assignedBy: 'Thomas Van Opstal',
-            assignedAt: new Date(),
+
             imageId: 2,
           },
         ],
@@ -67,7 +67,7 @@ export async function options() {
         create: [
           {
             assignedBy: 'Thomas Van Opstal',
-            assignedAt: new Date(),
+
             imageId: 3,
           },
         ],
@@ -91,7 +91,7 @@ export async function options() {
         create: [
           {
             assignedBy: 'Thomas Van Opstal',
-            assignedAt: new Date(),
+
             imageId: 4,
           },
         ],
@@ -115,7 +115,7 @@ export async function options() {
         create: [
           {
             assignedBy: 'Thomas Van Opstal',
-            assignedAt: new Date(),
+
             imageId: 7,
           },
         ],

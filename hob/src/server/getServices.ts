@@ -3,6 +3,25 @@ import { publicProcedure } from './trpc'
 import { Prisma } from '@prisma/client'
 import { db } from '@/lib/db'
 
+export const getAllServices = publicProcedure.query(async () => {
+  const items = await db.service.findMany({
+    include: {
+      Options: {
+        include: {
+          Option: true,
+        },
+      },
+
+      Image: {
+        include: {
+          Image: true,
+        },
+      },
+    },
+  })
+  return items
+})
+
 export const getServices = publicProcedure
   .input(
     z.object({
@@ -46,6 +65,20 @@ export type Service = Prisma.ServiceGetPayload<{
             }
           }
         }
+      }
+    }
+  }
+}>
+export type Services = Prisma.ServiceGetPayload<{
+  include: {
+    Options: {
+      include: {
+        Option: true
+      }
+    }
+    Image: {
+      include: {
+        Image: true
       }
     }
   }

@@ -52,19 +52,32 @@ const Options = ({ service }: { service: Service }) => {
 
   return (
     <div className="flex flex-col sm:flex-row gap-4 mx-auto lsm:my-4 lsm:mx-auto  lsm:w-[90%] mdd:w-[800px] sm:shadow-lg">
-      <div className="basis-1/2 flex items-end justify-center min-h-[500px]">
+      <div className="hidden basis-1/2 lsm:flex items-end justify-center min-h-[500px]">
         <CldImage
           src={options[activeDiv].Image[0].Image.Url}
           alt={options[activeDiv].Image[0].Image.Alt}
           width={options[activeDiv].Image[0].Image.W}
           height={options[activeDiv].Image[0].Image.H}
+          sizes="(max-width: 480px) 100vw, 50vw"
         />
       </div>
+      {/* <div className="lsm:hidden basis-1/2 flex items-end justify-center min-h-[450px]">
+        <CldImage
+          priority
+          src={options[activeDiv].Image[1].Image.Url}
+          alt={options[activeDiv].Image[1].Image.Alt}
+          width={options[activeDiv].Image[1].Image.W}
+          height={options[activeDiv].Image[1].Image.H}
+          sizes="(max-width: 480px) 100vw, 50vw"
+        />
+      </div> */}
 
       <div className=" justify-center basis-1/2 flex flex-col ml-6 sm:ml-0 mb-2 mr-2">
         <div className="flex flex-row">
           <div className="basis-1/2">
-            <h1 className="basis-1/2 font-medium text-3xl  mb-2 ">Gelnagels</h1>
+            <h1 className="mt-10 lsm:mt-0 basis-1/2 font-medium text-3xl  mb-2 ">
+              Gelnagels
+            </h1>
             <h1 className="font-medium text-xl mb-2 ">
               {options[activeDiv].Name}
             </h1>

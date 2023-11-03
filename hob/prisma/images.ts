@@ -92,4 +92,42 @@ export async function images() {
       BlurDataUrl: '',
     },
   })
+  const schouderMassage = await db.image.upsert({
+    where: {
+      id: 8,
+    },
+    update: {
+      Url: `Body/massage_lg.jpg`,
+      Alt: 'Schouder, nek en hoofd massage',
+      W: 800,
+      H: 500,
+      BlurDataUrl: '',
+    },
+    create: {
+      Url: `Body/massage_lg.jpg`,
+      Alt: 'Schouder, nek en hoofd massage',
+      W: 800,
+      H: 500,
+      BlurDataUrl: '',
+    },
+  })
+  const schouderMassage2 = await db.image.upsert({
+    where: {
+      id: 9,
+    },
+    update: {
+      Url: `Body/massagePricing_jul7mn.jpg`,
+      Alt: 'Schouder, nek en hoofd massage',
+      W: 388,
+      H: 500,
+      BlurDataUrl: '',
+    },
+    create: {
+      Url: `Body/massagePricing_jul7mn.jpg`,
+      Alt: 'Schouder, nek en hoofd massage',
+      W: 388,
+      H: 500,
+      BlurDataUrl: '',
+    },
+  })
 }
