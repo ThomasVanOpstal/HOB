@@ -16,14 +16,12 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 const page = () => {
-  const galleryImages = trpc.getImages.useQuery({ folder: 'Body' })
+  const galleryImages = trpc.getImages.useQuery({ folder: 'Beauty' })
   const services = trpc.getAllServices.useQuery()
   const service = trpc.getServices.useQuery({ Service: 'Gelnagels' })
   if (service.status === 'success' && service.data) {
     const servicesData = service.data // Access the actual data
-    // Pass `servicesData` to your component
   } else if (service.status === 'error') {
-    // Handle the error if needed
   }
   //const serviceOptions = services.data?.Options.map((option) => option.Option)
   const images = galleryImages.data as image[]

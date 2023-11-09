@@ -70,7 +70,7 @@ const SliderPricing = ({ className, pricingOptions }: sliderPricingProps) => {
 
   return (
     <div className={cn('relative', className)}>
-      <div className="flex flex-row snap-x overflow-x-hidden h-[350px] ">
+      <div className="flex flex-row snap-x overflow-x-hidden overflow-y-hidden h-[400px] ">
         {pricingOptions.map((pricing, i) => {
           return (
             <>
@@ -90,13 +90,6 @@ const SliderPricing = ({ className, pricingOptions }: sliderPricingProps) => {
           )
         })}
       </div>
-      {/* <ChevronLeft
-        size={30}
-        onClick={() => {
-          previousImage()
-        }}
-        className="absolute left-0 top-[50%]"
-      />{' '} */}
       <ChevronRight
         size={30}
         onClick={() => {

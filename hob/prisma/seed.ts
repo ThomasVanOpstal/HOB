@@ -54,6 +54,10 @@ async function main() {
   //           assignedBy: 'Thomas Van Opstal',
   //           imageId: 6,
   //         },
+  //         {
+  //           assignedBy: 'Thomas Van Opstal',
+  //           imageId: 10,
+  //         },
   //       ],
   //     },
   //     Type: 'Ontspannend',

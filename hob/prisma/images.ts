@@ -130,4 +130,23 @@ export async function images() {
       BlurDataUrl: '',
     },
   })
+  const mobileImageGelnagels = await db.image.upsert({
+    where: {
+      id: 10,
+    },
+    update: {
+      Url: `Beauty/babyboom_picture_sm_rar3ld.png`,
+      Alt: 'Babyboom nails',
+      W: 300,
+      H: 300,
+      BlurDataUrl: '',
+    },
+    create: {
+      Url: `Beauty/babyboom_picture_sm_rar3ld.png`,
+      Alt: 'Babyboom nails',
+      W: 300,
+      H: 300,
+      BlurDataUrl: '',
+    },
+  })
 }

@@ -3,50 +3,49 @@ import { Check, Euro } from 'lucide-react'
 import Image from 'next/image'
 import { FC } from 'react'
 import { Button } from './ui/button'
-interface PricingOptionProps {
-  pricingOptions: PricingProps
-}
+import { Service } from '@/server/getServices'
+import { CldImage } from 'next-cloudinary'
 
-const Pricing: FC<PricingOptionProps> = ({ pricingOptions }) => {
+const Pricing = ({ pricingOptions }: { pricingOptions: Service }) => {
   return (
     <div className="flex flex-col lsm:flex-row gap-1 mx-auto my-4 lsm:mx-auto w-[250px] lsm:w-[400px] sm:w-[500px] shadow-lg">
       <div className="hidden lsm:basis-1/2 lsm:block">
-        <Image
-          src={pricingOptions.desktopImage.url}
-          alt={'massage'}
-          width={300}
-          height={300}
+        <CldImage
+          src={pricingOptions.Options[0].Option.Image[2].Image.Url}
+          alt={pricingOptions.Options[0].Option.Image[2].Image.Alt}
+          width={pricingOptions.Options[0].Option.Image[2].Image.W}
+          height={pricingOptions.Options[0].Option.Image[2].Image.H}
         />
       </div>
       <div className="block basis-1/2 lsm:hidden">
-        <Image
-          src={
-            pricingOptions.mobileImage?.url || pricingOptions.desktopImage.url
-          }
-          alt={'massage'}
-          width={450}
-          height={450}
+        <CldImage
+          src={pricingOptions.Options[0].Option.Image[1].Image.Url}
+          alt={pricingOptions.Options[0].Option.Image[1].Image.Alt}
+          width={pricingOptions.Options[0].Option.Image[1].Image.W}
+          height={pricingOptions.Options[0].Option.Image[1].Image.H}
         />
       </div>
       <div className="basis-2/3 lsm:basis-1/2 flex flex-col justify-end items-center mb-2 mr-2">
         <div className="basis-1/2 flex flex-col justify-center">
           <h1 className="font-medium text-2xl text-center mb-2 ">
-            {pricingOptions.title}
+            {pricingOptions.Options[0].Option.Name}
           </h1>
           <ul className="mx-auto">
-            {pricingOptions.description.map((item, index) => (
-              <li className="mb-1 flex flex-row gap-2" key={index}>
-                <Check />
-                {item}
-              </li>
-            ))}
+            <li className="mb-1 flex flex-row gap-2">
+              <Check />
+              {pricingOptions.Options[0].Option.Time[0]} minuten
+            </li>
+            <li className="mb-1 flex flex-row gap-2">
+              <Check />
+              {pricingOptions.Type}
+            </li>
           </ul>
         </div>
         <div className="basis-1/2 flex flex-col justify-center items-center">
           <div className="mb-2 flex flex-row justify-center items-center ">
             <Euro size={15} className="basis-1/2" />
             <p className="font-medium text-4xl basis-1/2">
-              {pricingOptions.price}
+              {pricingOptions.Options[0].Option.Price[0]}
             </p>
           </div>
           <Button variant="default" className="font-medium text-xl">

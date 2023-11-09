@@ -16,6 +16,8 @@ import { usePathname } from 'next/navigation'
 
 const page = () => {
   const galleryImages = trpc.getImages.useQuery({ folder: 'Body' })
+  const services = trpc.getAllServices.useQuery()
+  const service = trpc.getServices.useQuery({ Service: 'Ontspannende massage' })
   const images = galleryImages.data as image[]
   //eslint-disable-next-line react-hooks/rules-of-hooks
   const pathname = usePathname()
@@ -89,10 +91,10 @@ const page = () => {
   return (
     <>
       <div className="flex flex-col desktop:flex-row bg-brokenWhite desktop:py-6">
-        <div className="desktop:basis-1/2 flex desktop:justify-center desktop:items-center">
+        <div className="basis-1/2 flex justify-center items-center">
           <Image
             src={'/massage.jpg'}
-            alt={'massage'}
+            alt={'Massage'}
             width={400}
             height={400}
           />
@@ -153,12 +155,6 @@ const page = () => {
         </div>
       </div>
       <div>
-        <Slider
-          images={Gimages}
-          buttonAvailable={false}
-          titel="Onze beauties"
-          className="sm:hidden"
-        />
         <div className="sm:flex flex-col justify-center items-center py-8 hidden bg-green">
           <h1 className="font-medium mb-2 text-3xl ">Onze Beauties</h1>
           <div className="mb-4">
@@ -172,26 +168,54 @@ const page = () => {
               <p>Loading...</p>
             </div>
           ) : (
-            <ImageGallery images={images} />
+            <div>
+              <ImageGallery images={images} className="hidden sm:block" />
+              <Slider
+                images={images}
+                buttonAvailable={false}
+                titel="Onze beauties"
+                className="sm:hidden"
+                cloudinary={true}
+              />
+            </div>
           )}
         </div>
       </div>
       <div className="mb-12">
         <h1 className="font-medium text-3xl text-center my-4 ">Prijs</h1>
-        <Pricing pricingOptions={pricingOption} />
+        {service.status === 'success' && service.data ? (
+          <Pricing pricingOptions={service.data} />
+        ) : (
+          <div className="h-[500px]">loading</div>
+        )}
       </div>
       <div className="bg-brokenWhite flex flex-col sm:items-center sm:justify-center ">
         <h1 className="font-medium text-3xl my-4 text-center">
           Ontdek meer zoals dit{' '}
         </h1>
 
-        <div className="mb-6 sm:hidden">
-          <SliderPricing pricingOptions={pricingList} />
+        <div className="mb-6 sm:hidden ">
+          {services.status === 'success' ? (
+            <SliderPricing pricingOptions={services.data} />
+          ) : (
+            <div className="h-[500px]">loading</div>
+          )}
         </div>
         <div className="hidden mb-12 sm:flex sm:flex-row sm:flex-wrap sm:w-[80%] sm:justify-center sm:gap-2">
-          {pricingList.map((pricingOption, index) => (
-            <AltPricing key={index} pricingOptions={pricingOption} />
-          ))}
+          {services.status === 'success' &&
+            services.data.map((pricingOption, index) => {
+              const lowerCaseName = pricingOption.name.toLowerCase().trim()
+              console.log(pricingOption.name.toLowerCase())
+              console.log(pathnames.at(-1)?.toLowerCase().trim())
+              if (
+                lowerCaseName !== pathnames.at(-1)?.toLowerCase().trim() &&
+                index < 4
+              ) {
+                return <AltPricing key={index} pricingOptions={pricingOption} />
+              } else {
+                return null
+              }
+            })}
         </div>
       </div>
     </>

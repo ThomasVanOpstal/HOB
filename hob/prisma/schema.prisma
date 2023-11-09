@@ -153,6 +153,7 @@ model ServiceImage {
 
   @@id([serviceId, imageId])
 }
+
 model OptionImage{
   option    Option     @relation(fields: [optionId], references: [id])
   optionId  Int 
