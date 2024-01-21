@@ -9,6 +9,7 @@ import { usePathname } from 'next/navigation'
 import { MutableRefObject, useRef } from 'react'
 import { trpc } from '../_trpc/client'
 import { image } from '@/types/type'
+import { CldImage } from 'next-cloudinary'
 const page = () => {
   const galleryImages = trpc.getImages.useQuery(
     { folder: 'Body' },
@@ -19,6 +20,9 @@ const page = () => {
     }
   )
   const images = galleryImages.data as image[]
+  const serviceCatagory = trpc.getServiceByCategory.useQuery({
+    Category: 'Body',
+  })
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const servicesSkin = useRef(null)
   const scrollToSection = (ref: MutableRefObject<null | any>) => {
@@ -104,14 +108,18 @@ const page = () => {
             <h1 className="font-medium text-2xl mb-8 text-black">Overzicht</h1>
             <div className="flex flex-col smd:flex-row flex-wrap gap-5 smd:gap-0 smd:w-[750px]  ">
               <div className="flex-grow flex flex-col justify-center items-center flex-shrink-0 hover:-translate-y-2 transition-transform">
-                <Image
-                  src={'/beauty-spa.jpg'}
-                  width="300"
-                  height="300"
-                  alt={'Foto van een behandeling van de voeten'}
-                  className="my-2 self-center rounded-md"
-                />
-                <p className="font-medium text-lg text-black">Massage</p>
+                <Link href={'/body/massage'}>
+                  <CldImage
+                    src={'Body/beauty-spa_b804f9.jpg'}
+                    width="300"
+                    height="300"
+                    alt={'Ontspannende foto'}
+                    className="my-2 self-center rounded-md"
+                  />
+                  <p className="font-medium text-lg text-black text-center">
+                    Massage
+                  </p>
+                </Link>
               </div>
             </div>
           </div>

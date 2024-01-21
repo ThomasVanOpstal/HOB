@@ -11,6 +11,7 @@ import Socials from '@/components/ui/Socials'
 import ImageGallery from '@/components/ui/ImageGallery'
 import { image } from '@/types/type'
 import { trpc } from '../_trpc/client'
+import { CldImage } from 'next-cloudinary'
 const page = () => {
   const galleryImages = trpc.getImages.useQuery({ folder: 'Body' })
   const images = galleryImages.data as image[]
@@ -97,8 +98,8 @@ const page = () => {
             <h1 className="font-medium text-2xl mb-8 text-black">Overzicht</h1>
             <div className="flex flex-col smd:flex-row smd:w-[750px] ">
               <div className="basis-1/2 flex flex-col justify-end items-center flex-shrink-0 hover:-translate-y-2 transition-transform mb-8 smd:mb-0">
-                <Image
-                  src={'/gelaatsverzorging.jpg'}
+                <CldImage
+                  src={'Skin/gelaatsverzorging_ubtxpa.jpg'}
                   width="300"
                   height="300"
                   alt={'Foto van een behandeling van de voeten'}
@@ -109,8 +110,8 @@ const page = () => {
                 </p>
               </div>
               <div className="basis-1/2 flex flex-col justify-center items-center flex-shrink-0 hover:-translate-y-2 transition-transform">
-                <Image
-                  src={'/dermatology.jpg'}
+                <CldImage
+                  src={'Skin/dermatology_eeu7zy.jpg'}
                   width="300"
                   height="300"
                   alt={'Foto van een behandeling van de voeten'}

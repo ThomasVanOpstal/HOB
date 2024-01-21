@@ -1,6 +1,6 @@
 import { z } from 'zod'
 import { publicProcedure } from './trpc'
-import { Prisma } from '@prisma/client'
+import { Category, Prisma } from '@prisma/client'
 import { db } from '@/lib/db'
 
 export const getAllServices = publicProcedure.query(async () => {
@@ -21,6 +21,31 @@ export const getAllServices = publicProcedure.query(async () => {
   })
   return items
 })
+
+export const getServiceByCategory = publicProcedure
+  .input(
+    z.object({
+      Category: z.string().optional(),
+    })
+  )
+  .query(async (opts) => {
+    const categoryAsEnum =
+      Category[opts.input.Category as keyof typeof Category]
+
+    const items = await db.service.findMany({
+      where: {
+        Category: categoryAsEnum,
+      },
+      include: {
+        Image: {
+          include: {
+            Image: true,
+          },
+        },
+      },
+    })
+    return items
+  })
 
 export const getServices = publicProcedure
   .input(
@@ -51,6 +76,15 @@ export const getServices = publicProcedure
     })
     return items
   })
+export type ServiceByCategory = Prisma.ServiceGetPayload<{
+  include: {
+    Image: {
+      include: {
+        Image: true
+      }
+    }
+  }
+}>
 
 export type Service = Prisma.ServiceGetPayload<{
   include: {

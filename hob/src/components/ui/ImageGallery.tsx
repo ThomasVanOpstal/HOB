@@ -29,9 +29,13 @@ const ImageGallery = ({ className, images }: ImageGalleryProps) => {
 
   const MAX_COLUMNS = 4
   function getColumns(colIndex: number) {
-    return images.filter((resource, idx) => {
-      return idx % MAX_COLUMNS === colIndex
-    })
+    if (images.length > 0) {
+      return images.filter((resource, idx) => {
+        return idx % MAX_COLUMNS === colIndex
+      })
+    } else {
+      return []
+    }
   }
   return (
     <>

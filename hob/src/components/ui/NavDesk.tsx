@@ -11,7 +11,7 @@ const NavDesk = () => {
           {/* beauty */}
           <NavigationMenu.Item>
             <NavigationMenu.Trigger className="group flex select-none items-center justify-between gap-[2px] rounded-[4px] px-3 py-2 text-xl font-medium  leading-none outline-none focus:shadow-[0_0_0_2px]">
-              Beauty{' '}
+              <Link href={'/beauty'}>Beauty</Link>{' '}
               <ChevronDown
                 className="relative h-3 w-3 top-[1px] transition-transform ease-in group-data-[state=open]:-rotate-180"
                 aria-hidden
@@ -24,7 +24,7 @@ const NavDesk = () => {
                     <a
                       className="focus:shadow-violet7 from-purple9 to-indigo9 flex
                     h-full w-full select-none flex-col justify-center rounded-[6px] bg-gradient-to-b p-[25px] no-underline outline-none focus:shadow-[0_0_0_2px]"
-                      href="/"
+                      href="/beauty"
                     >
                       <Image
                         alt="Drawing of body"
@@ -36,45 +36,30 @@ const NavDesk = () => {
                   </NavigationMenu.Link>
                 </li>
                 <li>
-                  <Link href="/docs" passHref legacyBehavior>
+                  <Link
+                    href="/beauty/pedicure_&_lakken"
+                    passHref
+                    legacyBehavior
+                  >
                     <NavigationMenu.Link
                       className="text-xl font-medium flex flex-col 
                     h-full w-full select-none rounded-[6px] bg-gradient-to-b bg-brokenWhite p-[15px] no-underline outline-none focus:shadow-[0_0_0_2px]"
                     >
                       <div className="flex flex-row items-center ml-0 transition ease-in-out delay-100 hover:-translate-y-1 hover:scale-105 ">
-                        Pedicure & lakken{' '}
+                        Pedicure & lakken
                         <ChevronRight
                           className="h-3 w-3 ml-1 flex-shrink-0 transition-transform duration-[250] ease-in group-data-[state=open]:-rotate-180"
                           aria-hidden
                         />
                       </div>
                       <p className="text-mauve4 text-[14px] leading-[1.3]">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing
-                        elit.
+                        Verzorg je voeten en nagels met een pedicure en een mooi
+                        kleurtje.
                       </p>
                     </NavigationMenu.Link>
                   </Link>
                 </li>
-                <li>
-                  <Link href="/docs" passHref legacyBehavior>
-                    <NavigationMenu.Link
-                      className="text-xl font-medium flex flex-col 
-                    h-full w-full select-none rounded-[6px] bg-gradient-to-b p-[15px] no-underline outline-none focus:shadow-[0_0_0_2px]"
-                    >
-                      <div className="flex flex-row items-center ml-0 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 ">
-                        Gellak tenen{' '}
-                        <ChevronRight
-                          className="h-3 w-3 ml-1 flex-shrink-0"
-                          aria-hidden
-                        />
-                      </div>
-                      <p className="text-mauve4 text-[14px] leading-[1.3]">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing
-                        elit.
-                      </p>
-                    </NavigationMenu.Link>
-                  </Link>
-                </li>
+
                 <li>
                   <Link href="/beauty/gelnagels" passHref legacyBehavior>
                     <NavigationMenu.Link
@@ -89,28 +74,32 @@ const NavDesk = () => {
                         />
                       </div>
                       <p className="text-mauve4 text-[14px] leading-[1.3]">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing
-                        elit.
+                        Subtiele elegantie: Ontdek prachtige Babyboom en French
+                        style gelnagels nu!
                       </p>
                     </NavigationMenu.Link>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/docs" passHref legacyBehavior>
+                  <Link
+                    href="/beauty/wimpers_&_wenkbrauwen"
+                    passHref
+                    legacyBehavior
+                  >
                     <NavigationMenu.Link
                       className="text-xl font-medium flex flex-col 
                     h-full w-full select-none rounded-[6px] bg-gradient-to-b p-[15px] no-underline outline-none focus:shadow-[0_0_0_2px]"
                     >
                       <div className="flex flex-row items-center ml-0 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 ">
-                        Wimpers & <br /> wenkbrauwen lakken
+                        Wimpers & <br /> wenkbrauwen verven
                         <ChevronRight
                           className="h-3 w-3 flex-shrink-0"
                           aria-hidden
                         />
                       </div>
                       <p className="text-mauve4 text-[14px] leading-[1.3]">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing
-                        elit.
+                        Accentueer je stijl: Perfecte wimpers en
+                        wenkbrauwkleuring, onweerstaanbaar verleidelijk!
                       </p>
                     </NavigationMenu.Link>
                   </Link>
@@ -121,7 +110,7 @@ const NavDesk = () => {
           {/* Skin */}
           <NavigationMenu.Item>
             <NavigationMenu.Trigger className="group flex select-none items-center justify-between gap-[2px] rounded-[4px] px-3 py-2 text-xl font-medium  leading-none outline-none focus:shadow-[0_0_0_2px]">
-              Skin{' '}
+              <Link href={'/skin'}>Skin</Link>{' '}
               <ChevronDown
                 className="relative h-3 w-3 top-[1px] transition-transform duration-[250] ease-in group-data-[state=open]:-rotate-180"
                 aria-hidden
@@ -146,7 +135,7 @@ const NavDesk = () => {
                   </NavigationMenu.Link>
                 </li>
                 <li>
-                  <Link href="/docs" passHref legacyBehavior>
+                  <Link href="/skin/gelaatsverzorging" passHref legacyBehavior>
                     <NavigationMenu.Link
                       className="text-xl font-medium flex flex-col 
                     h-full w-full select-none rounded-[6px] bg-gradient-to-b p-[15px] no-underline outline-none focus:shadow-[0_0_0_2px]"
@@ -159,14 +148,14 @@ const NavDesk = () => {
                         />
                       </div>
                       <p className="text-mauve4 text-[14px] leading-[1.3]">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing
-                        elit.
+                        Verwen je huid: Stralende gelaatsverzorging voor een
+                        tijdloze schoonheid!
                       </p>
                     </NavigationMenu.Link>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/docs" passHref legacyBehavior>
+                  <Link href="/skin/dermaplanning" passHref legacyBehavior>
                     <NavigationMenu.Link
                       className="text-xl font-medium flex flex-col 
                     h-full w-full select-none rounded-[6px] bg-gradient-to-b p-[15px] no-underline outline-none focus:shadow-[0_0_0_2px]"
@@ -179,8 +168,8 @@ const NavDesk = () => {
                         />
                       </div>
                       <p className="text-mauve4 text-[14px] leading-[1.3]">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing
-                        elit.
+                        Ontdek heldere, stralende huid met onze professionele
+                        dermaplanning behandeling!
                       </p>
                     </NavigationMenu.Link>
                   </Link>
@@ -191,7 +180,7 @@ const NavDesk = () => {
           {/* Body */}
           <NavigationMenu.Item>
             <NavigationMenu.Trigger className="group flex select-none items-center justify-between gap-[2px] rounded-[4px] px-3 py-2 text-xl font-medium  leading-none outline-none focus:shadow-[0_0_0_2px]">
-              Body{' '}
+              <Link href={'/body'}>Body</Link>{' '}
               <ChevronDown
                 className="relative h-3 w-3 top-[1px] transition-transform duration-[250] ease-in group-data-[state=open]:-rotate-180"
                 aria-hidden
@@ -216,7 +205,7 @@ const NavDesk = () => {
                   </NavigationMenu.Link>
                 </li>
                 <li>
-                  <Link href="/docs" passHref legacyBehavior>
+                  <Link href="/body/massage" passHref legacyBehavior>
                     <NavigationMenu.Link
                       className="text-xl font-medium flex flex-col 
                     h-full w-full select-none rounded-[6px] bg-gradient-to-b p-[15px] no-underline outline-none focus:shadow-[0_0_0_2px]"
@@ -229,8 +218,8 @@ const NavDesk = () => {
                         />
                       </div>
                       <p className="text-mauve4 text-[14px] leading-[1.3]">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing
-                        elit.
+                        Ontspan en verjong: Geniet van onze rustgevende,
+                        herstellende massagebehandelingen!
                       </p>
                     </NavigationMenu.Link>
                   </Link>
@@ -240,7 +229,7 @@ const NavDesk = () => {
           </NavigationMenu.Item>
           {/* About me */}
           <NavigationMenu.Item>
-            <Link href="/docs" passHref legacyBehavior>
+            <Link href="/about" passHref legacyBehavior>
               <NavigationMenu.Link className="group flex flex-shrink-0 select-none items-center justify-between gap-[2px] rounded-[4px] px-3 py-2 text-xl font-medium hover:text-brokenWhite leading-none outline-none focus:shadow-[0_0_0_2px]">
                 <div className="mr-1 ">About</div>
               </NavigationMenu.Link>

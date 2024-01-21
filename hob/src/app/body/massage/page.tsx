@@ -2,23 +2,21 @@
 import { trpc } from '@/app/_trpc/client'
 import AltPricing from '@/components/AltPricing'
 import Pricing from '@/components/Pricing'
-import ImageGallery from '@/components/ui/ImageGallery'
-import Slider from '@/components/ui/Slider'
 import SliderPricing from '@/components/ui/SliderPricing'
 import Socials from '@/components/ui/Socials'
 import { Button } from '@/components/ui/button'
+import { Skeleton } from '@/components/ui/skeleton'
 import { cn } from '@/lib/utils'
-import { SearchResult, image } from '@/types/type'
-import { Heart } from 'lucide-react'
+import { image } from '@/types/type'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 const page = () => {
-  const galleryImages = trpc.getImages.useQuery({ folder: 'Body' })
+  // const galleryImages = trpc.getImages.useQuery({ folder: 'Body' })
   const services = trpc.getAllServices.useQuery()
   const service = trpc.getServices.useQuery({ Service: 'Ontspannende massage' })
-  const images = galleryImages.data as image[]
+  // const images = galleryImages.data as image[]
   //eslint-disable-next-line react-hooks/rules-of-hooks
   const pathname = usePathname()
   const pathnames = pathname.split('/')
@@ -28,32 +26,6 @@ const page = () => {
     index == 0 ? (option = '/') : (option += path + '/')
     options.push(option)
   })
-  const Gimages: image[] = [
-    {
-      name: 'Skin',
-      url: '/face.png',
-      alt: 'gezicht',
-      bg: 'bg-green',
-      w: 150,
-      h: 150,
-    },
-    {
-      name: 'Beauty',
-      url: '/hand.png',
-      alt: 'hand',
-      bg: 'bg-green',
-      w: 180,
-      h: 180,
-    },
-    {
-      name: 'Body',
-      url: '/body.png',
-      alt: 'lichaam',
-      bg: 'bg-green',
-      w: 100,
-      h: 100,
-    },
-  ]
 
   const description = ['30 minuten', 'Ontspanning massage']
   const price = 30
@@ -81,12 +53,6 @@ const page = () => {
     price: price,
     title: title,
   }
-  const pricingList = [
-    pricingOption,
-    pricingOption,
-    pricingOption,
-    pricingOption,
-  ]
 
   return (
     <>
@@ -154,39 +120,16 @@ const page = () => {
           </div>
         </div>
       </div>
-      <div>
-        <div className="sm:flex flex-col justify-center items-center py-8 hidden bg-green">
-          <h1 className="font-medium mb-2 text-3xl ">Onze Beauties</h1>
-          <div className="mb-4">
-            <Socials />
-          </div>
-          {galleryImages.isLoading ? (
-            <div className="min-h-[300px] flex flex-col gap-2 items-center justify-center">
-              <div className="animate-bounce">
-                <Heart fill="red" color="red" size={75} />
-              </div>
-              <p>Loading...</p>
-            </div>
-          ) : (
-            <div>
-              <ImageGallery images={images} className="hidden sm:block" />
-              <Slider
-                images={images}
-                buttonAvailable={false}
-                titel="Onze beauties"
-                className="sm:hidden"
-                cloudinary={true}
-              />
-            </div>
-          )}
+
+      <div className="mb-12  ">
+        <h1 className="font-medium text-3xl text-center my-4 mb-2 ">Prijs</h1>
+        <div className="flex items-center justify-center">
+          <Socials />
         </div>
-      </div>
-      <div className="mb-12">
-        <h1 className="font-medium text-3xl text-center my-4 ">Prijs</h1>
         {service.status === 'success' && service.data ? (
           <Pricing pricingOptions={service.data} />
         ) : (
-          <div className="h-[500px]">loading</div>
+          <Skeleton className="w-[250px] lsm:w-[400px] sm:w-[500px] desktop:h-[300px] h-[400px] m-auto my-4 shadow-lg " />
         )}
       </div>
       <div className="bg-brokenWhite flex flex-col sm:items-center sm:justify-center ">
@@ -194,15 +137,15 @@ const page = () => {
           Ontdek meer zoals dit{' '}
         </h1>
 
-        <div className="mb-6 sm:hidden ">
+        <div className="mb-6 sm:hidden h-[500px]">
           {services.status === 'success' ? (
             <SliderPricing pricingOptions={services.data} />
           ) : (
-            <div className="h-[500px]">loading</div>
+            <Skeleton className="my-4 w-[250px] h-[500px] shadow-lg mx-auto" />
           )}
         </div>
         <div className="hidden mb-12 sm:flex sm:flex-row sm:flex-wrap sm:w-[80%] sm:justify-center sm:gap-2">
-          {services.status === 'success' &&
+          {services.status === 'success' ? (
             services.data.map((pricingOption, index) => {
               const lowerCaseName = pricingOption.name.toLowerCase().trim()
               console.log(pricingOption.name.toLowerCase())
@@ -215,7 +158,14 @@ const page = () => {
               } else {
                 return null
               }
-            })}
+            })
+          ) : (
+            <div className="hidden mb-12 sm:flex sm:flex-row sm:flex-wrap sm:w-[80%] sm:justify-center sm:gap-2">
+              <Skeleton className="my-4 w-[250px] h-[500px] shadow-lg" />
+              <Skeleton className="my-4 w-[250px] h-[500px] shadow-lg" />
+              <Skeleton className="my-4 w-[250px] h-[500px] shadow-lg" />
+            </div>
+          )}
         </div>
       </div>
     </>

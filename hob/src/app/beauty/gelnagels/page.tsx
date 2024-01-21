@@ -8,6 +8,7 @@ import Slider from '@/components/ui/Slider'
 import SliderPricing from '@/components/ui/SliderPricing'
 import Socials from '@/components/ui/Socials'
 import { Button } from '@/components/ui/button'
+import { Skeleton } from '@/components/ui/skeleton'
 import { cn } from '@/lib/utils'
 import { SearchResult, image } from '@/types/type'
 import { Heart } from 'lucide-react'
@@ -176,14 +177,18 @@ const page = () => {
             </div>
           ) : (
             <div>
-              <ImageGallery images={images} className="hidden sm:block" />
+              <div className="hidden sm:block">
+                <ImageGallery images={images} className="hidden sm:block" />
+              </div>
 
-              <Slider
-                images={images}
-                buttonAvailable={false}
-                className="block sm:hidden"
-                cloudinary={true}
-              />
+              <div className="block sm:hidden">
+                <Slider
+                  images={images}
+                  buttonAvailable={false}
+                  className="block sm:hidden"
+                  cloudinary={true}
+                />
+              </div>
             </div>
           )}
         </div>
@@ -204,14 +209,15 @@ const page = () => {
           {services.status === 'success' ? (
             <SliderPricing pricingOptions={services.data} />
           ) : (
-            <div className="h-[500px]">loading</div>
+            <Skeleton className="my-4 w-[250px] h-[500px] shadow-lg mx-auto" />
           )}
         </div>
         <div className="hidden mb-12 sm:flex sm:flex-row sm:flex-wrap sm:w-[80%] sm:justify-center sm:gap-2">
-          {services.status === 'success' &&
+          {services.status === 'success' ? (
             services.data.map((pricingOption, index) => {
               const lowerCaseName = pricingOption.name.toLowerCase().trim()
               console.log(pricingOption.name.toLowerCase())
+              console.log(pathnames.at(-1)?.toLowerCase().trim())
               if (
                 lowerCaseName !== pathnames.at(-1)?.toLowerCase().trim() &&
                 index < 4
@@ -220,7 +226,14 @@ const page = () => {
               } else {
                 return null
               }
-            })}
+            })
+          ) : (
+            <div className="hidden mb-12 sm:flex sm:flex-row sm:flex-wrap sm:w-[80%] sm:justify-center sm:gap-2">
+              <Skeleton className="my-4 w-[250px] h-[500px] shadow-lg" />
+              <Skeleton className="my-4 w-[250px] h-[500px] shadow-lg" />
+              <Skeleton className="my-4 w-[250px] h-[500px] shadow-lg" />
+            </div>
+          )}
         </div>
       </div>
     </>

@@ -11,6 +11,7 @@ import Socials from '@/components/ui/Socials'
 import ImageGallery from '@/components/ui/ImageGallery'
 import { trpc } from '../_trpc/client'
 import { image } from '@/types/type'
+import { CldImage } from 'next-cloudinary'
 const page = () => {
   const galleryImages = trpc.getImages.useQuery({ folder: 'Body' })
   const images = galleryImages.data as image[]
@@ -98,38 +99,54 @@ const page = () => {
             <h1 className="font-medium text-2xl mb-8 text-black">Overzicht</h1>
             <div className="flex flex-col smd:flex-row flex-wrap gap-5 smd:gap-0 smd:w-[750px]  ">
               <div className="basis-1/2 flex flex-col justify-end items-center flex-shrink-0 hover:-translate-y-2 transition-transform">
-                <Image
-                  src={'/pedicure.jpg'}
+                <CldImage
+                  src={'Beauty/pedicure_nb1la7.jpg'}
                   width="300"
                   height="300"
-                  alt={'Foto van een behandeling van de voeten'}
+                  alt={'Pedicure'}
                   className="my-2 self-center rounded-md"
                 />
-                <p className="font-medium text-lg text-black">Gellak tenen</p>
+                <p className="font-medium text-lg text-center text-black">
+                  Gellak tenen
+                </p>
               </div>
-              <div className="basis-1/2 flex flex-col justify-items-end items-center flex-shrink-0 hover:-translate-y-2 transition-transform">
-                <Image
-                  src={'/gelak.jpg'}
+              <div className="basis-1/2 flex flex-col smd:self-end first-line:justify-items-end items-center flex-shrink-0 hover:-translate-y-2 transition-transform">
+                <CldImage
+                  src={'Beauty/gelak_ycxabk.jpg'}
                   width="200"
                   height="200"
-                  alt={'Foto van een behandeling van de voeten'}
+                  alt={'Gelakte nagels'}
                   className="my-2 self-center rounded-md"
                 />
-                <p className="font-medium text-lg text-black">
+                <p className="font-medium text-lg text-center text-black">
                   Pedicure & lakken
                 </p>
               </div>
               <div className="flex-grow flex flex-col justify-center items-center flex-shrink-0 hover:-translate-y-2 transition-transform">
-                <Image
-                  src={'/eyelashes.jpg'}
+                <CldImage
+                  src={'Beauty/eyelashes_rxjgqz.jpg'}
                   width="300"
                   height="300"
-                  alt={'Foto van een behandeling van de voeten'}
+                  alt={'Gelakte wimpers en wenkbrauwen'}
                   className="my-2 self-center rounded-md"
                 />
-                <p className="font-medium text-lg text-black">
+                <p className="font-medium text-lg text-center text-black">
                   Wimpers & wenkbrauwen lakken
                 </p>
+              </div>
+              <div className="flex-grow flex flex-col justify-center items-center flex-shrink-0 hover:-translate-y-2 transition-transform">
+                <Link href={'/beauty/gelnagels'}>
+                  <CldImage
+                    src={'Beauty/babyboom_picture_sm_rar3ld.png'}
+                    width="300"
+                    height="300"
+                    alt={'Gelakte wimpers en wenkbrauwen'}
+                    className="my-2 self-center rounded-md"
+                  />
+                  <p className="font-medium text-lg text-center text-black">
+                    Gelnagels
+                  </p>
+                </Link>
               </div>
             </div>
           </div>

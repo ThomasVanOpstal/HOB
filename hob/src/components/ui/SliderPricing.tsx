@@ -70,14 +70,14 @@ const SliderPricing = ({ className, pricingOptions }: sliderPricingProps) => {
 
   return (
     <div className={cn('relative', className)}>
-      <div className="flex flex-row snap-x overflow-x-hidden overflow-y-hidden h-[400px] ">
+      <div className="flex flex-row snap-x overflow-x-hidden overflow-y-hidden h-[500px] ">
         {pricingOptions.map((pricing, i) => {
           return (
             <>
               <div
                 key={i}
                 className={cn(
-                  'w-full h-[320px] flex flex-col justify-center items-center flex-shrink-0 snap-center '
+                  'w-full h-[500px] flex flex-col justify-center items-center flex-shrink-0 snap-center '
                 )}
                 ref={refs[i]}
                 onTouchStart={(e) => handleTouchStart(e)}

@@ -48,19 +48,20 @@ const NavMobile = ({}) => {
                 >
                   <DropdownMenu.Item className="group text-[13px] hover:translate-x-1 ease-in-out leading-none rounded-[3px] flex items-center h-[25px] px-[5px] relative selection:select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1">
                     <ChevronRight size={15} strokeWidth={1} />
-                    <Link href="/">Pedicure & lakken</Link>
+                    <Link href="/beauty/pedicure_&_lakken">
+                      Pedicure & lakken
+                    </Link>
                   </DropdownMenu.Item>
-                  <DropdownMenu.Item className="group text-[13px] hover:translate-x-1 ease-in-out leading-none rounded-[3px] flex items-center h-[25px] px-[5px] relative  select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1">
-                    <ChevronRight size={15} strokeWidth={1} />
-                    <Link href="/">Gellak tenen</Link>
-                  </DropdownMenu.Item>
+
                   <DropdownMenu.Item className="group text-[13px] hover:translate-x-1 ease-in-out leading-none rounded-[3px] flex items-center h-[25px] px-[5px] relative selection:select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1">
                     <ChevronRight size={15} strokeWidth={1} />
-                    <Link href="/">Gelnagels</Link>
+                    <Link href="/beauty/Gelnagels">Gelnagels</Link>
                   </DropdownMenu.Item>
                   <DropdownMenu.Item className="group text-[13px] hover:translate-x-1 ease-in-out leading-none rounded-[3px] flex items-center h-[25px] px-[5px] relative  select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1">
                     <ChevronRight size={15} strokeWidth={1} />
-                    <Link href="/">Wimpers & wenkbrauwen lakken</Link>
+                    <Link href="/beauty/wimpers_&_wenkbrauwen_lakken">
+                      Wimpers & wenkbrauwen lakken
+                    </Link>
                   </DropdownMenu.Item>
                 </DropdownMenu.SubContent>
               </DropdownMenu.Portal>
@@ -80,11 +81,13 @@ const NavMobile = ({}) => {
                 >
                   <DropdownMenu.Item className="group text-[13px] hover:translate-x-1 ease-in-out leading-none rounded-[3px] flex items-center h-[25px] px-[5px] relative select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1">
                     <ChevronRight size={15} strokeWidth={1} />
-                    <Link href="/">Gelaatsverzorging</Link>
+                    <Link href="/skin/gelaatsverzorging">
+                      Gelaatsverzorging
+                    </Link>
                   </DropdownMenu.Item>
                   <DropdownMenu.Item className="group text-[13px] hover:translate-x-1 ease-in-out leading-none rounded-[3px] flex items-center h-[25px] px-[5px] relative select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1">
                     <ChevronRight size={15} strokeWidth={1} />
-                    <Link href="/">DermaPlanning</Link>
+                    <Link href="/skin/dermaplanning">DermaPlanning</Link>
                   </DropdownMenu.Item>
                 </DropdownMenu.SubContent>
               </DropdownMenu.Portal>

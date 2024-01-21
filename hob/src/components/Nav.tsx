@@ -55,7 +55,7 @@ const Nav = ({ className, variant }: navProps) => {
         </div>
         <div className="flex items-center justify-self-end">
           <Button variant={variant || 'default'} size="sm">
-            <Link href="/" className="text-xl font-medium">
+            <Link href="/contact" className="text-xl font-medium">
               Contact
             </Link>
           </Button>

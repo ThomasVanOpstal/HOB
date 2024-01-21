@@ -90,7 +90,7 @@ const Slider = ({
           {titel || 'Ons aanbod'}
         </p>
       ) : null}
-      <div className="flex flex-row snap-x overflow-x-hidden h-[320px]">
+      <div className="flex flex-row snap-x overflow-x-hidden overflow-y-hidden h-[320px]">
         {images.map((image, i) => {
           return (
             <>
@@ -110,8 +110,8 @@ const Slider = ({
                     key={i}
                     src={image.url}
                     alt={image.alt}
-                    width={image.w}
-                    height={image.h}
+                    width={250}
+                    height={250}
                     className="mt-12"
                   />
                 ) : (

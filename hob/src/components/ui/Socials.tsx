@@ -8,7 +8,7 @@ const Socials: FC<socialsProps> = ({}) => {
   return (
     <div className="flex flex-row">
       <Link href={''}>
-        <Home size={20} color={'#FFF4EC'} className="mr-2 msm:mt-2" />
+        <Home size={20} color={'#ffe9d9'} className="mr-2 msm:mt-2" />
       </Link>
       <Link href={''}>
         <Facebook size={20} color={'#B8D8EB'} className=" mr-2 msm:mt-2" />

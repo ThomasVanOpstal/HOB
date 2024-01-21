@@ -5,13 +5,14 @@ import { FC } from 'react'
 import { Button } from './ui/button'
 import { Services } from '@/server/getServices'
 import { CldImage } from 'next-cloudinary'
+import Link from 'next/link'
 interface PricingOptionProps {
   pricingOptions: Services
 }
 
 const AltPricing: FC<PricingOptionProps> = ({ pricingOptions }) => {
   return (
-    <div className="flex flex-col gap-1 mx-auto my-4 w-[250px] shadow-lg transition ease-in-out delay-100 hover:-translate-y-2 ">
+    <div className="flex flex-col gap-1 mx-auto my-4 w-[250px] h-[500px] shadow-lg transition ease-in-out delay-100 hover:-translate-y-2 ">
       <div className="basis-1/2 pt-5">
         {pricingOptions.Image[1] ? (
           <CldImage
@@ -72,7 +73,9 @@ const AltPricing: FC<PricingOptionProps> = ({ pricingOptions }) => {
             </p> */}
         </div>
         <Button variant="default" className="font-medium text-xl mt-4">
-          Contact
+          <Link href={`/${pricingOptions.Category.toLocaleLowerCase()}`}>
+            Ontdek
+          </Link>
         </Button>
       </div>
     </div>

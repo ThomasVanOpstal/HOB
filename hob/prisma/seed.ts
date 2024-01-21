@@ -99,6 +99,31 @@ async function main() {
   //     },
   //   },
   // })
+  //const gelnagels = await db.service.create({
+  //   data: {
+  //     Category: Category.Beauty,
+  //     Subcategory: 'Wimpers en wenkbrauwen',
+  //     name: 'Gelnagels',
+  //     Description:
+  //       'Gelnagels zijn de ultieme manier om je nagels (handen en voeten) te transformeren tot ware kunstwerken! Met hun duurzaamheid, veelzijdigheid en schitterende uitstraling, zijn gelnagels de keuze voor iedereen die er altijd op zijn best uit wil zien.Of je nu op zoek bent naar een verfijnde en klassieke look of juist iets gewaagders wilt proberen, gelnagels bieden eindeloze mogelijkheden voor nagelkunst en blijven er perfect uitzien, waar je ook gaat. Transformeer je nagels en verwen jezelf met de prachtige wereld van gelnagels!',
+  //     Image: {
+  //       create: [
+  //         {
+  //           assignedBy: 'Thomas Van Opstal',
+  //           imageId: 6,
+  //         },
+  //         {
+  //           assignedBy: 'Thomas Van Opstal',
+  //           imageId: 10,
+  //         },
+  //       ],
+  //     },
+  //     Type: 'Ontspannend',
+  //     Options: {
+  //
+  //     },
+  //   },
+  // })
 }
 main()
   .then(async () => {
