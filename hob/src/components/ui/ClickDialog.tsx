@@ -15,7 +15,7 @@ import Image from 'next/image'
 import { image } from '@/types/type'
 
 interface ClickDialogProps extends React.ComponentPropsWithoutRef<'div'> {
-  description: string
+  description: React.ReactNode
   frontImage: image
   dialogImage: image
 }
@@ -54,7 +54,9 @@ const ClickDialog: FC<ClickDialogProps> = ({
                   className="w-full rounded-md"
                 />
               </AlertDialogTitle>
-              <AlertDialogDescription>{description}</AlertDialogDescription>
+              <AlertDialogDescription className="font-thin">
+                {description}
+              </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter></AlertDialogFooter>
           </AlertDialogContent>

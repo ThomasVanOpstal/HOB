@@ -20,7 +20,7 @@ import { usePathname } from 'next/navigation'
 const page = () => {
   const galleryImages = trpc.getImages.useQuery({ folder: 'Body' })
   const services = trpc.getAllServices.useQuery()
-  const service = trpc.getServices.useQuery({ Service: 'Ontspannende massage' })
+  const service = trpc.getServices.useQuery({ Service: 'Gelaatsverzorging' })
   const images = galleryImages.data as image[]
   //eslint-disable-next-line react-hooks/rules-of-hooks
   const pathname = usePathname()
@@ -155,9 +155,9 @@ const page = () => {
       <div className="mb-12">
         <h1 className="font-medium text-3xl text-center my-4 ">Prijs</h1>
         {service.status === 'success' && service.data ? (
-          <PricingManuel pricingOption={pricingOption} />
+          <Pricing pricingOptions={service.data} />
         ) : (
-          <div className="h-[500px]">loading</div>
+          <Skeleton className="w-[250px] lsm:w-[400px] sm:w-[500px] desktop:h-[300px] h-[400px] m-auto my-4 shadow-lg " />
         )}
       </div>
       <div className="bg-brokenWhite flex flex-col sm:items-center sm:justify-center ">
@@ -180,7 +180,7 @@ const page = () => {
               console.log(pathnames.at(-1)?.toLowerCase().trim())
               if (
                 lowerCaseName !== pathnames.at(-1)?.toLowerCase().trim() &&
-                index < 4
+                index < 3
               ) {
                 return <AltPricing key={index} pricingOptions={pricingOption} />
               } else {
@@ -189,9 +189,9 @@ const page = () => {
             })
           ) : (
             <div className="hidden mb-12 sm:flex sm:flex-row sm:flex-wrap sm:w-[80%] sm:justify-center sm:gap-2">
-              <Skeleton className="my-4 w-[250px] h-[500px] shadow-lg" />
-              <Skeleton className="my-4 w-[250px] h-[500px] shadow-lg" />
-              <Skeleton className="my-4 w-[250px] h-[500px] shadow-lg" />
+              <Skeleton className="my-4 w-[250px] h-[500px] shadow-lg mx-auto" />
+              <Skeleton className="my-4 w-[250px] h-[500px] shadow-lg mx-auto" />
+              <Skeleton className="my-4 w-[250px] h-[500px] shadow-lg mx-auto" />
             </div>
           )}
         </div>

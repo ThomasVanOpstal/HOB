@@ -161,9 +161,9 @@ const page = () => {
             })
           ) : (
             <div className="hidden mb-12 sm:flex sm:flex-row sm:flex-wrap sm:w-[80%] sm:justify-center sm:gap-2">
-              <Skeleton className="my-4 w-[250px] h-[500px] shadow-lg" />
-              <Skeleton className="my-4 w-[250px] h-[500px] shadow-lg" />
-              <Skeleton className="my-4 w-[250px] h-[500px] shadow-lg" />
+              <Skeleton className="my-4 w-[250px] h-[500px] shadow-lg mx-auto" />
+              <Skeleton className="my-4 w-[250px] h-[500px] shadow-lg mx-auto" />
+              <Skeleton className="my-4 w-[250px] h-[500px] shadow-lg mx-auto" />
             </div>
           )}
         </div>

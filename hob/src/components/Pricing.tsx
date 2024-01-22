@@ -11,19 +11,28 @@ const Pricing = ({ pricingOptions }: { pricingOptions: Service }) => {
     <div className="flex flex-col lsm:flex-row gap-1 mx-auto my-4 lsm:mx-auto w-[250px] lsm:w-[400px] sm:w-[500px] shadow-lg">
       <div className="hidden lsm:basis-1/2 lsm:block">
         <CldImage
-          src={pricingOptions.Options[0].Option.Image[2].Image.Url}
-          alt={pricingOptions.Options[0].Option.Image[2].Image.Alt}
-          width={pricingOptions.Options[0].Option.Image[2].Image.W}
-          height={pricingOptions.Options[0].Option.Image[2].Image.H}
+          src={pricingOptions.Options[0].Option.Image[0].Image.Url}
+          alt={pricingOptions.Options[0].Option.Image[0].Image.Alt}
+          width={pricingOptions.Options[0].Option.Image[0].Image.W}
+          height={pricingOptions.Options[0].Option.Image[0].Image.H}
         />
       </div>
       <div className="block basis-1/2 lsm:hidden">
-        <CldImage
-          src={pricingOptions.Options[0].Option.Image[1].Image.Url}
-          alt={pricingOptions.Options[0].Option.Image[1].Image.Alt}
-          width={pricingOptions.Options[0].Option.Image[1].Image.W}
-          height={pricingOptions.Options[0].Option.Image[1].Image.H}
-        />
+        {pricingOptions.Options[0].Option.Image[1] ? (
+          <CldImage
+            src={pricingOptions.Options[0].Option.Image[1].Image.Url}
+            alt={pricingOptions.Options[0].Option.Image[1].Image.Alt}
+            width={pricingOptions.Options[0].Option.Image[1].Image.W}
+            height={pricingOptions.Options[0].Option.Image[1].Image.H}
+          />
+        ) : (
+          <CldImage
+            src={pricingOptions.Options[0].Option.Image[0].Image.Url}
+            alt={pricingOptions.Options[0].Option.Image[0].Image.Alt}
+            width={pricingOptions.Options[0].Option.Image[0].Image.W}
+            height={pricingOptions.Options[0].Option.Image[0].Image.H}
+          />
+        )}
       </div>
       <div className="basis-2/3 lsm:basis-1/2 flex flex-col justify-end items-center mb-2 mr-2">
         <div className="basis-1/2 flex flex-col justify-center">

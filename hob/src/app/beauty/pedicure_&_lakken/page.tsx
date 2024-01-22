@@ -21,7 +21,7 @@ import { usePathname } from 'next/navigation'
 const page = () => {
   const galleryImages = trpc.getImages.useQuery({ folder: 'Beauty' })
   const services = trpc.getAllServices.useQuery()
-  const service = trpc.getServices.useQuery({ Service: 'Gelnagels' })
+  const service = trpc.getServices.useQuery({ Service: 'Pedicure' })
   if (service.status === 'success' && service.data) {
     const servicesData = service.data // Access the actual data
   } else if (service.status === 'error') {
@@ -37,32 +37,6 @@ const page = () => {
     index == 0 ? (option = '/') : (option += path + '/')
     options.push(option)
   })
-  const Gimages: image[] = [
-    {
-      name: 'Skin',
-      url: '/face.png',
-      alt: 'gezicht',
-      bg: 'bg-green',
-      w: 150,
-      h: 150,
-    },
-    {
-      name: 'Beauty',
-      url: '/hand.png',
-      alt: 'hand',
-      bg: 'bg-green',
-      w: 180,
-      h: 180,
-    },
-    {
-      name: 'Body',
-      url: '/body.png',
-      alt: 'lichaam',
-      bg: 'bg-green',
-      w: 100,
-      h: 100,
-    },
-  ]
 
   const description = ['30 minuten', 'pedicure & lakken (voeten of handen)']
   const price = 30
@@ -90,12 +64,6 @@ const page = () => {
     price: price,
     title: title,
   }
-  const pricingList = [
-    pricingOption,
-    pricingOption,
-    pricingOption,
-    pricingOption,
-  ]
 
   return (
     <>
@@ -195,7 +163,7 @@ const page = () => {
       </div>
       <div className="mb-12 mt-12">
         {service.status === 'success' && service.data ? (
-          <PricingManuel pricingOption={pricingOption} />
+          <Pricing pricingOptions={service.data} />
         ) : (
           <Skeleton className="w-[250px] lsm:w-[400px] sm:w-[500px] desktop:h-[300px] h-[400px] m-auto my-4 shadow-lg " />
         )}
@@ -209,7 +177,7 @@ const page = () => {
           {services.status === 'success' ? (
             <SliderPricing pricingOptions={services.data} />
           ) : (
-            <div className="h-[500px]">loading</div>
+            <Skeleton className="my-4 w-[250px] h-[500px] shadow-lg mx-auto" />
           )}
         </div>
         <div className="hidden mb-12 sm:flex sm:flex-row sm:flex-wrap sm:w-[80%] sm:justify-center sm:gap-2">
@@ -220,7 +188,7 @@ const page = () => {
               console.log(pathnames.at(-1)?.toLowerCase().trim())
               if (
                 lowerCaseName !== pathnames.at(-1)?.toLowerCase().trim() &&
-                index < 4
+                index < 3
               ) {
                 return <AltPricing key={index} pricingOptions={pricingOption} />
               } else {
@@ -229,9 +197,9 @@ const page = () => {
             })
           ) : (
             <div className="hidden mb-12 sm:flex sm:flex-row sm:flex-wrap sm:w-[80%] sm:justify-center sm:gap-2">
-              <Skeleton className="my-4 w-[250px] h-[500px] shadow-lg" />
-              <Skeleton className="my-4 w-[250px] h-[500px] shadow-lg" />
-              <Skeleton className="my-4 w-[250px] h-[500px] shadow-lg" />
+              <Skeleton className="my-4 w-[250px] h-[500px] shadow-lg gap-1 mx-auto" />
+              <Skeleton className="my-4 w-[250px] h-[500px] shadow-lg gap-1 mx-auto" />
+              <Skeleton className="my-4 w-[250px] h-[500px] shadow-lg gap-1 mx-auto" />
             </div>
           )}
         </div>
