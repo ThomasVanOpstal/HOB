@@ -47,10 +47,7 @@ async function main() {
   //           assignedBy: 'Thomas Van Opstal',
   //           optionId: 9,
   //         },
-  //         {
-  //           assignedBy: 'Thomas Van Opstal',
-  //           optionId: 10,
-  //         },
+
   //       ],
   //     },
   //   },

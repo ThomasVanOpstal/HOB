@@ -22,12 +22,14 @@ const AltPricing: FC<PricingOptionProps> = ({ pricingOptions }) => {
             height={pricingOptions.Image[1].Image.H}
           />
         ) : (
-          <CldImage
-            src={pricingOptions.Image[0].Image.Url}
-            alt={pricingOptions.Image[0].Image.Alt}
-            width={pricingOptions.Image[0].Image.W}
-            height={pricingOptions.Image[0].Image.H}
-          />
+          pricingOptions.Image[0] && (
+            <CldImage
+              src={pricingOptions.Image[0].Image.Url}
+              alt={pricingOptions.Image[0].Image.Alt}
+              width={pricingOptions.Image[0].Image.W}
+              height={pricingOptions.Image[0].Image.H}
+            />
+          )
         )}
       </div>
       <div className="basis-2/3 flex flex-col justify-end items-center mb-2 mr-2">

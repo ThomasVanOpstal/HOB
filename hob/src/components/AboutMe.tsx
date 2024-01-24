@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { Button } from './ui/button'
+import Link from 'next/link'
 const AboutMe = () => {
   return (
     <>
@@ -22,12 +23,14 @@ const AboutMe = () => {
               mogen verwelkomen in mijn salon.&quot;
             </p>
             <div className="flex justify-center msm:justify-normal mx-4 sm:mx-0 ">
-              <Button
-                variant={'outline'}
-                className="font-medium text-xl mt-4 sm:mx-0 "
-              >
-                About me
-              </Button>
+              <Link href="/about">
+                <Button
+                  variant={'outline'}
+                  className="font-medium text-xl mt-4 sm:mx-0 "
+                >
+                  About me
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

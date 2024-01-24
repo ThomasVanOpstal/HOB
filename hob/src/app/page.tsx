@@ -6,7 +6,10 @@ import Slider from '@/components/ui/Slider'
 import { Button } from '@/components/ui/button'
 import { image } from '@/types/type'
 import { ChevronDown } from 'lucide-react'
+import { CldImage } from 'next-cloudinary'
 import Image from 'next/image'
+import Link from 'next/link'
+import { Router, useRouter } from 'next/router'
 import { MutableRefObject, useRef } from 'react'
 const page = async () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -20,7 +23,7 @@ const page = async () => {
   const images: image[] = [
     {
       name: 'Skin',
-      url: '/face.png',
+      url: '/face_vhgkdo.png',
       alt: 'gezicht',
       bg: 'bg-brokenWhite',
       w: 150,
@@ -28,7 +31,7 @@ const page = async () => {
     },
     {
       name: 'Beauty',
-      url: '/hand.png',
+      url: '/hand_igki2c.png',
       alt: 'hand',
       bg: 'bg-darkBrown',
       w: 180,
@@ -36,7 +39,7 @@ const page = async () => {
     },
     {
       name: 'Body',
-      url: '/body.png',
+      url: '/body_wthv6n.png',
       alt: 'lichaam',
       bg: 'bg-pink',
       w: 100,
@@ -58,21 +61,26 @@ const page = async () => {
                 <Button
                   variant="secondary"
                   className="font-medium text-xl ml-4 mt-2"
+                  onClick={() => {
+                    scrollToSection(services)
+                  }}
                 >
                   Aanbod
                 </Button>
-                <Button
-                  variant="outline_darkBrown"
-                  className="font-medium text-xl ml-4 mt-2 "
-                >
-                  Contact
-                </Button>
+                <Link href="/contact">
+                  <Button
+                    variant="outline_darkBrown"
+                    className="font-medium text-xl ml-4 mt-2 "
+                  >
+                    Contact
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
           <div className="relative flex flex-col items-center justify-end basis-1/2">
-            <Image
-              src={'/manicure.png'}
+            <CldImage
+              src={'Beauty/manicure_khkilr.png'}
               width="400"
               height="400"
               alt={'Hand met zeer verzorgde nagels'}
@@ -101,7 +109,7 @@ const page = async () => {
             images={images}
             buttonAvailable={true}
             progressBarAvailable={true}
-            cloudinary={false}
+            cloudinary={true}
           />
           <Gallery className="hidden smd:inline-flex" />
         </div>

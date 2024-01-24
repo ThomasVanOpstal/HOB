@@ -45,8 +45,8 @@ const page = () => {
               </p>
             </div>
             <div className="md:basis-1/3 mt-4">
-              <Image
-                src={'/hand.png'}
+              <CldImage
+                src={'/hand_igki2c.png'}
                 width="300"
                 height="300"
                 alt={'Tekening van een gezicht'}
@@ -98,41 +98,33 @@ const page = () => {
             </div>
             <h1 className="font-medium text-2xl mb-8 text-black">Overzicht</h1>
             <div className="flex flex-col smd:flex-row flex-wrap gap-5 smd:gap-0 smd:w-[750px]  ">
-              <div className="basis-1/2 flex flex-col justify-end items-center flex-shrink-0 hover:-translate-y-2 transition-transform">
-                <CldImage
-                  src={'Beauty/pedicure_nb1la7.jpg'}
-                  width="300"
-                  height="300"
-                  alt={'Pedicure'}
-                  className="my-2 self-center rounded-md"
-                />
-                <p className="font-medium text-lg text-center text-black">
-                  Gellak tenen
-                </p>
-              </div>
               <div className="basis-1/2 flex flex-col smd:self-end first-line:justify-items-end items-center flex-shrink-0 hover:-translate-y-2 transition-transform">
-                <CldImage
-                  src={'Beauty/gelak_ycxabk.jpg'}
-                  width="200"
-                  height="200"
-                  alt={'Gelakte nagels'}
-                  className="my-2 self-center rounded-md"
-                />
-                <p className="font-medium text-lg text-center text-black">
-                  Pedicure & lakken
-                </p>
+                <Link href={'/beauty/pedicure_&_lakken'}>
+                  <CldImage
+                    src={'Beauty/gelak_ycxabk.jpg'}
+                    width="200"
+                    height="200"
+                    alt={'Gelakte nagels'}
+                    className="my-2 self-center rounded-md"
+                  />
+                  <p className="font-medium text-lg text-center text-black">
+                    Pedicure & lakken
+                  </p>
+                </Link>
               </div>
               <div className="flex-grow flex flex-col justify-center items-center flex-shrink-0 hover:-translate-y-2 transition-transform">
-                <CldImage
-                  src={'Beauty/eyelashes_rxjgqz.jpg'}
-                  width="300"
-                  height="300"
-                  alt={'Gelakte wimpers en wenkbrauwen'}
-                  className="my-2 self-center rounded-md"
-                />
-                <p className="font-medium text-lg text-center text-black">
-                  Wimpers & wenkbrauwen lakken
-                </p>
+                <Link href={'/beauty/wimpers_&_wenkbrauwen'}>
+                  <CldImage
+                    src={'Beauty/eyelashes_rxjgqz.jpg'}
+                    width="300"
+                    height="300"
+                    alt={'Gelakte wimpers en wenkbrauwen'}
+                    className="my-2 self-center rounded-md"
+                  />
+                  <p className="font-medium text-lg text-center text-black">
+                    Wimpers & wenkbrauwen lakken
+                  </p>
+                </Link>
               </div>
               <div className="flex-grow flex flex-col justify-center items-center flex-shrink-0 hover:-translate-y-2 transition-transform">
                 <Link href={'/beauty/gelnagels'}>

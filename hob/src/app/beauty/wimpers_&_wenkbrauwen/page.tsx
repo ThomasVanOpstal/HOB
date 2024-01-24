@@ -1,9 +1,7 @@
 'use client'
 import { trpc } from '@/app/_trpc/client'
 import AltPricing from '@/components/AltPricing'
-import Options from '@/components/Options'
 import Pricing from '@/components/Pricing'
-import PricingManuel from '@/components/PricingManuel'
 import ImageGallery from '@/components/ui/ImageGallery'
 import Slider from '@/components/ui/Slider'
 import SliderPricing from '@/components/ui/SliderPricing'
@@ -11,12 +9,12 @@ import Socials from '@/components/ui/Socials'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 import { cn } from '@/lib/utils'
-import { SearchResult, image } from '@/types/type'
+import { image } from '@/types/type'
 import { Heart } from 'lucide-react'
 import { CldImage } from 'next-cloudinary'
-import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { MutableRefObject, useRef } from 'react'
 
 const page = () => {
   const galleryImages = trpc.getImages.useQuery({ folder: 'Beauty' })
@@ -27,6 +25,14 @@ const page = () => {
   if (service.status === 'success' && service.data) {
     const servicesData = service.data // Access the actual data
   } else if (service.status === 'error') {
+  }
+  //eslint-disable-next-line react-hooks/rules-of-hooks
+  const priceRef = useRef(null)
+  const scrollToSection = (ref: MutableRefObject<null | any>) => {
+    window.scrollTo({
+      top: ref.current.offsetTop - 100,
+      behavior: 'smooth',
+    })
   }
   //const serviceOptions = services.data?.Options.map((option) => option.Option)
   const images = galleryImages.data as image[]
@@ -122,12 +128,20 @@ const page = () => {
               natuurlijke schoonheid accentueert en versterkt.
             </p>
             <div className="flex flex-row gap-2 desktop:mb-0">
-              <Button variant={'default'} className="font-medium text-lg">
+              <Button
+                variant={'default'}
+                className="font-medium text-lg"
+                onClick={() => {
+                  scrollToSection(priceRef)
+                }}
+              >
                 Prijs
               </Button>
-              <Button variant={'default'} className="font-medium text-lg">
-                Contact
-              </Button>
+              <Link href={'/contact'}>
+                <Button variant={'default'} className="font-medium text-lg">
+                  Contact
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -163,7 +177,7 @@ const page = () => {
           )}
         </div>
       </div>
-      <div className="mb-12 mt-12">
+      <div className="mb-12 mt-12" ref={priceRef}>
         {service.status === 'success' && service.data ? (
           <Pricing pricingOptions={service.data} />
         ) : (

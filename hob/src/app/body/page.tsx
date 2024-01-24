@@ -53,8 +53,8 @@ const page = () => {
               </p>
             </div>
             <div className="md:basis-1/3 mt-4 ">
-              <Image
-                src={'/body.png'}
+              <CldImage
+                src={'/body_wthv6n.png'}
                 width="175"
                 height="175"
                 alt={'Tekening van een gezicht'}

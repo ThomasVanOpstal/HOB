@@ -1,17 +1,15 @@
 'use client'
-import Image from 'next/image'
-import { ChevronDown, Heart } from 'lucide-react'
-import { usePathname, useSearchParams } from 'next/navigation'
-import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-import { MutableRefObject, useRef } from 'react'
-import { cn } from '@/lib/utils'
-import Nav from '@/components/Nav'
-import Socials from '@/components/ui/Socials'
 import ImageGallery from '@/components/ui/ImageGallery'
+import Socials from '@/components/ui/Socials'
+import { cn } from '@/lib/utils'
 import { image } from '@/types/type'
-import { trpc } from '../_trpc/client'
+import { ChevronDown, Heart } from 'lucide-react'
 import { CldImage } from 'next-cloudinary'
+import Image from 'next/image'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { MutableRefObject, useRef } from 'react'
+import { trpc } from '../_trpc/client'
 const page = () => {
   const galleryImages = trpc.getImages.useQuery({ folder: 'Body' })
   const images = galleryImages.data as image[]
@@ -44,8 +42,8 @@ const page = () => {
               </p>
             </div>
             <div className="md:basis-1/3 mt-4">
-              <Image
-                src={'/face.png'}
+              <CldImage
+                src={'/face_vhgkdo.png'}
                 width="200"
                 height="200"
                 alt={'Tekening van een gezicht'}
@@ -98,26 +96,32 @@ const page = () => {
             <h1 className="font-medium text-2xl mb-8 text-black">Overzicht</h1>
             <div className="flex flex-col smd:flex-row smd:w-[750px] ">
               <div className="basis-1/2 flex flex-col justify-end items-center flex-shrink-0 hover:-translate-y-2 transition-transform mb-8 smd:mb-0">
-                <CldImage
-                  src={'Skin/gelaatsverzorging_ubtxpa.jpg'}
-                  width="300"
-                  height="300"
-                  alt={'Foto van een behandeling van de voeten'}
-                  className="my-2 self-center rounded-md"
-                />
-                <p className="font-medium text-lg text-black">
-                  Gelaatsverzorging
-                </p>
+                <Link href={'/skin/gelaatsverzorging'}>
+                  <CldImage
+                    src={'Skin/gelaatsverzorging_ubtxpa.jpg'}
+                    width="300"
+                    height="300"
+                    alt={'Foto van een behandeling van de voeten'}
+                    className="my-2 self-center rounded-md"
+                  />
+                  <p className="font-medium text-lg text-center text-black">
+                    Gelaatsverzorging
+                  </p>
+                </Link>
               </div>
               <div className="basis-1/2 flex flex-col justify-center items-center flex-shrink-0 hover:-translate-y-2 transition-transform">
-                <CldImage
-                  src={'Skin/dermatology_eeu7zy.jpg'}
-                  width="300"
-                  height="300"
-                  alt={'Foto van een behandeling van de voeten'}
-                  className="my-2 self-center rounded-md"
-                />
-                <p className="font-medium text-lg text-black">Dermaplanning</p>
+                <Link href={'/skin/dermaplanning'}>
+                  <CldImage
+                    src={'Skin/dermatology_eeu7zy.jpg'}
+                    width="300"
+                    height="300"
+                    alt={'Foto van een behandeling van de voeten'}
+                    className="my-2 self-center rounded-md"
+                  />
+                  <p className="font-medium text-lg text-center text-black">
+                    Dermaplanning
+                  </p>
+                </Link>
               </div>
             </div>
           </div>

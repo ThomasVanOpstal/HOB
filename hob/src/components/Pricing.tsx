@@ -5,6 +5,7 @@ import { FC } from 'react'
 import { Button } from './ui/button'
 import { Service } from '@/server/getServices'
 import { CldImage } from 'next-cloudinary'
+import Link from 'next/link'
 
 const Pricing = ({ pricingOptions }: { pricingOptions: Service }) => {
   return (
@@ -57,9 +58,11 @@ const Pricing = ({ pricingOptions }: { pricingOptions: Service }) => {
               {pricingOptions.Options[0].Option.Price[0]}
             </p>
           </div>
-          <Button variant="default" className="font-medium text-xl">
-            Contact
-          </Button>
+          <Link href={'/contact'}>
+            <Button variant="default" className="font-medium text-xl">
+              Contact
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

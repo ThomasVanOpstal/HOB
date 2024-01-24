@@ -12,9 +12,11 @@ import { Skeleton } from '@/components/ui/skeleton'
 import { cn } from '@/lib/utils'
 import { SearchResult, image } from '@/types/type'
 import { Heart } from 'lucide-react'
+import { CldImage } from 'next-cloudinary'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { MutableRefObject, useRef } from 'react'
 
 const page = () => {
   const galleryImages = trpc.getImages.useQuery({ folder: 'Beauty' })
@@ -23,6 +25,14 @@ const page = () => {
   if (service.status === 'success' && service.data) {
     const servicesData = service.data // Access the actual data
   } else if (service.status === 'error') {
+  }
+  //eslint-disable-next-line react-hooks/rules-of-hooks
+  const priceRef = useRef(null)
+  const scrollToSection = (ref: MutableRefObject<null | any>) => {
+    window.scrollTo({
+      top: ref.current.offsetTop - 100,
+      behavior: 'smooth',
+    })
   }
   //const serviceOptions = services.data?.Options.map((option) => option.Option)
   const images = galleryImages.data as image[]
@@ -35,72 +45,13 @@ const page = () => {
     index == 0 ? (option = '/') : (option += path + '/')
     options.push(option)
   })
-  const Gimages: image[] = [
-    {
-      name: 'Skin',
-      url: '/face.png',
-      alt: 'gezicht',
-      bg: 'bg-green',
-      w: 150,
-      h: 150,
-    },
-    {
-      name: 'Beauty',
-      url: '/hand.png',
-      alt: 'hand',
-      bg: 'bg-green',
-      w: 180,
-      h: 180,
-    },
-    {
-      name: 'Body',
-      url: '/body.png',
-      alt: 'lichaam',
-      bg: 'bg-green',
-      w: 100,
-      h: 100,
-    },
-  ]
-
-  const description = ['30 minuten', 'Ontspanning massage']
-  const price = 30
-  const title = 'Massage'
-  const mobileImage: image = {
-    name: 'Vrouw krijgt een ontspanning massage',
-    url: '/massageFlower.jpg',
-    alt: 'massage',
-    bg: 'bg-brokenWhite',
-    w: 450,
-    h: 450,
-  }
-  const desktopImage: image = {
-    name: 'Vrouw krijgt een ontspanning massage',
-    url: '/massagePricing.jpg',
-    alt: 'massage',
-    bg: 'bg-brokenWhite',
-    w: 300,
-    h: 300,
-  }
-  const pricingOption = {
-    description: description,
-    desktopImage: desktopImage,
-    mobileImage: mobileImage,
-    price: price,
-    title: title,
-  }
-  const pricingList = [
-    pricingOption,
-    pricingOption,
-    pricingOption,
-    pricingOption,
-  ]
 
   return (
     <>
       <div className="flex flex-col desktop:flex-row bg-darkBrown desktop:pt-2">
         <div className="desktop:basis-1/2 flex desktop:justify-start desktop:items-center">
-          <Image
-            src={'/handPainting.png'}
+          <CldImage
+            src={'Beauty/ybbtgbknstz9szd8opw3.png'}
             alt={'Gelakte nagels'}
             width={800}
             height={800}
@@ -152,12 +103,20 @@ const page = () => {
               van gelnagels!
             </p>
             <div className="flex flex-row gap-2 desktop:mb-0">
-              <Button variant={'default'} className="font-medium text-lg">
+              <Button
+                variant={'default'}
+                className="font-medium text-lg"
+                onClick={() => {
+                  scrollToSection(priceRef)
+                }}
+              >
                 Prijs
               </Button>
-              <Button variant={'default'} className="font-medium text-lg">
-                Contact
-              </Button>
+              <Link href={'/contact'}>
+                <Button variant={'default'} className="font-medium text-lg">
+                  Contact
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -193,11 +152,11 @@ const page = () => {
           )}
         </div>
       </div>
-      <div className="mb-12">
+      <div className="mb-12" ref={priceRef}>
         {service.status === 'success' && service.data ? (
           <Options service={service?.data} />
         ) : (
-          <Skeleton className="w-[250px] lsm:w-[400px] sm:w-[500px] desktop:h-[300px] h-[400px] m-auto my-4 shadow-lg " />
+          <Skeleton className="w-[250px] lsm:w-[400px] sm:w-[800px] desktop:h-[600px] h-[400px] m-auto my-4 shadow-lg " />
         )}
       </div>
       <div className="bg-brokenWhite flex flex-col sm:items-center sm:justify-center ">

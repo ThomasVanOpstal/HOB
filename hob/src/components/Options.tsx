@@ -1,10 +1,9 @@
+import { Service } from '@/server/getServices'
 import { Heart } from 'lucide-react'
 import { CldImage } from 'next-cloudinary'
 import Image from 'next/image'
 import { useState } from 'react'
 import { Button } from './ui/button'
-import { Service } from '@/server/getServices'
-import { set } from 'zod'
 const Options = ({ service }: { service: Service }) => {
   const options = service.Options.map((option) => option.Option)
   const [isVerlengingFilled, setVerlengingIsFilled] = useState(false)
@@ -16,18 +15,18 @@ const Options = ({ service }: { service: Service }) => {
     { givenPrice: number; name: String }[]
   >([])
   const divs = [
-    { alt: 'Babyboom', src: '/babyboom.png' },
-    { alt: 'French manicure', src: '/frenhv2.png' },
-    { alt: 'Blush', src: '/nail_glitter.png' },
-    { alt: 'Colorful nails', src: '/color_nail.png' },
-    { alt: 'Stones on nails', src: '/Nails_stones.png' },
+    { alt: 'Babyboom', src: 'Beauty/babyboom_vvifgm.png' },
+    { alt: 'French manicure', src: 'Beauty/frenhv2_vq13wo.png' },
+    { alt: 'Blush', src: 'Beauty/nail_glitter_bwjomq.png' },
+    { alt: 'Colorful nails', src: 'Beauty/color_nail_hgnjgv.png' },
+    { alt: 'Stones on nails', src: 'Beauty/Nails_stones_g5oytu.png' },
   ]
   const handleClick = (index: number) => {
-    setActiveDiv(index)
     setVerlengingIsFilled(false)
     setVerHandIsFilled(false)
     setVerwijderenIsFilled(false)
     setPrice(options[index].Price[0])
+    setActiveDiv(index)
   }
   const fillColor = (isfilled: boolean) => {
     if (isfilled) {
@@ -58,20 +57,8 @@ const Options = ({ service }: { service: Service }) => {
           alt={options[activeDiv].Image[0].Image.Alt}
           width={options[activeDiv].Image[0].Image.W}
           height={options[activeDiv].Image[0].Image.H}
-          sizes="(max-width: 480px) 100vw, 50vw"
         />
       </div>
-      {/* <div className="lsm:hidden basis-1/2 flex items-end justify-center min-h-[450px]">
-        <CldImage
-          priority
-          src={options[activeDiv].Image[1].Image.Url}
-          alt={options[activeDiv].Image[1].Image.Alt}
-          width={options[activeDiv].Image[1].Image.W}
-          height={options[activeDiv].Image[1].Image.H}
-          sizes="(max-width: 480px) 100vw, 50vw"
-        />
-      </div> */}
-
       <div className=" justify-center basis-1/2 flex flex-col ml-6 sm:ml-0 mb-2 mr-2">
         <div className="flex flex-row">
           <div className="basis-1/2">
@@ -97,7 +84,7 @@ const Options = ({ service }: { service: Service }) => {
               }`}
               onClick={() => handleClick(index)}
             >
-              <Image alt={div.alt} src={div.src} width={25} height={25} />
+              <CldImage alt={div.alt} src={div.src} width={25} height={25} />
             </div>
           ))}
         </div>
