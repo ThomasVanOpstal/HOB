@@ -4,9 +4,9 @@ import { FC } from 'react'
 
 interface pageProps {}
 
-const page: FC<pageProps> = async ({}) => {
+const page: FC<pageProps> = ({}) => {
   return (
-    <div className="flex flex-col mdd:flex-row w-full jusitfy-center items-center md:h-[600px] px-2 bg-pink overflow-x-hidden">
+    <div className="flex flex-col mdd:flex-row w-full jusitfy-center items-center md:h-[680px] px-2 bg-pink overflow-x-hidden">
       <div className="pt-4 md:mr-4 basis-1/2 order-2 flex flex-col sm:justify-center sm:items-center justify-end ">
         <div className="w-[250px] xsm:w-[300px] sm:w-[475px]">
           <div className="flex flex-row items-center mt-3 sm:mt-8 mb-8 mdd:mb-20 font-medium text-base xsm:text-xl sm:text-2xl desktop:text-3xl">

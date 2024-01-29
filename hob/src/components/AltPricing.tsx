@@ -12,8 +12,8 @@ interface PricingOptionProps {
 
 const AltPricing: FC<PricingOptionProps> = ({ pricingOptions }) => {
   return (
-    <div className="flex flex-col gap-1 mx-auto my-4 w-[250px] h-[500px] shadow-lg transition ease-in-out delay-100 hover:-translate-y-2 ">
-      <div className="basis-1/3 pt-5">
+    <div className="flex flex-col  mx-auto my-4 w-[250px] h-[500px] shadow-lg transition ease-in-out delay-100 hover:-translate-y-2 ">
+      <div className="h-[40%] flex items-end ">
         {pricingOptions.Image[1] ? (
           <CldImage
             src={pricingOptions.Image[1].Image.Url}
@@ -32,9 +32,9 @@ const AltPricing: FC<PricingOptionProps> = ({ pricingOptions }) => {
           )
         )}
       </div>
-      <div className="basis-2/3 flex flex-col justify-end items-center mb-2 mr-2">
+      <div className="basis-2/3 flex flex-col justify-end items-center mb-2 mt-4">
         <div className="basis-1/2 flex flex-col justify-center">
-          <h1 className="font-medium text-2xl text-center mb-2 ">
+          <h1 className="font-medium text-2xl text-center mb-6">
             {pricingOptions.name}
           </h1>
           <ul className="flex justify-center self-center flex-col">
@@ -74,7 +74,7 @@ const AltPricing: FC<PricingOptionProps> = ({ pricingOptions }) => {
               {pricingOptions.Options[0].Option.Price}
             </p> */}
         </div>
-        <Button variant="default" className="font-medium text-xl mt-4">
+        <Button variant="default" className="font-medium text-xl my-4">
           <Link href={`/${pricingOptions.Category.toLocaleLowerCase()}`}>
             Ontdek
           </Link>

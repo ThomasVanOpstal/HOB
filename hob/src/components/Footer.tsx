@@ -7,7 +7,7 @@ const Footer = () => {
     <>
       <div className="mx-auto">
         <div className="flex flex-col msm:flex-row msm:justify-start smd:justify-center max-h-[130px] bg-pink">
-          <div className="max-w-[230px] ml-4 mt-4  msm:m-8 ">
+          <div className="max-w-[230px] ml-4 mt-4 msm:m-8">
             <p className="font-medium text-xl mb-1">House of beauty</p>
             <p className="font-light text-xs">
               Ontdek kwaliteit bij House of Beauty. Laat ons je verwennen en

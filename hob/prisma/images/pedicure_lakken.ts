@@ -3,7 +3,7 @@ import { db } from '../seed'
 export async function Pedicure_lakken() {
   const pedicureDesktop = await db.image.upsert({
     where: {
-      id: 17, //12
+      id: 11,
     },
     update: {
       Url: `Beauty/LaurenFeet_qwkik0.jpg`,
@@ -22,7 +22,7 @@ export async function Pedicure_lakken() {
   })
   const pedicureMobile = await db.image.upsert({
     where: {
-      id: 18, //13
+      id: 12,
     },
     update: {
       Url: `Beauty/Pedicure_behandeling_ozuom9.jpg`,

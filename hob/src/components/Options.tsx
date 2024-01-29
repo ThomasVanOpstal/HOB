@@ -1,10 +1,23 @@
 import { Service } from '@/server/getServices'
 import { Heart } from 'lucide-react'
 import { CldImage } from 'next-cloudinary'
-import Image from 'next/image'
-import { useState } from 'react'
+import Link from 'next/link'
+import React, { useState } from 'react'
+import { Info } from 'lucide-react'
 import { Button } from './ui/button'
+import { ToggleGroup, ToggleGroupItem } from './ui/toggle-group'
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from './ui/tooltip'
+import { InfoDialog } from './ui/info-dialog'
+import { set } from 'zod'
 const Options = ({ service }: { service: Service }) => {
+  const [value, setValue] = React.useState('Small')
+  const [medium, setMedium] = React.useState(false)
+  const [large, setLarge] = React.useState(false)
   const options = service.Options.map((option) => option.Option)
   const [isVerlengingFilled, setVerlengingIsFilled] = useState(false)
   const [isVerHandFilled, setVerHandIsFilled] = useState(false)
@@ -46,6 +59,8 @@ const Options = ({ service }: { service: Service }) => {
           pricing.splice(index, 1)
         }
       })
+
+      setPricing(pricing)
     }
   }
 
@@ -88,40 +103,80 @@ const Options = ({ service }: { service: Service }) => {
             </div>
           ))}
         </div>
+        <span className="flex flex-row gap-1">
+          <h1 className="font-medium text-lg mb-2 ">Lengte</h1>
+          <InfoDialog />
+        </span>
+        <div className="flex flex-col mb-2">
+          <div className="flex flex-row gap-2">
+            <ToggleGroup
+              type="single"
+              variant={'outline'}
+              value={value}
+              onValueChange={(value) => {
+                if (value) setValue(value)
+              }}
+            >
+              <ToggleGroupItem
+                value="Small"
+                className="w-[40px]"
+                aria-label="Toggle bold"
+                onClick={() => {
+                  setMedium(false)
+                  setLarge(false)
+                  handleClick(activeDiv)
+                }}
+              >
+                {' '}
+                <p className="font-medium text-xl text-center text-darkPink ">
+                  S
+                </p>{' '}
+              </ToggleGroupItem>
+              <ToggleGroupItem
+                value="italic"
+                className="w-[40px]"
+                aria-label="Toggle italic"
+                onClick={() => {
+                  if (!medium && !large) {
+                    changePrice(10, medium, 'medium')
+                    setMedium(!medium)
+                  } else if (large) {
+                    console.log('large')
+                    changePrice(10, large, 'large')
+                    setLarge(!large)
+                  }
+                }}
+              >
+                <p className="font-medium text-xl text-center text-darkPink">
+                  M
+                </p>
+              </ToggleGroupItem>
+              <ToggleGroupItem
+                value="underline"
+                className="w-[40px]"
+                aria-label="Toggle underline"
+                onClick={() => {
+                  if (!medium && !large) {
+                    changePrice(10, large, 'medium')
+                    setLarge(!large)
+                  } else if (medium) {
+                    console.log('medium')
+                    await changePrice(15, large, 'large')
+                    changePrice(10, medium, 'medium')
+                    setMedium(!medium)
+                    setLarge(!large)
+                  }
+                }}
+              >
+                <p className="font-medium text-xl text-center text-darkPink">
+                  L
+                </p>
+              </ToggleGroupItem>
+            </ToggleGroup>
+          </div>
+        </div>
         <h1 className="font-medium text-lg mb-2 ">Extra</h1>
         <div className="flex flex-col mb-6">
-          <div className="flex flex-row gap-2">
-            <Heart
-              fill={fillColor(isVerlengingFilled)}
-              color="#f2c5b5"
-              size={25}
-              onClick={() => {
-                setVerlengingIsFilled(!isVerlengingFilled)
-                changePrice(
-                  options[6].Price[0],
-                  isVerlengingFilled,
-                  options[6].Name
-                )
-              }}
-            />
-            Verlenging voor 1 nagel
-          </div>
-          <div className="flex flex-row gap-2">
-            <Heart
-              fill={fillColor(isVerHandFilled)}
-              color="#f2c5b5"
-              size={25}
-              onClick={() => {
-                setVerHandIsFilled(!isVerHandFilled)
-                changePrice(
-                  options[5].Price[0],
-                  isVerHandFilled,
-                  options[5].Name
-                )
-              }}
-            />
-            Verlenging voor alle nagels
-          </div>
           <div className="flex flex-row gap-2">
             <Heart
               fill={fillColor(isVerwijderenFilled)}
@@ -139,9 +194,11 @@ const Options = ({ service }: { service: Service }) => {
             verwijderen gelnagel + nazorg
           </div>
         </div>
-        <Button variant="default" className="font-medium text-xl w-[100px] ">
-          Contact
-        </Button>{' '}
+        <Link href={'/contact'}>
+          <Button variant="default" className="font-medium text-xl w-[100px] ">
+            Contact
+          </Button>
+        </Link>{' '}
       </div>
     </div>
   )

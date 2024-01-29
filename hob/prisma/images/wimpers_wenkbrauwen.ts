@@ -3,7 +3,7 @@ import { db } from '../seed'
 export async function Wimpers_wenkbrauwen() {
   const wwDesktop = await db.image.upsert({
     where: {
-      id: 19, //14
+      id: 13,
     },
     update: {
       Url: `Beauty/Eyelashes_treatment_nswst3.jpg`,
@@ -22,7 +22,7 @@ export async function Wimpers_wenkbrauwen() {
   })
   const wwMobile = await db.image.upsert({
     where: {
-      id: 20, //15
+      id: 14,
     },
     update: {
       Url: `Beauty/eyelashes_rxjgqz.jpg`,

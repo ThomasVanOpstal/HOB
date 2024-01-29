@@ -12,6 +12,7 @@ import Link from 'next/link'
 import React from 'react'
 
 const NavMobile = ({}) => {
+  const preventDefault = (event: React.SyntheticEvent) => event.preventDefault()
   return (
     <>
       <DropdownMenu.Root>
@@ -46,20 +47,29 @@ const NavMobile = ({}) => {
                   sideOffset={2}
                   alignOffset={-5}
                 >
-                  <DropdownMenu.Item className="group text-[13px] hover:translate-x-1 ease-in-out leading-none rounded-[3px] flex items-center h-[25px] px-[5px] relative selection:select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1">
+                  <DropdownMenu.Item
+                    onClick={preventDefault}
+                    className="group text-[13px] hover:translate-x-1 ease-in-out leading-none rounded-[3px] flex items-center h-[25px] px-[5px] relative selection:select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1"
+                  >
                     <ChevronRight size={15} strokeWidth={1} />
                     <Link href="/beauty/pedicure_&_lakken">
                       Pedicure & lakken
                     </Link>
                   </DropdownMenu.Item>
 
-                  <DropdownMenu.Item className="group text-[13px] hover:translate-x-1 ease-in-out leading-none rounded-[3px] flex items-center h-[25px] px-[5px] relative selection:select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1">
+                  <DropdownMenu.Item
+                    onClick={preventDefault}
+                    className="group text-[13px] hover:translate-x-1 ease-in-out leading-none rounded-[3px] flex items-center h-[25px] px-[5px] relative selection:select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1"
+                  >
                     <ChevronRight size={15} strokeWidth={1} />
-                    <Link href="/beauty/Gelnagels">Gelnagels</Link>
+                    <Link href="/beauty/gelnagels">Gelnagels</Link>
                   </DropdownMenu.Item>
-                  <DropdownMenu.Item className="group text-[13px] hover:translate-x-1 ease-in-out leading-none rounded-[3px] flex items-center h-[25px] px-[5px] relative  select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1">
+                  <DropdownMenu.Item
+                    onClick={preventDefault}
+                    className="group text-[13px] hover:translate-x-1 ease-in-out leading-none rounded-[3px] flex items-center h-[25px] px-[5px] relative  select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1"
+                  >
                     <ChevronRight size={15} strokeWidth={1} />
-                    <Link href="/beauty/wimpers_&_wenkbrauwen_lakken">
+                    <Link href="/beauty/wimpers_&_wenkbrauwen">
                       Wimpers & wenkbrauwen lakken
                     </Link>
                   </DropdownMenu.Item>
@@ -79,13 +89,19 @@ const NavMobile = ({}) => {
                   sideOffset={2}
                   alignOffset={-5}
                 >
-                  <DropdownMenu.Item className="group text-[13px] hover:translate-x-1 ease-in-out leading-none rounded-[3px] flex items-center h-[25px] px-[5px] relative select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1">
+                  <DropdownMenu.Item
+                    onClick={preventDefault}
+                    className="group text-[13px] hover:translate-x-1 ease-in-out leading-none rounded-[3px] flex items-center h-[25px] px-[5px] relative select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1"
+                  >
                     <ChevronRight size={15} strokeWidth={1} />
                     <Link href="/skin/gelaatsverzorging">
                       Gelaatsverzorging
                     </Link>
                   </DropdownMenu.Item>
-                  <DropdownMenu.Item className="group text-[13px] hover:translate-x-1 ease-in-out leading-none rounded-[3px] flex items-center h-[25px] px-[5px] relative select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1">
+                  <DropdownMenu.Item
+                    onClick={preventDefault}
+                    className="group text-[13px] hover:translate-x-1 ease-in-out leading-none rounded-[3px] flex items-center h-[25px] px-[5px] relative select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1"
+                  >
                     <ChevronRight size={15} strokeWidth={1} />
                     <Link href="/skin/dermaplanning">DermaPlanning</Link>
                   </DropdownMenu.Item>
@@ -105,23 +121,32 @@ const NavMobile = ({}) => {
                   sideOffset={2}
                   alignOffset={-5}
                 >
-                  <DropdownMenu.Item className="group text-[13px] hover:translate-x-1 ease-in-out leading-none rounded-[3px] flex items-center h-[25px] px-[5px] relative select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1">
+                  <DropdownMenu.Item
+                    onClick={preventDefault}
+                    className="group text-[13px] hover:translate-x-1 ease-in-out leading-none rounded-[3px] flex items-center h-[25px] px-[5px] relative select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1"
+                  >
                     <ChevronRight size={15} strokeWidth={1} />
-                    <Link href="/">Massage</Link>
+                    <Link href="/body/massage">Massage</Link>
                   </DropdownMenu.Item>
                 </DropdownMenu.SubContent>
               </DropdownMenu.Portal>
             </DropdownMenu.Sub>
             <DropdownMenu.Separator className="h-[1px] m-[5px] bg-pink" />
-            <DropdownMenu.Item className="group text-[13px] hover:translate-x-1 font-normal text-sm leading-none rounded-[3px] flex items-center h-[25px] px-[5px] relative  select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none">
+            <DropdownMenu.Item
+              onClick={preventDefault}
+              className="group text-[13px] hover:translate-x-1 font-normal text-sm leading-none rounded-[3px] flex items-center h-[25px] px-[5px] relative  select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none"
+            >
               <Home size={15} strokeWidth={1} />
-              <Link href="/" className="ml-1">
+              <Link href="/contact" className="ml-1">
                 Contact
               </Link>
             </DropdownMenu.Item>
-            <DropdownMenu.Item className="group text-[13px] hover:translate-x-1 font-normal text-sm leading-none rounded-[3px] flex items-center h-[25px] px-[5px] relative  select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none">
+            <DropdownMenu.Item
+              onClick={preventDefault}
+              className="group text-[13px] hover:translate-x-1 font-normal text-sm leading-none rounded-[3px] flex items-center h-[25px] px-[5px] relative  select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none"
+            >
               <Globe2 size={15} strokeWidth={1} />
-              <Link href="/" className="ml-1">
+              <Link href="/about" className="ml-1">
                 About me
               </Link>
             </DropdownMenu.Item>

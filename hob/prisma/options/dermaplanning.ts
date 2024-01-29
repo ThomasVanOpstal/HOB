@@ -1,9 +1,9 @@
 import { Category } from '@prisma/client'
 import { db } from '../seed'
 export async function dermaplanningOptions() {
-  const gelaatsverzorging = await db.option.upsert({
+  const dermaverzorging = await db.option.upsert({
     where: {
-      id: 14,
+      id: 15,
     },
     update: {},
     create: {
@@ -19,7 +19,11 @@ export async function dermaplanningOptions() {
           //desktop & mobile
           {
             assignedBy: 'Thomas Van Opstal',
-            imageId: 23, //16
+            imageId: 17,
+          },
+          {
+            assignedBy: 'Thomas Van Opstal',
+            imageId: 18,
           },
         ],
       },

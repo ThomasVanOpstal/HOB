@@ -110,8 +110,8 @@ const Slider = ({
                     key={i}
                     src={image.url}
                     alt={image.alt}
-                    width={250}
-                    height={250}
+                    width={image.w}
+                    height={image.h}
                     className="mt-12"
                   />
                 ) : (

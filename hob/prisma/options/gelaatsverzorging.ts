@@ -3,7 +3,7 @@ import { db } from '../seed'
 export async function GelaatsverzorgingOptions() {
   const gelaatsverzorging = await db.option.upsert({
     where: {
-      id: 13,
+      id: 14,
     },
     update: {},
     create: {
@@ -19,7 +19,11 @@ export async function GelaatsverzorgingOptions() {
           //desktop & mobile
           {
             assignedBy: 'Thomas Van Opstal',
-            imageId: 21, //16
+            imageId: 15,
+          },
+          {
+            assignedBy: 'Thomas Van Opstal',
+            imageId: 16,
           },
         ],
       },

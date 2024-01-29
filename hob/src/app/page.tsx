@@ -11,7 +11,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Router, useRouter } from 'next/router'
 import { MutableRefObject, useRef } from 'react'
-const page = async () => {
+const page = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const services = useRef(null)
   const scrollToSection = (ref: MutableRefObject<null | any>) => {

@@ -3,7 +3,7 @@ import { db } from '../seed'
 export async function Wimpers_wenkbrauwen_options() {
   const wimpersWenkbrauwen = await db.option.upsert({
     where: {
-      id: 12,
+      id: 13,
     },
     update: {},
     create: {
@@ -19,7 +19,11 @@ export async function Wimpers_wenkbrauwen_options() {
           //desktop & mobile
           {
             assignedBy: 'Thomas Van Opstal',
-            imageId: 21, //16
+            imageId: 13,
+          },
+          {
+            assignedBy: 'Thomas Van Opstal',
+            imageId: 14,
           },
         ],
       },

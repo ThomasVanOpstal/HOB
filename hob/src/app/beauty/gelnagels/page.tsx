@@ -4,6 +4,7 @@ import AltPricing from '@/components/AltPricing'
 import Options from '@/components/Options'
 import Pricing from '@/components/Pricing'
 import ImageGallery from '@/components/ui/ImageGallery'
+import SideGallery from '@/components/ui/SideGallery'
 import Slider from '@/components/ui/Slider'
 import SliderPricing from '@/components/ui/SliderPricing'
 import Socials from '@/components/ui/Socials'
@@ -137,7 +138,7 @@ const page = () => {
           ) : (
             <div>
               <div className="hidden sm:block">
-                <ImageGallery images={images} className="hidden sm:block" />
+                <SideGallery images={images} />
               </div>
 
               <div className="block sm:hidden">

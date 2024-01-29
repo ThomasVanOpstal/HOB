@@ -19,7 +19,7 @@ export async function Pedicure_lakken_options() {
           //desktop & mobile
           {
             assignedBy: 'Thomas Van Opstal',
-            imageId: 12, //12
+            imageId: 11, //12
           },
           {
             assignedBy: 'Thomas Van Opstal',
@@ -27,6 +27,21 @@ export async function Pedicure_lakken_options() {
           },
         ],
       },
+    },
+  })
+  const Lakken = await db.option.upsert({
+    where: {
+      id: 12,
+    },
+    update: {},
+    create: {
+      Category: Category.Beauty,
+      Subcategory: ['Nagels', 'Pedicure', 'Lakken'],
+      Description:
+        'Het lakken van teennagels is een cosmetische praktijk waarbij nagellak wordt aangebracht op de nagels van de tenen. Nagellak is verkrijgbaar in verschillende kleuren, texturen en afwerkingen.',
+      Price: [3, 3, 3],
+      Time: [5, 5, 5],
+      Name: 'Lakken teenagels',
     },
   })
 }

@@ -19,16 +19,6 @@ export async function massageOptions() {
           {
             assignedBy: 'Thomas Van Opstal',
 
-            imageId: 5,
-          },
-          {
-            assignedBy: 'Thomas Van Opstal',
-
-            imageId: 8,
-          },
-          {
-            assignedBy: 'Thomas Van Opstal',
-
             imageId: 9,
           },
         ],

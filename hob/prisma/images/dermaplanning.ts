@@ -3,7 +3,7 @@ import { db } from '../seed'
 export async function DermaplanningImages() {
   const dermaplanningDesktop = await db.image.upsert({
     where: {
-      id: 23, //17
+      id: 17,
     },
     update: {
       Url: `Skin/Dermaplanning_treatment_juwxr8.jpg`,
@@ -22,7 +22,7 @@ export async function DermaplanningImages() {
   })
   const dermaplanningMobile = await db.image.upsert({
     where: {
-      id: 24, //18
+      id: 18,
     },
     update: {
       Url: `Skin/dermatology_eeu7zy.jpg`,
