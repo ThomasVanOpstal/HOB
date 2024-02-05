@@ -27,9 +27,9 @@ const NavDesk = () => {
                     h-full w-full select-none flex-col justify-center rounded-[6px] bg-gradient-to-b p-[25px] no-underline outline-none focus:shadow-[0_0_0_2px]"
                       href="/beauty"
                     >
-                      <Image
+                      <CldImage
                         alt="Tekening hand"
-                        src={'/hand.png'}
+                        src={'/hand_igki2c.png'}
                         width={700}
                         height={700}
                       />

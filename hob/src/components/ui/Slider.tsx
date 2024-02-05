@@ -136,7 +136,9 @@ const Slider = ({
                   }
                   className={cn('font-medium text-xl mt-4 mb-8')}
                 >
-                  <Link href={'/'}>{image.name}</Link>
+                  <Link href={`/${image.name.toLocaleLowerCase()}`}>
+                    {image.name}
+                  </Link>
                 </Button>
               )}
             </div>
