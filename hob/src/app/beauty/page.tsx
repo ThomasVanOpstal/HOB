@@ -15,8 +15,6 @@ import { CldImage } from 'next-cloudinary'
 import { Metadata } from 'next'
 
 const page = () => {
-  const galleryImages = trpc.getImages.useQuery({ folder: 'Body' })
-  const images = galleryImages.data as image[]
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const servicesSkin = useRef(null)
   const scrollToSection = (ref: MutableRefObject<null | any>) => {
