@@ -13,9 +13,7 @@ import { trpc } from '../_trpc/client'
 import { image } from '@/types/type'
 import { CldImage } from 'next-cloudinary'
 import { Metadata } from 'next'
-export const metadata: Metadata = {
-  title: 'Beauty',
-}
+
 const page = () => {
   const galleryImages = trpc.getImages.useQuery({ folder: 'Body' })
   const images = galleryImages.data as image[]

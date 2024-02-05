@@ -11,9 +11,7 @@ import { usePathname } from 'next/navigation'
 import { MutableRefObject, useRef } from 'react'
 import { trpc } from '../_trpc/client'
 import { Metadata } from 'next'
-export const metadata: Metadata = {
-  title: 'Skin',
-}
+
 const page = () => {
   const galleryImages = trpc.getImages.useQuery({ folder: 'Body' })
   const images = galleryImages.data as image[]

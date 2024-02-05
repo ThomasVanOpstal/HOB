@@ -16,9 +16,7 @@ import { CldImage } from 'next-cloudinary'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { MutableRefObject, use, useEffect, useRef } from 'react'
-export const metadata: Metadata = {
-  title: 'Gelnagels',
-}
+
 const Page = () => {
   const galleryImages = trpc.getImages.useQuery(
     { folder: 'Beauty' },

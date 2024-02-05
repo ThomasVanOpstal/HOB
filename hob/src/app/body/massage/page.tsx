@@ -14,9 +14,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { MutableRefObject, useRef } from 'react'
-export const metadata: Metadata = {
-  title: 'Massage',
-}
+
 const page = () => {
   // const galleryImages = trpc.getImages.useQuery({ folder: 'Body' })
   const services = trpc.getAllServices.useQuery()
