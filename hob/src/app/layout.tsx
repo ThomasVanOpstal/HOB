@@ -84,6 +84,7 @@ export const metadata: Metadata = {
     title: 'House of beauty',
     statusBarStyle: 'black-translucent',
   },
+  metadataBase: new URL('https://HouseofBeautybyLauren.be'),
 }
 
 export default function RootLayout({
