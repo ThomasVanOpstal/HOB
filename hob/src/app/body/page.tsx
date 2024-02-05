@@ -10,6 +10,10 @@ import { MutableRefObject, useRef } from 'react'
 import { trpc } from '../_trpc/client'
 import { image } from '@/types/type'
 import { CldImage } from 'next-cloudinary'
+import { Metadata } from 'next'
+export const metadata: Metadata = {
+  title: 'Body',
+}
 const page = () => {
   const galleryImages = trpc.getImages.useQuery(
     { folder: 'Body' },
@@ -58,8 +62,8 @@ const page = () => {
                 width="175"
                 height="175"
                 alt={'Tekening van een gezicht'}
-                sizes="(max-width: 150px) 33vw"
                 className="md:mx-auto"
+                priority
               />
             </div>
           </div>

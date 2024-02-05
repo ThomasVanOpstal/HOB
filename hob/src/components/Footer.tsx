@@ -1,6 +1,7 @@
+'use client'
 import { Facebook, Home, Instagram, Mail, MapPin, Phone } from 'lucide-react'
 import Link from 'next/link'
-import Image from 'next/image'
+import { CldImage } from 'next-cloudinary'
 
 const Footer = () => {
   return (
@@ -17,32 +18,23 @@ const Footer = () => {
           <div className="flex flex-row msm:flex-col ml-4 my-4 msm:m-8 ">
             <p className="font-medium text-lg hidden msm:block">Find me</p>
             <div className="flex flex-row">
-              <Link href={''}>
+              <Link href={'/'}>
                 <Home size={20} className="mr-2 msm:mt-2" />
               </Link>
-              <Link href={''}>
+              <Link
+                href={'https://www.facebook.com/profile.php?id=100094221503950'}
+              >
                 <Facebook size={20} className=" mr-2 msm:mt-2" />
               </Link>
-              <Link href={''}>
+              <Link
+                href={'https://www.instagram.com/house_of_beauty_by_lauren/'}
+              >
                 <Instagram size={20} className=" mr-2 msm:mt-2" />
               </Link>
             </div>
           </div>
-          <div className="hidden msm:flex flex-row msm:flex-col ml-4 mt-4  msm:m-8">
-            <p className="font-medium text-lg hidden msm:block">Info</p>
-            <div className="flex flex-col">
-              <Link href={''} className="font-normal text-sm text-left">
-                Contact
-              </Link>
-              <Link href={''} className="font-normal text-sm text-left ">
-                Aanbod
-              </Link>
-              <Link href={''} className="font-normal text-sm text-left">
-                Prijslijst
-              </Link>
-            </div>
-          </div>
-          <div className="lg:flex flex-col m-8 self-center hidden">
+
+          <div className="lg:flex flex-col m-8 self-center hidden pt-6">
             <div className="flex">
               <Phone size={20} className="mr-8" />
               <p>0479369178</p>
@@ -57,8 +49,8 @@ const Footer = () => {
             </div>
           </div>
           <div className="grow smd:flex items-center justify-center hidden">
-            <Image
-              src="/faceRemBg.png"
+            <CldImage
+              src={'v1707125739/faceRemBg_pwqifp.png'}
               alt="drawing of face"
               width={125}
               height={125}

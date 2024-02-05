@@ -13,6 +13,7 @@ import {
 } from './alert-dialog'
 import Image from 'next/image'
 import { image } from '@/types/type'
+import { CldImage } from 'next-cloudinary'
 
 interface ClickDialogProps extends React.ComponentPropsWithoutRef<'div'> {
   description: React.ReactNode
@@ -28,16 +29,16 @@ const ClickDialog: FC<ClickDialogProps> = ({
 }) => {
   return (
     <>
-      <div className={className}>
+      <div className={className} onClick={() => {}}>
         <AlertDialog>
           <AlertDialogTrigger>
             {' '}
-            <Image
+            <CldImage
               src={frontImage.url}
               height={frontImage.h}
               width={frontImage.w}
               alt={frontImage.alt}
-              className="rounded-md"
+              className="rounded-full"
             />
           </AlertDialogTrigger>
           <AlertDialogContent>
@@ -46,7 +47,7 @@ const ClickDialog: FC<ClickDialogProps> = ({
                 <XCircle color="#F9D4C6" className="ml-auto" />
               </AlertDialogCancel>
               <AlertDialogTitle>
-                <Image
+                <CldImage
                   src={dialogImage.url}
                   height={dialogImage.h}
                   width={dialogImage.w}

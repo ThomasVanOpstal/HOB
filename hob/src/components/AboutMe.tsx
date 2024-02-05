@@ -1,16 +1,17 @@
 import Image from 'next/image'
 import { Button } from './ui/button'
 import Link from 'next/link'
+import { CldImage } from 'next-cloudinary'
 const AboutMe = () => {
   return (
     <>
       <div className="flex sm:flex-row flex-col justify-center items-center bg-brokenPink">
         <div className="basis-1/2 flex justify-center flex-shrink-0">
-          <Image
-            src={'/LaurenHandSliert.png'}
+          <CldImage
+            src={'v1707125453/LaurenHandSliert_hiq9oy.png'}
             width={400}
             height={400}
-            alt="Dit is Lauren de uitbaatster van House of beauty"
+            alt="Lauren de uitbaatster van House of beauty"
             className="flex-shrink-0"
           />
         </div>

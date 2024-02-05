@@ -7,6 +7,7 @@ import { FC, useEffect, useRef } from 'react'
 import { image } from '@/types/type'
 import { motion as m } from 'framer-motion'
 import { Bold, Heart } from 'lucide-react'
+import { CldImage } from 'next-cloudinary'
 interface pageProps {}
 
 const page: FC<pageProps> = ({}) => {
@@ -20,7 +21,7 @@ const page: FC<pageProps> = ({}) => {
   }, [controls, isInView])
   const f1: image = {
     name: 'Basiliek',
-    url: '/basiliek.png',
+    url: 'About/basiliek_eywcgc.png',
     h: 75,
     w: 75,
     alt: 'Basiliek',
@@ -28,31 +29,31 @@ const page: FC<pageProps> = ({}) => {
   }
   const d1: image = {
     name: 'Basiliek',
-    url: '/fullBasiliek.jpg',
-    h: 150,
-    w: 150,
+    url: 'About/fullBasiliek_wn4sek.jpg',
+    h: 300,
+    w: 300,
     alt: 'Basiliek',
     bg: '#F9D4C6',
   }
   const f2: image = {
     name: 'WZC sint-jozef',
-    url: '/WZC.png',
+    url: 'About/careCenters_otwzu2.jpg',
     h: 75,
     w: 75,
-    alt: 'WZC sint-jan, rusthuis',
+    alt: 'Rusthuis',
     bg: '#F9D4C6',
   }
   const d2: image = {
     name: 'Rusthuis',
-    url: '/rusthuis.jpg',
+    url: 'About/rusthuis_ng00dj.jpg',
     h: 150,
     w: 150,
-    alt: 'WZC sint-jan, rusthuis',
+    alt: 'Rusthuis',
     bg: '#F9D4C6',
   }
   const f3: image = {
     name: 'Frieten',
-    url: '/fries.jpg',
+    url: 'About/fries_zcbr1w.jpg',
     h: 75,
     w: 75,
     alt: 'Frieten',
@@ -60,7 +61,7 @@ const page: FC<pageProps> = ({}) => {
   }
   const d3: image = {
     name: 'Frieten',
-    url: '/fries.jpg',
+    url: 'About/fries_zcbr1w.jpg',
     h: 100,
     w: 100,
     alt: 'Frieten',
@@ -68,7 +69,7 @@ const page: FC<pageProps> = ({}) => {
   }
   const f4: image = {
     name: 'Nails',
-    url: '/artNails.jpg',
+    url: 'About/artNails_df0nxr.jpg',
     h: 75,
     w: 75,
     alt: 'Nagels',
@@ -76,7 +77,7 @@ const page: FC<pageProps> = ({}) => {
   }
   const d4: image = {
     name: 'Nails',
-    url: '/artNails.jpg',
+    url: 'About/artNails_df0nxr.jpg',
     h: 100,
     w: 100,
     alt: 'Nagels',
@@ -84,18 +85,18 @@ const page: FC<pageProps> = ({}) => {
   }
   const f5: image = {
     name: 'Triplets',
-    url: '/triplets.jpg',
+    url: 'About/triplets_wwdkd9.jpg',
     h: 75,
     w: 75,
-    alt: 'Triplets',
+    alt: 'Drieling',
     bg: '#F9D4C6',
   }
   const d5: image = {
     name: 'Triplets',
-    url: '/triplets.jpg',
+    url: 'About/triplets_wwdkd9.jpg',
     h: 150,
     w: 150,
-    alt: 'Triplets',
+    alt: 'Drieling',
     bg: '#F9D4C6',
   }
   const descriptionBasiliek: React.ReactNode = (
@@ -217,16 +218,16 @@ const page: FC<pageProps> = ({}) => {
     <>
       <div>
         <div className="full-w bg-pink">
-          <div className="flex flex-col w-[300px] msm:flex-row gap-2 msm:w-full items-center justify-center mx-auto msm:max-w-[1000px] min-h-[400px] ">
-            <div className="basis-1/2 flex items-center justify-center">
-              <Image
-                src={'/women.png'}
+          <div className="flex flex-col w-[300px] msm:flex-row gap-2 msm:w-full  mx-auto msm:max-w-[1000px] min-h-[400px] ">
+            <div className="basis-1/2 flex">
+              <CldImage
+                src={'v1707125739/faceRemBg_pwqifp.png'}
                 width={400}
                 height={400}
-                alt="Women with handgloves"
+                alt="Tekening van een gezicht"
               />
             </div>
-            <div className="basis-1/2 flex items-center">
+            <div className="basis-1/2 flex items-center justify-center">
               <p className="font-medium text-3xl mdd:text-5xl">
                 Wie zit er achter
                 <br /> House of beauty?
@@ -241,16 +242,18 @@ const page: FC<pageProps> = ({}) => {
             <m.div
               initial={{ x: -100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
+              className="mouse-pointer"
             >
               <ClickDialog
                 description={descriptionRusthuis}
                 dialogImage={d2}
                 frontImage={f2}
-                className="flex justify-center items-center hover:-translate-y-2 transition-all  ease-in-out"
+                className="flex justify-center items-center hover:-translate-y-2 transition-all ease-in-out "
               />
             </m.div>
             <m.div
               initial={{ x: -100, opacity: 0 }}
+              className="mouse-pointer"
               animate={{ x: 0, opacity: 1 }}
             >
               <ClickDialog
@@ -265,6 +268,7 @@ const page: FC<pageProps> = ({}) => {
             <div className="self-end mx-auto">
               <m.div
                 initial={{ x: -100, opacity: 0 }}
+                className="mouse-pointer"
                 animate={{ x: 0, opacity: 1 }}
               >
                 <ClickDialog
@@ -274,12 +278,12 @@ const page: FC<pageProps> = ({}) => {
                   className="mb-8 flex justify-center items-center hover:-translate-y-2 transition-all ease-in-out"
                 />
               </m.div>
-              <Image
-                src={'/womenCrossedArms.png'}
-                height={200}
-                width={200}
-                alt="Women with crossed arms"
-                className="pl-2 hidden lsm:block"
+              <CldImage
+                src={'About/Lauren_plcjzt.png'}
+                height={250}
+                width={250}
+                alt="Lauren van opstal"
+                className="pl-2 hidden lsm:block rounded-3xl"
               />
             </div>
           </div>
@@ -288,6 +292,7 @@ const page: FC<pageProps> = ({}) => {
             <m.div
               initial={{ x: -100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
+              className="mouse-pointer"
             >
               <ClickDialog
                 description={descriptionFrieten}
@@ -299,6 +304,7 @@ const page: FC<pageProps> = ({}) => {
             <m.div
               initial={{ x: -100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
+              className="mouse-pointer"
             >
               <ClickDialog
                 description={descriptionNails}

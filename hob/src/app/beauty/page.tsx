@@ -12,6 +12,10 @@ import ImageGallery from '@/components/ui/ImageGallery'
 import { trpc } from '../_trpc/client'
 import { image } from '@/types/type'
 import { CldImage } from 'next-cloudinary'
+import { Metadata } from 'next'
+export const metadata: Metadata = {
+  title: 'Beauty',
+}
 const page = () => {
   const galleryImages = trpc.getImages.useQuery({ folder: 'Body' })
   const images = galleryImages.data as image[]
@@ -51,6 +55,7 @@ const page = () => {
                 height="300"
                 alt={'Tekening van een gezicht'}
                 className="md:mx-auto"
+                priority
               />
             </div>
           </div>
@@ -142,22 +147,6 @@ const page = () => {
               </div>
             </div>
           </div>
-        </div>
-        <div className="flex flex-col justify-center items-center py-8  bg-green">
-          <h1 className="font-medium mb-2 text-3xl ">Onze Beauties</h1>
-          <div className="mb-4">
-            <Socials />
-          </div>
-          {galleryImages.isLoading ? (
-            <div className="min-h-[300px] flex flex-col gap-2 items-center justify-center">
-              <div className="animate-bounce">
-                <Heart fill="red" color="red" size={75} />
-              </div>
-              <p>Loading...</p>
-            </div>
-          ) : (
-            <ImageGallery images={images} />
-          )}
         </div>
       </div>
     </>

@@ -2,8 +2,6 @@
 import { trpc } from '@/app/_trpc/client'
 import AltPricing from '@/components/AltPricing'
 import Options from '@/components/Options'
-import Pricing from '@/components/Pricing'
-import ImageGallery from '@/components/ui/ImageGallery'
 import SideGallery from '@/components/ui/SideGallery'
 import Slider from '@/components/ui/Slider'
 import SliderPricing from '@/components/ui/SliderPricing'
@@ -11,18 +9,26 @@ import Socials from '@/components/ui/Socials'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 import { cn } from '@/lib/utils'
-import { SearchResult, image } from '@/types/type'
+import { image } from '@/types/type'
 import { Heart } from 'lucide-react'
+import { Metadata } from 'next'
 import { CldImage } from 'next-cloudinary'
-import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { MutableRefObject, useRef } from 'react'
-
-const page = () => {
-  const galleryImages = trpc.getImages.useQuery({ folder: 'Beauty' })
-  const services = trpc.getAllServices.useQuery()
-  const service = trpc.getServices.useQuery({ Service: 'Gelnagels' })
+import { MutableRefObject, use, useEffect, useRef } from 'react'
+export const metadata: Metadata = {
+  title: 'Gelnagels',
+}
+const Page = () => {
+  const galleryImages = trpc.getImages.useQuery(
+    { folder: 'Beauty' },
+    { enabled: false }
+  )
+  const services = trpc.getAllServices.useQuery(undefined, { enabled: false })
+  const service = trpc.getServices.useQuery(
+    { Service: 'Gelnagels' },
+    { enabled: false }
+  )
   if (service.status === 'success' && service.data) {
     const servicesData = service.data // Access the actual data
   } else if (service.status === 'error') {
@@ -35,8 +41,17 @@ const page = () => {
       behavior: 'smooth',
     })
   }
+  const handleFunctions = () => {
+    galleryImages.refetch()
+    services.refetch()
+    service.refetch()
+  }
+  useEffect(() => {
+    handleFunctions()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
   //const serviceOptions = services.data?.Options.map((option) => option.Option)
-  const images = galleryImages.data as image[]
+  // const images = galleryImages.data as image[]
   //eslint-disable-next-line react-hooks/rules-of-hooks
   const pathname = usePathname()
   const pathnames = pathname.split('/')
@@ -46,7 +61,29 @@ const page = () => {
     index == 0 ? (option = '/') : (option += path + '/')
     options.push(option)
   })
-
+  const images: image[] = [
+    {
+      name: 'GelPolish',
+      url: 'Beauty/gel_v1_wanv3w.jpg',
+      alt: 'Gelnagels',
+      w: 250,
+      h: 250,
+    },
+    {
+      name: 'GelPolish',
+      url: 'Beauty/gel_v2_apripd.jpg',
+      alt: 'Gelnagels',
+      w: 250,
+      h: 250,
+    },
+    {
+      name: 'GelPolish',
+      url: 'Beauty/gel_v3_poabqf.jpg',
+      alt: 'Gelnagels',
+      w: 250,
+      h: 250,
+    },
+  ]
   return (
     <>
       <div className="flex flex-col desktop:flex-row bg-darkBrown desktop:pt-2">
@@ -56,6 +93,7 @@ const page = () => {
             alt={'Gelakte nagels'}
             width={800}
             height={800}
+            priority
           />
         </div>
         <div className="mx-4 my-3 desktop:my-6 desktop:basis-1/2 flex flex-col justify-center items-center">
@@ -167,7 +205,10 @@ const page = () => {
 
         <div className="mb-6 sm:hidden">
           {services.status === 'success' ? (
-            <SliderPricing pricingOptions={services.data} />
+            <SliderPricing
+              pricingOptions={services.data}
+              pathname={pathnames.at(-1)?.toLowerCase().trim()}
+            />
           ) : (
             <Skeleton className="my-4 w-[250px] h-[500px] shadow-lg mx-auto" />
           )}
@@ -176,11 +217,9 @@ const page = () => {
           {services.status === 'success' ? (
             services.data.map((pricingOption, index) => {
               const lowerCaseName = pricingOption.name.toLowerCase().trim()
-              console.log(pricingOption.name.toLowerCase())
-              console.log(pathnames.at(-1)?.toLowerCase().trim())
               if (
                 lowerCaseName !== pathnames.at(-1)?.toLowerCase().trim() &&
-                index < 3
+                index < 4
               ) {
                 return <AltPricing key={index} pricingOptions={pricingOption} />
               } else {
@@ -200,4 +239,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

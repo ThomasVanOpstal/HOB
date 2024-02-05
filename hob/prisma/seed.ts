@@ -30,7 +30,7 @@ async function main() {
       Subcategory: 'Nagels',
       name: 'Gelnagels',
       Description:
-        'Gelnagels zijn de ultieme manier om je nagels (handen en voeten) te transformeren tot ware kunstwerken! Met hun duurzaamheid, veelzijdigheid en schitterende uitstraling, zijn gelnagels de keuze voor iedereen die er altijd op zijn best uit wil zien.Of je nu op zoek bent naar een verfijnde en klassieke look of juist iets gewaagders wilt proberen, gelnagels bieden eindeloze mogelijkheden voor nagelkunst en blijven er perfect uitzien, waar je ook gaat. Transformeer je nagels en verwen jezelf met de prachtige wereld van gelnagels!',
+        'Gelnagels zijn de ultieme manier om je nagels (handen en voeten) te transformeren tot ware kunstwerken!',
       Image: {
         create: [
           {
@@ -88,7 +88,7 @@ async function main() {
       Subcategory: 'Massage',
       name: 'Ontspannende massage',
       Description:
-        'Een massage is als een verwenmoment voor je lichaam en geest. Het is een therapie waarbij een ervaren therapeut je spieren, weefsels en gewrichten behandelt om stress te verminderen, pijn te verlichten en algeheel welzijn te bevorderen. Massage verbetert de bloedcirculatie, verhoogt de flexibiliteit en versnelt het herstel na blessures. Wij bieden een ontspanningsmassage aan om uw lichaam helemaal tot rust te laten komen. Klaar om te ontspannen? Wacht niet langer en boek nu je massage-ervaring!',
+        'Een massage is als een verwenmoment voor je lichaam en geest.',
       Price: 50,
       Time: 60,
       Image: {
@@ -116,7 +116,7 @@ async function main() {
       Subcategory: 'Nagels',
       name: 'Pedicure',
       Description:
-        'Stel je voor: een luxueuze behandeling die niet alleen je voeten transformeert, maar ook een weldaad is voor je hele lichaam. Dat is precies wat een pedicure voor jou kan betekenen. Een pedicure is veel meer dan alleen het knippen van nagels en het verwijderen van eelt. Het is een op maat gemaakte ervaring die gericht is op het herstellen en verjongen van je voeten, waardoor je niet alleen letterlijk, maar ook figuurlijk op wolken loopt.',
+        'Stel je voor: een luxueuze behandeling die niet alleen je voeten transformeert, maar ook een weldaad is voor je hele lichaam.',
       Image: {
         create: [
           //desktop & mobile priceslider
@@ -151,7 +151,7 @@ async function main() {
       Subcategory: 'Gezicht',
       name: 'Dermaplanning',
       Description:
-        'Ontdek de geheime sleutel tot een zijdezachte, stralende huid met onze Dermaplaning-behandeling! Dit niet-invasieve proces gebruikt een speciaal mesje om voorzichtig dode huidcellen en fijne donshaartjes te verwijderen, waardoor je huid direct verfrist en verjongd aanvoelt.',
+        'Ontdek de geheime sleutel tot een zijdezachte, stralende huid met onze Dermaplaning-behandeling! ',
       Image: {
         create: [
           {
@@ -181,7 +181,7 @@ async function main() {
       Subcategory: 'Gelaat',
       name: 'Gelaatsverzorging',
       Description:
-        'Een gelaatsverzorging is een verfrissende en revitaliserende behandeling die de gezondheid en uitstraling van je huid bevordert. Het omvat een zorgvuldige reiniging, exfoliatie, en hydratatie om de natuurlijke schoonheid van je gezicht te accentueren. Door gebruik te maken van aangepaste maskers en voedende producten, wordt je huid gevoed en krijgt ze een gezonde gloed',
+        'Een gelaatsverzorging is een verfrissende en revitaliserende behandeling die de gezondheid en uitstraling van je huid bevordert.',
       Image: {
         create: [
           //desktop & mobile priceslider
@@ -212,7 +212,7 @@ async function main() {
       Subcategory: 'Wimpers & wenkbrauwen',
       name: 'Wimpers & wenkbrauwen',
       Description:
-        'Stel je voor: elke dag ontwaak je met prachtig gedefinieerde ogen, zonder dat je je druk hoeft te maken over het aanbrengen van mascara of wenkbrauwpotlood. Dat is precies wat onze wimper- en wenkbrauwverfbehandeling voor jou kan betekenen - een moeiteloze en langdurige oplossing voor oogverleidelijkheid. Met onze wimperverf krijgen je wimpers een diepere, natuurlijke tint, waardoor ze opvallen en je ogen spreken zonder enige vorm van make-up. Het is perfect voor degenen die s ochtends tijd willen besparen en toch een prachtige oogopslag willen behouden.',
+        'Stel je voor: elke dag ontwaak je met prachtig gedefinieerde ogen, zonder dat je je druk hoeft te maken over het aanbrengen van mascara of wenkbrauwpotlood.',
       Image: {
         create: [
           //desktop & mobile priceslider

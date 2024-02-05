@@ -62,7 +62,7 @@ const ImageGallery = ({ className, images }: ImageGalleryProps) => {
                     blurDataURL={image.blurDataUrl}
                     priority
                     className="rounded-md "
-                    sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, (max-width: 1536px) 33vw, 25vw"
+                    // sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, (max-width: 1536px) 33vw, 25vw"
                     style={{ transform: 'translate3d(0, 0, 0)' }}
                   />
                 ))}

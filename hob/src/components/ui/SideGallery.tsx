@@ -1,36 +1,23 @@
-import Image from 'next/image'
 import { cn } from '@/lib/utils'
-import { CldImage } from 'next-cloudinary'
-import Link from 'next/link'
 import { image } from '@/types/type'
+import { CldImage } from 'next-cloudinary'
 type galleryProps = {
   className?: string
   images: image[]
 }
-const SideGallery = ({ className }: galleryProps) => {
+const SideGallery = ({ className, images }: galleryProps) => {
   return (
-    <div className={cn('flex flex-row ', className)}>
-      <CldImage
-        src={'/face_vhgkdo.png'}
-        alt={'Drawing of face'}
-        width={200}
-        height={200}
-        className="py-4"
-      />
-      <CldImage
-        src={'/hand_igki2c.png'}
-        alt={'Drawing of hand'}
-        width={200}
-        height={200}
-        className="py-4"
-      />
-      <CldImage
-        src={'/body_wthv6n.png'}
-        alt={'Drawing of body'}
-        width={200}
-        height={200}
-        className="py-4"
-      />
+    <div className={cn('flex flex-row gap-2', className)}>
+      {images.map((image, index) => (
+        <CldImage
+          src={image.url}
+          alt={image.alt}
+          width={image.w}
+          height={image.h}
+          className="py-4 rounded-lg"
+          key={index}
+        />
+      ))}
     </div>
   )
 }

@@ -1,19 +1,11 @@
 import { Service } from '@/server/getServices'
-import { Heart } from 'lucide-react'
+import { Euro, Heart } from 'lucide-react'
 import { CldImage } from 'next-cloudinary'
 import Link from 'next/link'
-import React, { useState } from 'react'
-import { Info } from 'lucide-react'
+import React, { useEffect, useState } from 'react'
 import { Button } from './ui/button'
-import { ToggleGroup, ToggleGroupItem } from './ui/toggle-group'
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from './ui/tooltip'
 import { InfoDialog } from './ui/info-dialog'
-import { set } from 'zod'
+import { ToggleGroup, ToggleGroupItem } from './ui/toggle-group'
 const Options = ({ service }: { service: Service }) => {
   const [value, setValue] = React.useState('Small')
   const [medium, setMedium] = React.useState(false)
@@ -24,6 +16,7 @@ const Options = ({ service }: { service: Service }) => {
   const [isVerwijderenFilled, setVerwijderenIsFilled] = useState(false)
   const [price, setPrice] = useState<number>(35)
   const [activeDiv, setActiveDiv] = useState<number>(0)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const [pricing, setPricing] = useState<
     { givenPrice: number; name: String }[]
   >([])
@@ -38,8 +31,11 @@ const Options = ({ service }: { service: Service }) => {
     setVerlengingIsFilled(false)
     setVerHandIsFilled(false)
     setVerwijderenIsFilled(false)
-    setPrice(options[index].Price[0])
+    setPrice(options[index].Price)
     setActiveDiv(index)
+    setValue('Small')
+    setMedium(false)
+    setLarge(false)
   }
   const fillColor = (isfilled: boolean) => {
     if (isfilled) {
@@ -63,16 +59,24 @@ const Options = ({ service }: { service: Service }) => {
       setPricing(pricing)
     }
   }
+  const handleImageLoad = () => {
+    setIsLoading(false)
+  }
+  useEffect(() => {
+    handleImageLoad()
+  }, [activeDiv])
 
   return (
     <div className="flex flex-col sm:flex-row gap-4 mx-auto lsm:my-4 lsm:mx-auto  lsm:w-[90%] mdd:w-[800px] sm:shadow-lg">
-      <div className="hidden basis-1/2 lsm:flex items-end justify-center min-h-[500px]">
-        <CldImage
-          src={options[activeDiv].Image[0].Image.Url}
-          alt={options[activeDiv].Image[0].Image.Alt}
-          width={options[activeDiv].Image[0].Image.W}
-          height={options[activeDiv].Image[0].Image.H}
-        />
+      <div className="basis-1/2 flex items-end justify-center min-h-[500px]">
+        {!isLoading && (
+          <CldImage
+            src={options[activeDiv].Image[0].Image.Url}
+            alt={options[activeDiv].Image[0].Image.Alt}
+            width={options[activeDiv].Image[0].Image.W}
+            height={options[activeDiv].Image[0].Image.H}
+          />
+        )}
       </div>
       <div className=" justify-center basis-1/2 flex flex-col ml-6 sm:ml-0 mb-2 mr-2">
         <div className="flex flex-row">
@@ -84,9 +88,12 @@ const Options = ({ service }: { service: Service }) => {
               {options[activeDiv].Name}
             </h1>
           </div>
-          <h1 className="font-medium text-2xl  mb-2  basis-1/2 flex self-end justify-end pr-6">
+          <h1 className="font-medium text-4xl  mb-2  basis-1/2 flex self-end justify-end pr-6">
             {' '}
-            ${price}
+            <div className=" flex flex-row justify-center items-center ">
+              <Euro size={15} className="basis-1/2" />
+              {price}
+            </div>
           </h1>
         </div>
         <h1 className="font-medium text-xl mb-2 ">Stijl</h1>
@@ -94,10 +101,13 @@ const Options = ({ service }: { service: Service }) => {
           {divs.map((div, index) => (
             <div
               key={index}
-              className={`pb-2 ${
+              className={`pb-2 cursor-pointer ${
                 activeDiv === index ? 'border-b-2 border-b-brokenPink' : ''
               }`}
-              onClick={() => handleClick(index)}
+              onClick={() => {
+                handleClick(index)
+                setIsLoading(true)
+              }}
             >
               <CldImage alt={div.alt} src={div.src} width={25} height={25} />
             </div>
@@ -141,9 +151,9 @@ const Options = ({ service }: { service: Service }) => {
                     changePrice(10, medium, 'medium')
                     setMedium(!medium)
                   } else if (large) {
-                    console.log('large')
-                    changePrice(10, large, 'large')
+                    setPrice(price - 5)
                     setLarge(!large)
+                    setMedium(!medium)
                   }
                 }}
               >
@@ -157,12 +167,10 @@ const Options = ({ service }: { service: Service }) => {
                 aria-label="Toggle underline"
                 onClick={() => {
                   if (!medium && !large) {
-                    changePrice(10, large, 'medium')
+                    changePrice(15, large, 'medium')
                     setLarge(!large)
                   } else if (medium) {
-                    console.log('medium')
-                    await changePrice(15, large, 'large')
-                    changePrice(10, medium, 'medium')
+                    setPrice(price + 5)
                     setMedium(!medium)
                     setLarge(!large)
                   }
@@ -182,9 +190,11 @@ const Options = ({ service }: { service: Service }) => {
               fill={fillColor(isVerwijderenFilled)}
               color="#f2c5b5"
               size={25}
+              className="cursor-pointer"
               onClick={() => {
                 changePrice(
-                  options[7].Price[0],
+                  options[7].Price,
+
                   isVerwijderenFilled,
                   options[7].Name
                 )

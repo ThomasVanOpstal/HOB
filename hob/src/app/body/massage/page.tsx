@@ -8,12 +8,15 @@ import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 import { cn } from '@/lib/utils'
 import { image } from '@/types/type'
+import { Metadata } from 'next'
 import { CldImage } from 'next-cloudinary'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { MutableRefObject, useRef } from 'react'
-
+export const metadata: Metadata = {
+  title: 'Massage',
+}
 const page = () => {
   // const galleryImages = trpc.getImages.useQuery({ folder: 'Body' })
   const services = trpc.getAllServices.useQuery()
@@ -45,6 +48,7 @@ const page = () => {
             alt={'Massage'}
             width={400}
             height={400}
+            priority
           />
         </div>
         <div className="mx-4 my-3 desktop:my-6 desktop:basis-1/2 flex flex-col justify-center items-center">
@@ -140,7 +144,7 @@ const page = () => {
               const lowerCaseName = pricingOption.name.toLowerCase().trim()
               if (
                 lowerCaseName !== pathnames.at(-1)?.toLowerCase().trim() &&
-                index < 4
+                index < 3
               ) {
                 return <AltPricing key={index} pricingOptions={pricingOption} />
               } else {

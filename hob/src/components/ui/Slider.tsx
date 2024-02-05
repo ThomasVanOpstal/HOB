@@ -93,59 +93,53 @@ const Slider = ({
       <div className="flex flex-row snap-x overflow-x-hidden overflow-y-hidden h-[320px]">
         {images.map((image, i) => {
           return (
-            <>
-              <div
-                key={i}
-                className={cn(
-                  'w-full h-full flex flex-col justify-center items-center flex-shrink-0 snap-center',
-                  image.bg
-                )}
-                ref={refs[i]}
-                onTouchStart={(e) => handleTouchStart(e)}
-                onTouchMove={(e) => handleTouchMove(e)}
-                onTouchEnd={() => handleTouchEnd()}
-              >
-                {cloudinary ? (
-                  <CldImage
-                    key={i}
-                    src={image.url}
-                    alt={image.alt}
-                    width={image.w}
-                    height={image.h}
-                    className="mt-12"
-                  />
-                ) : (
-                  <Image
-                    key={i}
-                    src={image.url}
-                    alt={image.alt}
-                    width={image.w}
-                    height={image.h}
-                    className="mt-12"
-                  />
-                )}
+            <div
+              key={i}
+              className={cn(
+                'w-full h-full flex flex-col justify-center items-center flex-shrink-0 snap-center',
+                image.bg
+              )}
+              ref={refs[i]}
+              onTouchStart={(e) => handleTouchStart(e)}
+              onTouchMove={(e) => handleTouchMove(e)}
+              onTouchEnd={() => handleTouchEnd()}
+            >
+              {cloudinary ? (
+                <CldImage
+                  src={image.url}
+                  alt={image.alt}
+                  width={image.w}
+                  height={image.h}
+                  className="mt-12"
+                />
+              ) : (
+                <Image
+                  src={image.url}
+                  alt={image.alt}
+                  width={image.w}
+                  height={image.h}
+                  className="mt-12"
+                />
+              )}
 
-                {buttonAvailable && (
-                  <Button
-                    key={i}
-                    variant={
-                      image.bg === 'bg-brokenWhite'
-                        ? 'default'
-                        : image.bg === 'bg-darkBrown'
-                        ? 'outline_darkBrown'
-                        : image.bg === 'bg-pink'
-                        ? 'secondary'
-                        : 'outline'
-                    }
-                    className={cn('font-medium text-xl mt-4 mb-8')}
-                  >
-                    <Link key={i} href={'/'}>
-                      {image.name}
-                    </Link>
-                  </Button>
-                )}
-              </div>
-            </>
+              {buttonAvailable && (
+                <Button
+                  // key={i}
+                  variant={
+                    image.bg === 'bg-brokenWhite'
+                      ? 'default'
+                      : image.bg === 'bg-darkBrown'
+                      ? 'outline_darkBrown'
+                      : image.bg === 'bg-pink'
+                      ? 'secondary'
+                      : 'outline'
+                  }
+                  className={cn('font-medium text-xl mt-4 mb-8')}
+                >
+                  <Link href={'/'}>{image.name}</Link>
+                </Button>
+              )}
+            </div>
           )
         })}
       </div>
@@ -173,7 +167,6 @@ const Slider = ({
               )}
             >
               <span
-                key={i}
                 className={cn(
                   'w-2 h-2 rounded-full inline-block',
                   currentIndex === i ? 'bg-darkBlue' : 'bg-lightBlue'

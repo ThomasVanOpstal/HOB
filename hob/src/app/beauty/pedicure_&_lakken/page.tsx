@@ -11,11 +11,14 @@ import { Skeleton } from '@/components/ui/skeleton'
 import { cn } from '@/lib/utils'
 import { image } from '@/types/type'
 import { Heart } from 'lucide-react'
+import { Metadata } from 'next'
 import { CldImage } from 'next-cloudinary'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { MutableRefObject, useRef } from 'react'
-
+export const metadata: Metadata = {
+  title: 'Pedicure & Lakken',
+}
 const page = () => {
   const galleryImages = trpc.getImages.useQuery({ folder: 'Beauty' })
   const services = trpc.getAllServices.useQuery()
@@ -80,6 +83,7 @@ const page = () => {
             width="400"
             height="400"
             alt="Pedicure & Lakken"
+            priority
           />
         </div>
         <div className="mx-4 my-3 desktop:my-6 desktop:basis-1/2 flex flex-col justify-center items-center">
@@ -144,38 +148,11 @@ const page = () => {
           </div>
         </div>
       </div>
-      <div>
-        <div className="flex flex-col justify-center items-center py-8  bg-green">
-          <h1 className="font-medium mb-2 text-3xl ">Onze Beauties</h1>
-          <div className="mb-4">
-            <Socials />
-          </div>
-          {galleryImages.isLoading ? (
-            <div className="min-h-[300px] flex flex-col gap-2 items-center justify-center">
-              <div className="animate-bounce">
-                <Heart fill="red" color="red" size={75} />
-              </div>
-              <p>Loading...</p>
-            </div>
-          ) : (
-            <div>
-              <div className="hidden sm:block">
-                <ImageGallery images={images} className="hidden sm:block" />
-              </div>
-
-              <div className="block sm:hidden">
-                <Slider
-                  images={images}
-                  buttonAvailable={false}
-                  className="block sm:hidden"
-                  cloudinary={true}
-                />
-              </div>
-            </div>
-          )}
+      <div className="bg-green pb-8" ref={priceRef}>
+        <h1 className="font-medium text-3xl text-center mb-2 pt-4 ">Prijs</h1>
+        <div className="flex items-center justify-center mb-4">
+          <Socials />
         </div>
-      </div>
-      <div className="mb-12 mt-12" ref={priceRef}>
         {service.status === 'success' && service.data ? (
           <Pricing pricingOptions={service.data} />
         ) : (
@@ -198,8 +175,6 @@ const page = () => {
           {services.status === 'success' ? (
             services.data.map((pricingOption, index) => {
               const lowerCaseName = pricingOption.name.toLowerCase().trim()
-              console.log(pricingOption.name.toLowerCase())
-              console.log(pathnames.at(-1)?.toLowerCase().trim())
               if (
                 lowerCaseName !== pathnames.at(-1)?.toLowerCase().trim() &&
                 index < 3

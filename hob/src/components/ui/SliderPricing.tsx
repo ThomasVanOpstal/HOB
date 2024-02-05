@@ -9,9 +9,14 @@ import { Services } from '@/server/getServices'
 type sliderPricingProps = {
   className?: string
   pricingOptions: Services[]
+  pathname?: string
 }
 
-const SliderPricing = ({ className, pricingOptions }: sliderPricingProps) => {
+const SliderPricing = ({
+  className,
+  pricingOptions,
+  pathname,
+}: sliderPricingProps) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0)
 
   const refs = pricingOptions.reduce((acc, _val, i) => {
@@ -72,8 +77,8 @@ const SliderPricing = ({ className, pricingOptions }: sliderPricingProps) => {
     <div className={cn('relative', className)}>
       <div className="flex flex-row snap-x overflow-x-hidden overflow-y-hidden h-[500px] ">
         {pricingOptions.map((pricing, i) => {
-          return (
-            <>
+          if (pricing.name.toLowerCase().trim() !== pathname) {
+            return (
               <div
                 key={i}
                 className={cn(
@@ -86,8 +91,8 @@ const SliderPricing = ({ className, pricingOptions }: sliderPricingProps) => {
               >
                 <AltPricing pricingOptions={pricing} key={i} />
               </div>
-            </>
-          )
+            )
+          }
         })}
       </div>
       <ChevronRight

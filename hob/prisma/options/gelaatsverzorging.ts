@@ -8,11 +8,11 @@ export async function GelaatsverzorgingOptions() {
     update: {},
     create: {
       Category: Category.Skin,
-      Subcategory: ['Gelaat', 'Verzorging', 'Ontspannend'],
+      Subcategory: 'Gelaat',
       Description:
         'Een gelaatsverzorging is een uitgebreide behandeling die gericht is op het reinigen, hydrateren en verbeteren van de conditie van de huid van het gezicht.',
-      Price: [30, 40, 50],
-      Time: [30, 45, 60],
+      Price: 50,
+      Time: 60,
       Name: 'Reinigen & hydrateren',
       Image: {
         create: [

@@ -8,11 +8,11 @@ export async function Pedicure_lakken_options() {
     update: {},
     create: {
       Category: Category.Beauty,
-      Subcategory: ['Nagels', 'Pedicure', 'Lakken'],
+      Subcategory: 'Nagels',
       Description:
         'Een pedicure is een professionele behandeling voor de verzorging van de voeten en nagels. Het omvat nagelknippen, eeltverwijdering en algemene voetverzorging.',
-      Price: [30, 40, 50],
-      Time: [30, 45, 60],
+      Price: 27,
+      Time: 60,
       Name: 'Pedicure Voeten',
       Image: {
         create: [
@@ -36,11 +36,11 @@ export async function Pedicure_lakken_options() {
     update: {},
     create: {
       Category: Category.Beauty,
-      Subcategory: ['Nagels', 'Pedicure', 'Lakken'],
+      Subcategory: 'Nagels',
       Description:
         'Het lakken van teennagels is een cosmetische praktijk waarbij nagellak wordt aangebracht op de nagels van de tenen. Nagellak is verkrijgbaar in verschillende kleuren, texturen en afwerkingen.',
-      Price: [3, 3, 3],
-      Time: [5, 5, 5],
+      Price: 3,
+      Time: 5,
       Name: 'Lakken teenagels',
     },
   })

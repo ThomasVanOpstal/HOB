@@ -39,7 +39,6 @@ export const appRouter = router({
         resources: SearchResult[]
         next_cursor: string
       }
-      console.log(search)
       const reducedResults: image[] = []
 
       let i = 0

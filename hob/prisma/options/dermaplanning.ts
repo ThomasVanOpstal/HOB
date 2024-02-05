@@ -8,11 +8,11 @@ export async function dermaplanningOptions() {
     update: {},
     create: {
       Category: Category.Skin,
-      Subcategory: ['Dermaplanning', 'Verzorging', 'Ontspannend'],
+      Subcategory: 'Dermaplanning',
       Description:
-        'Dermaplaning is een niet-invasieve cosmetische procedure waarbij een speciaal ontworpen chirurgisch mesje wordt gebruikt om de bovenste laag dode huidcellen en fijne donshaartjes (vellusharen) van het gezicht te schrapen',
-      Price: [30, 40, 50],
-      Time: [30, 45, 60],
+        'Dermaplaning is een cosmetische procedure waarbij een chirurgisch mesje wordt gebruikt om de bovenste laag dode huidcellen en fijne donshaartjes (vellusharen) van het gezicht te schrapen',
+      Price: 50,
+      Time: 60,
       Name: 'Verwijdering van dode huidcellen & donshaartjes',
       Image: {
         create: [
