@@ -2,6 +2,7 @@ import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import { ChevronDown, ChevronRight } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { CldImage } from 'next-cloudinary'
 
 const NavDesk = () => {
   return (
@@ -27,7 +28,7 @@ const NavDesk = () => {
                       href="/beauty"
                     >
                       <Image
-                        alt="Drawing of body"
+                        alt="Tekening hand"
                         src={'/hand.png'}
                         width={700}
                         height={700}
@@ -125,9 +126,9 @@ const NavDesk = () => {
                     h-full w-full select-none flex-col justify-end rounded-[6px] bg-gradient-to-b p-[25px] no-underline outline-none focus:shadow-[0_0_0_2px]"
                       href="/"
                     >
-                      <Image
-                        alt="Drawing of body"
-                        src={'/face.png'}
+                      <CldImage
+                        alt="Tekening gezicht"
+                        src={'/face_vhgkdo.png'}
                         width={800}
                         height={800}
                       />
@@ -195,9 +196,9 @@ const NavDesk = () => {
                     h-full w-full select-none flex-col justify-end rounded-[6px] bg-gradient-to-b p-[25px] no-underline outline-none focus:shadow-[0_0_0_2px]"
                       href="/"
                     >
-                      <Image
-                        alt="Drawing of body"
-                        src={'/body.png'}
+                      <CldImage
+                        alt="Tekening lichaam"
+                        src={'/body_wthv6n.png'}
                         width={300}
                         height={300}
                       />
