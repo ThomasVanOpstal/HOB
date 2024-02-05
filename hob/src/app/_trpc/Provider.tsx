@@ -18,7 +18,7 @@ export default function Provider({ children }: { children: React.ReactNode }) {
           fetch(url, options) {
             return fetch(url, {
               ...options,
-              credentials: 'include',
+              credentials: 'same-origin',
             })
           },
         }),
