@@ -5,6 +5,13 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 import React, { useState } from 'react'
 import AltPricing from '../AltPricing'
 import { Services } from '@/server/getServices'
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from './carousel'
 
 type sliderPricingProps = {
   className?: string
@@ -51,39 +58,23 @@ const SliderPricing = ({
   }
 
   return (
-    <div className={cn('relative', className)}>
-      <div className="flex flex-row snap-x overflow-x-hidden overflow-y-hidden h-[500px] ">
+    <Carousel className="w-full mx-auto">
+      <CarouselContent>
         {pricingOptions.map((pricing, i) => {
           if (pricing.name.toLowerCase().trim() !== pathname) {
             return (
-              <div
-                key={i}
-                className={cn(
-                  'w-full h-[500px] flex flex-col justify-center items-center flex-shrink-0 snap-center '
-                )}
-                ref={refs[i]}
-              >
-                <AltPricing pricingOptions={pricing} key={i} />
-              </div>
+              <CarouselItem key={i}>
+                <div className="p-1">
+                  <AltPricing pricingOptions={pricing} key={i} />
+                </div>
+              </CarouselItem>
             )
           }
         })}
-      </div>
-      <ChevronRight
-        size={40}
-        onClick={() => {
-          nextImage()
-        }}
-        className="absolute right-5 top-[50%]"
-      />{' '}
-      <ChevronLeft
-        size={40}
-        onClick={() => {
-          previousImage()
-        }}
-        className="absolute left-5 top-[50%]"
-      />{' '}
-    </div>
+      </CarouselContent>
+      <CarouselPrevious />
+      <CarouselNext />
+    </Carousel>
   )
 }
 
