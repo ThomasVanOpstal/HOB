@@ -157,12 +157,12 @@ const page = () => {
           <Skeleton className="w-[250px] sm:w-[600px] h-[500px] m-auto my-4 shadow-lg " />
         )}
       </div>
-      <div className="bg-brokenWhite flex flex-col sm:items-center sm:justify-center ">
+      <div className="bg-brokenWhite flex flex-col sm:items-center sm:justify-center pb-12">
         <h1 className="font-medium text-3xl my-4 text-center">
           Ontdek meer zoals dit{' '}
         </h1>
 
-        <div className="mb-12 sm:hidden">
+        <div className="sm:hidden">
           {services.status === 'success' ? (
             <SliderPricing pricingOptions={services.data} />
           ) : (

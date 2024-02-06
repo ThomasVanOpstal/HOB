@@ -30,8 +30,8 @@ const page: FC<pageProps> = ({}) => {
   const d1: image = {
     name: 'Basiliek',
     url: 'About/fullBasiliek_wn4sek.jpg',
-    h: 300,
-    w: 300,
+    h: 400,
+    w: 400,
     alt: 'Basiliek',
     bg: '#F9D4C6',
   }
@@ -46,8 +46,8 @@ const page: FC<pageProps> = ({}) => {
   const d2: image = {
     name: 'Rusthuis',
     url: 'About/rusthuis_ng00dj.jpg',
-    h: 150,
-    w: 150,
+    h: 300,
+    w: 300,
     alt: 'Rusthuis',
     bg: '#F9D4C6',
   }
@@ -62,8 +62,8 @@ const page: FC<pageProps> = ({}) => {
   const d3: image = {
     name: 'Frieten',
     url: 'About/fries_zcbr1w.jpg',
-    h: 100,
-    w: 100,
+    h: 300,
+    w: 300,
     alt: 'Frieten',
     bg: '#F9D4C6',
   }
@@ -78,14 +78,14 @@ const page: FC<pageProps> = ({}) => {
   const d4: image = {
     name: 'Nails',
     url: 'About/artNails_df0nxr.jpg',
-    h: 100,
-    w: 100,
+    h: 300,
+    w: 300,
     alt: 'Nagels',
     bg: '#F9D4C6',
   }
   const f5: image = {
     name: 'Triplets',
-    url: 'About/triplets_wwdkd9.jpg',
+    url: 'About/Drieling_vert_bk39qj_vmsrec.jpg',
     h: 75,
     w: 75,
     alt: 'Drieling',
@@ -93,9 +93,9 @@ const page: FC<pageProps> = ({}) => {
   }
   const d5: image = {
     name: 'Triplets',
-    url: 'About/triplets_wwdkd9.jpg',
-    h: 150,
-    w: 150,
+    url: 'About/Drieling_hxicc2.jpg',
+    h: 350,
+    w: 350,
     alt: 'Drieling',
     bg: '#F9D4C6',
   }

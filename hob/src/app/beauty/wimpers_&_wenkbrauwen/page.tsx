@@ -76,7 +76,7 @@ const page = () => {
 
   return (
     <>
-      <div className="flex flex-col desktop:flex-row bg-darkBrown desktop:pt-2 desktop:pb-3">
+      <div className="flex flex-col desktop:flex-row bg-darkBrown desktop:py-6">
         <div className="desktop:basis-1/2 flex justify-center items-center">
           <CldImage
             src={'Beauty/eyelashes_rxjgqz.jpg'}
