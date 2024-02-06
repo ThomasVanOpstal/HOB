@@ -1,7 +1,7 @@
 'use client'
 import { cn } from '@/lib/utils'
 import { PricingProps } from '@/types/type'
-import { ChevronRight } from 'lucide-react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import React, { useState } from 'react'
 import AltPricing from '../AltPricing'
 import { Services } from '@/server/getServices'
@@ -49,29 +49,6 @@ const SliderPricing = ({
       scrollToImage(currentIndex - 1)
     }
   }
-  let touchStartX = 0
-  let touchEndX = 0
-
-  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
-    touchStartX = e.touches[0].clientX
-  }
-
-  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
-    touchEndX = e.touches[0].clientX
-  }
-
-  const handleTouchEnd = () => {
-    const swipeDistance = touchEndX - touchStartX
-    const threshold = 50
-    if (swipeDistance > threshold) {
-      previousImage()
-    } else if (swipeDistance < -threshold) {
-      nextImage()
-    }
-
-    touchStartX = 0
-    touchEndX = 0
-  }
 
   return (
     <div className={cn('relative', className)}>
@@ -85,9 +62,6 @@ const SliderPricing = ({
                   'w-full h-[500px] flex flex-col justify-center items-center flex-shrink-0 snap-center '
                 )}
                 ref={refs[i]}
-                onTouchStart={(e) => handleTouchStart(e)}
-                onTouchMove={(e) => handleTouchMove(e)}
-                onTouchEnd={() => handleTouchEnd()}
               >
                 <AltPricing pricingOptions={pricing} key={i} />
               </div>
@@ -96,11 +70,18 @@ const SliderPricing = ({
         })}
       </div>
       <ChevronRight
-        size={30}
+        size={40}
         onClick={() => {
           nextImage()
         }}
-        className="absolute right-0 top-[50%]"
+        className="absolute right-5 top-[50%]"
+      />{' '}
+      <ChevronLeft
+        size={40}
+        onClick={() => {
+          previousImage()
+        }}
+        className="absolute left-5 top-[50%]"
       />{' '}
     </div>
   )

@@ -35,8 +35,8 @@ const Pricing = ({ pricingOptions }: { pricingOptions: Service }) => {
     return 'none'
   }
   return (
-    <div className="flex flex-col msm:flex-row gap-1 mx-auto lsm:mx-auto w-[250px] msm:w-[500px] bg-white  shadow-lg">
-      <div className="hidden self-center msm:basis-1/2 msm:block">
+    <div className="flex flex-col sm:flex-row gap-1 mx-auto lsm:mx-auto w-[250px] sm:w-[600px] bg-white shadow-lg">
+      <div className="hidden self-center msm:basis-1/2 sm:block fill-current">
         <CldImage
           src={pricingOptions.Options[0].Option.Image[0].Image.Url}
           alt={pricingOptions.Options[0].Option.Image[0].Image.Alt}
@@ -44,7 +44,7 @@ const Pricing = ({ pricingOptions }: { pricingOptions: Service }) => {
           height={pricingOptions.Options[0].Option.Image[0].Image.H}
         />
       </div>
-      <div className="block basis-1/2 msm:hidden">
+      <div className="block basis-1/2 sm:hidden">
         {pricingOptions.Options[0].Option.Image[1] ? (
           <CldImage
             src={pricingOptions.Options[0].Option.Image[1].Image.Url}
@@ -67,11 +67,11 @@ const Pricing = ({ pricingOptions }: { pricingOptions: Service }) => {
             {pricingOptions.Options[0].Option.Name}
           </h1>
           <ul className="mx-auto w-[80%]">
-            <li className="mb-1 flex flex-row gap-2 flex-shrink-0">
+            <li className="mb-1 flex flex-row gap-2 flex-shrink-0 text-xl font-normal">
               <Check className="flex-shrink-0" />
               {pricingOptions.Options[0].Option.Time} minuten
             </li>
-            <li className=" flex flex-row gap-2 flex-shrink-0">
+            <li className=" flex flex-row gap-2 flex-shrink-0 text-xl font-normal">
               <Check className="flex-shrink-0" />
               {pricingOptions.Type}
             </li>
@@ -96,12 +96,12 @@ const Pricing = ({ pricingOptions }: { pricingOptions: Service }) => {
           )}
         </div>
 
-        <div className="basis-1/2 flex flex-col justify-center items-center">
-          <div className=" flex flex-row justify-center items-center ">
+        <div className="basis-1/2 flex flex-col justify-end items-center mb-2">
+          <div className=" flex flex-row justify-center items-center mt-4 ">
             <Euro size={15} className="basis-1/2" />
             <p className="font-medium text-4xl basis-1/2">{price}</p>
           </div>
-          <Link href={'/contact'} className="mb-4 lsm:mb-0">
+          <Link href={'/contact'} className="mt-2 lsm:mb-0">
             <Button variant="default" className="font-medium text-xl">
               Contact
             </Button>
@@ -129,8 +129,8 @@ const Options = ({ index, name, price, changePrice }: Props) => {
   return (
     <>
       <div key={index}>
-        <h1 className="font-medium text-1xl mb-2">Extra</h1>
-        <div className="flex flex-row gap-2">
+        <h1 className="font-medium text-xl mb-2">Extra</h1>
+        <div className="flex flex-row gap-2 text-xl font-normal">
           <Heart
             fill={fillColor(bool)}
             color="#f2c5b5"

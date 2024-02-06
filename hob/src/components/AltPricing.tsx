@@ -12,7 +12,7 @@ interface PricingOptionProps {
 
 const AltPricing: FC<PricingOptionProps> = ({ pricingOptions }) => {
   return (
-    <div className="flex flex-col  mx-auto my-4 w-[250px] h-[500px] shadow-lg transition ease-in-out delay-100 hover:-translate-y-2 ">
+    <div className="flex flex-col  mx-auto my-4 w-[250px] h-[500px] shadow-lg sm:transition sm:ease-in-out sm:delay-100 sm:hover:-translate-y-2 ">
       <div className="h-[40%] flex items-end ">
         {pricingOptions.Image[1] ? (
           <CldImage
@@ -33,7 +33,7 @@ const AltPricing: FC<PricingOptionProps> = ({ pricingOptions }) => {
         )}
       </div>
       <div className="basis-2/3 flex flex-col justify-end items-center mb-2 mt-4">
-        <div className="basis-1/2 flex flex-col justify-center">
+        <div className="basis-1/2 w-[100%] flex flex-col justify-center">
           <h1 className="font-medium text-2xl text-center mb-6">
             {pricingOptions.name}
           </h1>
@@ -43,11 +43,11 @@ const AltPricing: FC<PricingOptionProps> = ({ pricingOptions }) => {
                 if (index < 3) {
                   return (
                     <li
-                      className="mb-1 flex flex-row gap-2 w-[150px]"
+                      className="mb-1 flex flex-row gap-2 w-[170px] text-lg items-center "
                       key={index}
                     >
                       <Check className="flex-shrink-0" />
-                      {item.Option.Name}
+                      <p className="w-[90%]">{item.Option.Name}</p>
                     </li>
                   )
                 } else if (index === 4) {
@@ -74,11 +74,11 @@ const AltPricing: FC<PricingOptionProps> = ({ pricingOptions }) => {
               {pricingOptions.Options[0].Option.Price}
             </p> */}
         </div>
-        <Button variant="default" className="font-medium text-xl my-4">
-          <Link href={`/${pricingOptions.Category.toLocaleLowerCase()}`}>
+        <Link href={`/${pricingOptions.Category.toLocaleLowerCase()}`}>
+          <Button variant="default" className="font-medium text-xl my-4">
             Ontdek
-          </Link>
-        </Button>
+          </Button>
+        </Link>
       </div>
     </div>
   )

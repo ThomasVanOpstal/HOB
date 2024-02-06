@@ -62,35 +62,14 @@ const Slider = ({
   let touchStartX = 0
   let touchEndX = 0
 
-  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
-    touchStartX = e.touches[0].clientX
-  }
-
-  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
-    touchEndX = e.touches[0].clientX
-  }
-
-  const handleTouchEnd = () => {
-    const swipeDistance = touchEndX - touchStartX
-    const threshold = 50
-    if (swipeDistance > threshold) {
-      previousImage()
-    } else if (swipeDistance < -threshold) {
-      nextImage()
-    }
-
-    touchStartX = 0
-    touchEndX = 0
-  }
-
   return (
     <div className={cn('relative', className)}>
       {showTitel ? (
-        <p className="font-medium text-3xl absolute top-2 text-center w-full">
+        <p className="font-medium text-3xl absolute top-4 text-center w-full ">
           {titel || 'Ons aanbod'}
         </p>
       ) : null}
-      <div className="flex flex-row snap-x overflow-x-hidden overflow-y-hidden h-[320px]">
+      <div className="flex flex-row snap-x overflow-x-hidden overflow-y-hidden h-[350px]">
         {images.map((image, i) => {
           return (
             <div
@@ -100,9 +79,6 @@ const Slider = ({
                 image.bg
               )}
               ref={refs[i]}
-              onTouchStart={(e) => handleTouchStart(e)}
-              onTouchMove={(e) => handleTouchMove(e)}
-              onTouchEnd={() => handleTouchEnd()}
             >
               {cloudinary ? (
                 <CldImage
@@ -110,7 +86,7 @@ const Slider = ({
                   alt={image.alt}
                   width={image.w}
                   height={image.h}
-                  className="mt-12"
+                  className="mt-16"
                 />
               ) : (
                 <Image
@@ -118,7 +94,7 @@ const Slider = ({
                   alt={image.alt}
                   width={image.w}
                   height={image.h}
-                  className="mt-12"
+                  className="mt-16"
                 />
               )}
 
@@ -146,14 +122,14 @@ const Slider = ({
         })}
       </div>
       <ChevronLeft
-        size={30}
+        size={40}
         onClick={() => {
           previousImage()
         }}
         className="absolute left-0 top-[50%]"
       />{' '}
       <ChevronRight
-        size={30}
+        size={40}
         onClick={() => {
           nextImage()
         }}

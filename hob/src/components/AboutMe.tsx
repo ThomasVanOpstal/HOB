@@ -5,14 +5,14 @@ import { CldImage } from 'next-cloudinary'
 const AboutMe = () => {
   return (
     <>
-      <div className="flex sm:flex-row flex-col justify-center items-center bg-brokenPink">
-        <div className="basis-1/2 flex justify-center flex-shrink-0">
+      <div className="flex sm:flex-row flex-col gap-2 justify-center items-center bg-brokenPink w-[100%] lg:w-[70%] xl:w-[60%]">
+        <div className="basis-1/2 flex justify-center items-center flex-shrink-0">
           <CldImage
-            src={'v1707125453/LaurenHandSliert_hiq9oy.png'}
-            width={400}
-            height={400}
+            src={'Beauty/LaurenFeet_qwkik0.jpg'}
+            width={300}
+            height={300}
             alt="Lauren de uitbaatster van House of beauty"
-            className="flex-shrink-0"
+            className="flex-shrink-0 my-4"
           />
         </div>
         <div className="basis-1/2 flex flex-col items-center justify-center">

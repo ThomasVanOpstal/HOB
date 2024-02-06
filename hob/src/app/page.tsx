@@ -45,10 +45,13 @@ const page = () => {
           buttonAvailable={true}
           progressBarAvailable={true}
           cloudinary={true}
+          showTitel={true}
         />
         <Gallery className="hidden smd:inline-flex" />
       </div>
-      <AboutMe />
+      <div className="bg-brokenPink flex justify-center items-center">
+        <AboutMe />
+      </div>
     </>
   )
 }

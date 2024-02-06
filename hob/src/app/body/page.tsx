@@ -126,22 +126,6 @@ const page = () => {
             </div>
           </div>
         </div>
-        <div className="sm:flex flex-col justify-center items-center py-8 hidden bg-green">
-          <h1 className="font-medium mb-2 text-3xl ">Onze Beauties</h1>
-          <div className="mb-4">
-            <Socials />
-          </div>
-          {galleryImages.isLoading ? (
-            <div className="min-h-[300px] flex flex-col gap-2 items-center justify-center">
-              <div className="animate-pulse">
-                <Heart fill="red" color="red" size={75} />
-              </div>
-              <p>Loading...</p>
-            </div>
-          ) : (
-            <ImageGallery images={images} />
-          )}
-        </div>
       </div>
     </>
   )

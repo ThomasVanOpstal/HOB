@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 
 import { trpc } from './client'
 const url = process.env.NEXT_PUBLIC_VERCEL_URL
-  ? `https://hob-ivory.vercel.app/api/trpc`
+  ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/trpc`
   : 'http://localhost:3000/api/trpc'
 
 export default function Provider({ children }: { children: React.ReactNode }) {

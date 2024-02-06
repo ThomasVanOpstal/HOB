@@ -159,7 +159,7 @@ const Page = () => {
         </div>
       </div>
       <div>
-        <div className="flex flex-col justify-center items-center py-8  bg-green">
+        <div className="flex flex-col justify-center items-center py-8 pb-16  bg-green">
           <h1 className="font-medium mb-2 text-3xl ">Onze Beauties</h1>
           <div className="mb-4">
             <Socials />
@@ -201,7 +201,7 @@ const Page = () => {
           Ontdek meer zoals dit{' '}
         </h1>
 
-        <div className="mb-6 sm:hidden">
+        <div className="mb-12 sm:hidden">
           {services.status === 'success' ? (
             <SliderPricing
               pricingOptions={services.data}

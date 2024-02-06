@@ -146,7 +146,7 @@ const page = () => {
           </div>
         </div>
       </div>
-      <div className="bg-green pb-8" ref={priceRef}>
+      <div className="bg-white pb-16" ref={priceRef}>
         <h1 className="font-medium text-3xl text-center mb-2 pt-4 ">Prijs</h1>
         <div className="flex items-center justify-center mb-4">
           <Socials />
@@ -154,7 +154,7 @@ const page = () => {
         {service.status === 'success' && service.data ? (
           <Pricing pricingOptions={service.data} />
         ) : (
-          <Skeleton className="w-[250px] lsm:w-[400px] sm:w-[500px] desktop:h-[300px] h-[400px] m-auto my-4 shadow-lg " />
+          <Skeleton className="w-[250px] sm:w-[600px] h-[500px] m-auto my-4 shadow-lg " />
         )}
       </div>
       <div className="bg-brokenWhite flex flex-col sm:items-center sm:justify-center ">
@@ -162,7 +162,7 @@ const page = () => {
           Ontdek meer zoals dit{' '}
         </h1>
 
-        <div className="mb-6 sm:hidden">
+        <div className="mb-12 sm:hidden">
           {services.status === 'success' ? (
             <SliderPricing pricingOptions={services.data} />
           ) : (
