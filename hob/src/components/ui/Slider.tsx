@@ -126,14 +126,14 @@ const Slider = ({
         onClick={() => {
           previousImage()
         }}
-        className="absolute left-0 top-[50%]"
+        className="absolute left-5 top-[50%]"
       />{' '}
       <ChevronRight
         size={40}
         onClick={() => {
           nextImage()
         }}
-        className="absolute right-0 top-[50%]"
+        className="absolute right-5 top-[50%]"
       />{' '}
       {progressBarAvailable && (
         <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex justify-center items-center ">
