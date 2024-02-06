@@ -15,7 +15,7 @@ const NavMobile = ({}) => {
   const preventDefault = (event: React.SyntheticEvent) => event.preventDefault()
   return (
     <>
-      <DropdownMenu.Root modal={false}>
+      <DropdownMenu.Root>
         <DropdownMenu.Trigger asChild>
           <button
             className="inline-flex items-center "
