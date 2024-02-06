@@ -62,7 +62,7 @@ const Nav = ({ className, variant }: navProps) => {
       </div>
 
       <div className={cn('grid grid-cols-2 gap-2 p-8 lg:hidden', className)}>
-        <div className="flex flex-row gap-4 items-center justify-start flex-shrink-0">
+        <div className="flex flex-row gap-4 items-center justify-start flex-shrink-0 w-[calc(100%-var(--removed-body-scroll-bar-size,0px))]">
           <NavMobile />
           <Link href="/" className="text-2xl font-medium flex-shrink-0">
             House of beauty

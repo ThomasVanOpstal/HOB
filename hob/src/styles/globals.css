@@ -88,5 +88,8 @@ div#gallery {
   body {
     @apply bg-background text-foreground;
     font-feature-settings: 'rlig' 1, 'calt' 1;
+    margin: 0 !important;
+    margin-right: 0 !important;
+    overflow-y: scroll !important;
   }
 }

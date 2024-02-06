@@ -58,7 +58,7 @@ const SliderPricing = ({
   }
 
   return (
-    <Carousel className="w-full mx-auto">
+    <Carousel className="w-full max-w-lsm mx-auto">
       <CarouselContent>
         {pricingOptions.map((pricing, i) => {
           if (pricing.name.toLowerCase().trim() !== pathname) {

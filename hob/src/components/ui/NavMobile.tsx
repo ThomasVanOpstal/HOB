@@ -15,17 +15,17 @@ const NavMobile = ({}) => {
   const preventDefault = (event: React.SyntheticEvent) => event.preventDefault()
   return (
     <>
-      <DropdownMenu.Root>
+      <DropdownMenu.Root modal={false}>
         <DropdownMenu.Trigger asChild>
           <button
-            className="inline-flex items-center justify-cente"
+            className="inline-flex items-center "
             aria-label="menu full of options"
           >
             <Menu size={25} className="flex-shrink-0" />
           </button>
         </DropdownMenu.Trigger>
 
-        <DropdownMenu.Portal>
+        <DropdownMenu.Portal className="data-[state=open]:overflow-y-scroll">
           <DropdownMenu.Content
             className=" xsm:min-w-[120px] sm:min-w-[220px] ml-5 bg-brokenWhite rounded-md p-[5px] shadow-[0px_10px_38px_-10px_rgba(22,_23,_24,_0.35),_0px_10px_20px_-15px_rgba(22,_23,_24,_0.2)] will-change-[opacity,transform] data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade"
             sideOffset={15}
@@ -49,7 +49,7 @@ const NavMobile = ({}) => {
                 >
                   <DropdownMenu.Item
                     onClick={preventDefault}
-                    className="group text-xl font-medium my-2 hover:translate-x-1 ease-in-out leading-none rounded-[3px] flex items-center h-[25px] px-[5px] relative selection:select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1"
+                    className="group text-xl font-medium my-2  hover:translate-x-1 ease-in-out leading-none rounded-[3px] flex items-center h-[25px] px-[5px] relative selection:select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1"
                   >
                     <Link
                       href="/beauty/pedicure_&_lakken"
@@ -66,14 +66,14 @@ const NavMobile = ({}) => {
 
                   <DropdownMenu.Item
                     onClick={preventDefault}
-                    className="group text-xl font-medium my-2 hover:translate-x-1 ease-in-out leading-none rounded-[3px] flex items-center h-[25px] px-[5px] relative selection:select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1"
+                    className="group text-xl font-medium  my-2 hover:translate-x-1 ease-in-out leading-none rounded-[3px] flex items-center h-[25px] px-[5px] relative selection:select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1"
                   >
                     <ChevronRight size={15} strokeWidth={1} />
                     <Link href="/beauty/gelnagels">Gelnagels</Link>
                   </DropdownMenu.Item>
                   <DropdownMenu.Item
                     onClick={preventDefault}
-                    className="group text-xl mt-7 mb-6 font-medium hover:translate-x-1 ease-in-out leading-none rounded-[3px] flex items-center h-[25px] px-[5px] relative  select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1"
+                    className="group text-xl  mt-7 mb-6 font-medium hover:translate-x-1 ease-in-out leading-none rounded-[3px] flex items-center h-[25px] px-[5px] relative  select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1"
                   >
                     <Link
                       href="/beauty/wimpers_&_wenkbrauwen"
@@ -121,7 +121,7 @@ const NavMobile = ({}) => {
                   </DropdownMenu.Item>
                   <DropdownMenu.Item
                     onClick={preventDefault}
-                    className="group text-xl font-medium my-2 hover:translate-x-1 ease-in-out leading-none rounded-[3px] flex items-center h-[25px] px-[5px] relative select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1"
+                    className="group text-xl font-medium  my-2 hover:translate-x-1 ease-in-out leading-none rounded-[3px] flex items-center h-[25px] px-[5px] relative select-none outline-none data-[disabled]:text-mauve8 data-[disabled]:pointer-events-none data-[highlighted]:bg-violet9 data-[highlighted]:text-violet1"
                   >
                     <Link
                       href="/skin/dermaplanning"
