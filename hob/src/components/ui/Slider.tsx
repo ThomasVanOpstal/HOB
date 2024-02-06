@@ -99,23 +99,23 @@ const Slider = ({
               )}
 
               {buttonAvailable && (
-                <Button
-                  // key={i}
-                  variant={
-                    image.bg === 'bg-brokenWhite'
-                      ? 'default'
-                      : image.bg === 'bg-darkBrown'
-                      ? 'outline_darkBrown'
-                      : image.bg === 'bg-pink'
-                      ? 'secondary'
-                      : 'outline'
-                  }
-                  className={cn('font-medium text-xl mt-4 mb-8')}
-                >
-                  <Link href={`/${image.name.toLocaleLowerCase()}`}>
+                <Link href={`/${image.name.toLocaleLowerCase()}`}>
+                  <Button
+                    // key={i}
+                    variant={
+                      image.bg === 'bg-brokenWhite'
+                        ? 'default'
+                        : image.bg === 'bg-darkBrown'
+                        ? 'outline_darkBrown'
+                        : image.bg === 'bg-pink'
+                        ? 'secondary'
+                        : 'outline'
+                    }
+                    className={cn('font-medium text-xl mt-4 mb-8')}
+                  >
                     {image.name}
-                  </Link>
-                </Button>
+                  </Button>
+                </Link>
               )}
             </div>
           )
