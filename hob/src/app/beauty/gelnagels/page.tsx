@@ -8,6 +8,7 @@ import SliderPricing from '@/components/ui/SliderPricing'
 import Socials from '@/components/ui/Socials'
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
+import SliderPictures from '@/components/ui/sliderPictures'
 import { cn } from '@/lib/utils'
 import { image } from '@/types/type'
 import { Heart } from 'lucide-react'
@@ -173,17 +174,12 @@ const Page = () => {
             </div>
           ) : (
             <div>
-              <div className="hidden sm:block">
+              <div className="hidden mdd:block">
                 <SideGallery images={images} />
               </div>
 
-              <div className="block sm:hidden">
-                <Slider
-                  images={images}
-                  buttonAvailable={false}
-                  className="block sm:hidden"
-                  cloudinary={true}
-                />
+              <div className="block mdd:hidden">
+                <SliderPictures images={images} className="block sm:hidden" />
               </div>
             </div>
           )}
