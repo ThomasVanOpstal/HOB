@@ -3,46 +3,46 @@ import { MetadataRoute } from 'next'
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     {
-      url: `${process.env.PUBLIC_URL}`,
+      url: `https://www.houseofbeautybylauren.be`,
     },
     {
-      url: `${process.env.PUBLIC_URL}/beauty`,
+      url: `https://www.houseofbeautybylauren.be/beauty`,
     },
     {
-      url: `${process.env.PUBLIC_URL}/body`,
+      url: `https://www.houseofbeautybylauren.be/body`,
     },
     {
-      url: `${process.env.PUBLIC_URL}/skin`,
+      url: `https://www.houseofbeautybylauren.be/skin`,
     },
     {
-      url: `${process.env.PUBLIC_URL}/beauty/gelnagels`,
+      url: `https://www.houseofbeautybylauren.be/beauty/gelnagels`,
     },
     {
-      url: `${process.env.PUBLIC_URL}/beauty/pedicure_&amp;_lakken`,
+      url: `https://www.houseofbeautybylauren.be/beauty/pedicure_&amp;_lakken`,
     },
     {
-      url: `${process.env.PUBLIC_URL}/beauty/wimpers_&amp;_wenbrauwen`,
+      url: `https://www.houseofbeautybylauren.be/beauty/wimpers_&amp;_wenbrauwen`,
     },
     {
-      url: `${process.env.PUBLIC_URL}/body`,
+      url: `https://www.houseofbeautybylauren.be/body`,
     },
     {
-      url: `${process.env.PUBLIC_URL}/body/massage`,
+      url: `https://www.houseofbeautybylauren.be/body/massage`,
     },
     {
-      url: `${process.env.PUBLIC_URL}/skin/`,
+      url: `https://www.houseofbeautybylauren.be/skin/`,
     },
     {
-      url: `${process.env.PUBLIC_URL}/skin/dermaplanning`,
+      url: `https://www.houseofbeautybylauren.be/skin/dermaplanning`,
     },
     {
-      url: `${process.env.PUBLIC_URL}/skin/gelaatsverzorging`,
+      url: `https://www.houseofbeautybylauren.be/skin/gelaatsverzorging`,
     },
     {
-      url: `${process.env.PUBLIC_URL}/about`,
+      url: `https://www.houseofbeautybylauren.be/about`,
     },
     {
-      url: `${process.env.PUBLIC_URL}/contact`,
+      url: `https://www.houseofbeautybylauren.be/contact`,
     },
   ]
 }

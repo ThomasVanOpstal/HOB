@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
         allow: ['/'],
       },
     ],
-    sitemap: `${process.env.PUBLIC_URL}/sitemap.xml`,
+    sitemap: `https://www.houseofbeautybylauren.be/sitemap.xml`,
   }
 }
