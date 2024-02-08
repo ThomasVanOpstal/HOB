@@ -85,6 +85,13 @@ export const metadata: Metadata = {
     statusBarStyle: 'black-translucent',
   },
   metadataBase: new URL('https://HouseofBeautybyLauren.be'),
+  other: {
+    'og:image':
+      'https://asset.cloudinary.com/dx0xnplkl/b588d3226e3cb123e9226d6d045450b1',
+    'og:image:alt': 'House of Beauty - body & skin care',
+    'twitter:image':
+      'https://asset.cloudinary.com/dx0xnplkl/b588d3226e3cb123e9226d6d045450b1',
+  },
 }
 
 export default function RootLayout({
