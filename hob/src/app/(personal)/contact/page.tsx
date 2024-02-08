@@ -27,7 +27,7 @@ const page: FC<pageProps> = ({}) => {
               color="#f2c5b5"
               fill="#FFF4EC"
             />{' '}
-            Lauren.vanopstal@gmail.com
+            Lauren.vanopstal1@gmail.com
           </div>
           <div className="flex flex-row items-center mb-8 mdd:mb-20 font-medium text-base xsm:text-xl sm:text-2xl desktop:text-3xl">
             <MapPin

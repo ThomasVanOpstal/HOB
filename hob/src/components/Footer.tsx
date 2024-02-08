@@ -37,7 +37,7 @@ const Footer = () => {
           <div className="lg:flex flex-col m-8 self-center hidden pt-6">
             <div className="flex">
               <Phone size={20} className="mr-8" />
-              <p>0479369178</p>
+              <p>0472256557</p>
             </div>
             <div className="flex">
               <MapPin size={20} className="mr-8 flex-shrink-0" />
@@ -45,7 +45,7 @@ const Footer = () => {
             </div>
             <div className="flex">
               <Mail size={20} className="mr-8" />
-              <p>Lauren.vanopstal@gmail.com</p>
+              <p>Lauren.vanopstal1@gmail.com</p>
             </div>
           </div>
           <div className="grow smd:flex items-center justify-center hidden">
