@@ -44,13 +44,13 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://res.cloudinary.com/dx0xnplkl/image/upload/v1706110842/face_vhgkdo.png',
+        url: 'https://res.cloudinary.com/dx0xnplkl/image/upload/v1705867958/Beauty/LaurenFeet_qwkik0.jpg',
         width: 400,
         height: 400,
         alt: 'House of Beauty - body & skin care',
       },
       {
-        url: 'https://res.cloudinary.com/dx0xnplkl/image/upload/v1706110842/face_vhgkdo.png',
+        url: 'https://res.cloudinary.com/dx0xnplkl/image/upload/v1705867958/Beauty/LaurenFeet_qwkik0.jpg',
         width: 400,
         height: 400,
         alt: 'House of Beauty - body & skin care',
