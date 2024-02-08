@@ -21,7 +21,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `https://www.houseofbeautybylauren.be/beauty/pedicure_&amp;_lakken`,
     },
     {
-      url: `https://www.houseofbeautybylauren.be/beauty/wimpers_&amp;_wenbrauwen`,
+      url: `https://www.houseofbeautybylauren.be/beauty/wimpers_&amp;_wenkbrauwen`,
     },
     {
       url: `https://www.houseofbeautybylauren.be/body`,
