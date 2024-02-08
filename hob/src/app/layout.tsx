@@ -44,13 +44,13 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://asset.cloudinary.com/dx0xnplkl/b588d3226e3cb123e9226d6d045450b1',
+        url: 'https://res.cloudinary.com/dx0xnplkl/image/upload/v1706110842/face_vhgkdo.png',
         width: 400,
         height: 400,
         alt: 'House of Beauty - body & skin care',
       },
       {
-        url: 'https://asset.cloudinary.com/dx0xnplkl/c6a415612673c4f6af4572c9735b2dac',
+        url: 'https://res.cloudinary.com/dx0xnplkl/image/upload/v1706110842/face_vhgkdo.png',
         width: 400,
         height: 400,
         alt: 'House of Beauty - body & skin care',
@@ -85,13 +85,6 @@ export const metadata: Metadata = {
     statusBarStyle: 'black-translucent',
   },
   metadataBase: new URL('https://HouseofBeautybyLauren.be'),
-  other: {
-    'og:image':
-      'https://asset.cloudinary.com/dx0xnplkl/b588d3226e3cb123e9226d6d045450b1',
-    'og:image:alt': 'House of Beauty - body & skin care',
-    'twitter:image':
-      'https://asset.cloudinary.com/dx0xnplkl/b588d3226e3cb123e9226d6d045450b1',
-  },
 }
 
 export default function RootLayout({
