@@ -1,7 +1,11 @@
 import Nav from '@/components/Nav'
-import Head from 'next/head'
-import Script from 'next/script'
+import { Metadata } from 'next'
 
+export const metadata: Metadata = {
+  title: 'Body',
+  description:
+    'De beste schouder-, nek- en rugmassage kan je vinden bij House of Beauty. Wij zorgen ervoor dat je volledig ontspannen en verfrist naar huis gaat.',
+}
 export default function BodyLayout({
   children,
 }: {

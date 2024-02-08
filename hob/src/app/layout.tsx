@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: {
     template: '%s | House of Beauty',
     default: 'House of Beauty',
-    absolute: 'House of beauty',
+    absolute: 'House of Beauty',
   },
   category: 'Schoonheidssalon',
   description:

@@ -3,7 +3,6 @@ import { trpc } from '@/app/_trpc/client'
 import AltPricing from '@/components/AltPricing'
 import Options from '@/components/Options'
 import SideGallery from '@/components/ui/SideGallery'
-import Slider from '@/components/ui/Slider'
 import SliderPricing from '@/components/ui/SliderPricing'
 import Socials from '@/components/ui/Socials'
 import { Button } from '@/components/ui/button'
@@ -16,7 +15,7 @@ import { Metadata } from 'next'
 import { CldImage } from 'next-cloudinary'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { MutableRefObject, use, useEffect, useRef } from 'react'
+import { MutableRefObject, useEffect, useRef } from 'react'
 
 const Page = () => {
   const galleryImages = trpc.getImages.useQuery(

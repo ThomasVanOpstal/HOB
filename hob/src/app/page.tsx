@@ -5,6 +5,8 @@ import Nav from '@/components/Nav'
 import Slider from '@/components/ui/Slider'
 import { image } from '@/types/type'
 import LandingPage from './LandingPage'
+import { Metadata } from 'next'
+
 const page = () => {
   const images: image[] = [
     {
