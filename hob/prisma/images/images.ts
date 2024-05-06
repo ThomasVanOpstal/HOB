@@ -1,4 +1,3 @@
-import { Category } from '@prisma/client'
 import { db } from '../seed'
 export async function images() {
   const babyboomImage = await db.image.upsert({

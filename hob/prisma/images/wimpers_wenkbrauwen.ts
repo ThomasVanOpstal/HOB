@@ -1,4 +1,3 @@
-import { Category } from '@prisma/client'
 import { db } from '../seed'
 export async function Wimpers_wenkbrauwen() {
   const wwDesktop = await db.image.upsert({

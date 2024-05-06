@@ -1,4 +1,3 @@
-import { Category } from '@prisma/client'
 import { db } from '../seed'
 export async function Pedicure_lakken() {
   const pedicureDesktop = await db.image.upsert({

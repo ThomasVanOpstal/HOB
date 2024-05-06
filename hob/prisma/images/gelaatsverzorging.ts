@@ -1,4 +1,3 @@
-import { Category } from '@prisma/client'
 import { db } from '../seed'
 export async function GelaatsverzorgingImages() {
   const gelaatsverzorgingDesktop = await db.image.upsert({
